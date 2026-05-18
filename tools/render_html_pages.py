@@ -347,7 +347,7 @@ def html_escape(value: str) -> str:
 
 
 def main() -> None:
-  parser = argparse.ArgumentParser(description="Render PDF pages and OCR text layers for Univ Archive.")
+  parser = argparse.ArgumentParser(description="Render PDF pages and OCR text layers for Soli's Archive.")
   parser.add_argument("--lang", default=DEFAULT_OCR_LANG, help="Tesseract language, e.g. kor+eng")
   parser.add_argument("--course", help="Render only one course id")
   args = parser.parse_args()

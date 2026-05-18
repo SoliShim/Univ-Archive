@@ -355,7 +355,7 @@
         <p class="path">Soli's Archive / README Guide</p>
         <h1>Soli's Archive 프로젝트 정리</h1>
         <p>
-          이 문서는 Soli's Archive의 전체 구조, PDF OCR 변환 방식, 웹 렌더링 흐름,
+          이 문서는 Soli's Archive의 전체 구조, PDF OCR 변환 방식, 암호화 배포 흐름,
           앞으로 과목 자료를 추가하는 방법을 한눈에 보기 위한 HTML 설명서입니다.
         </p>
       </header>
@@ -373,7 +373,7 @@
           </div>
           <div class="card">
             <span>문서 표시</span>
-            <strong>PDF 원본 렌더링 이미지</strong>
+            <strong>암호화 문서 복호화 뷰어</strong>
           </div>
           <div class="card">
             <span>검색 방식</span>
@@ -381,7 +381,7 @@
           </div>
           <div class="card">
             <span>배포 방식</span>
-            <strong>정적 웹사이트</strong>
+            <strong>공개 사이트 + 암호화 자료</strong>
           </div>
         </div>
       </section>
@@ -404,20 +404,20 @@
 │  ├─ data-loader.js
 │  └─ index.js
 ├─ assets/
+│  ├─ encrypted/
+│  │  ├─ 2학년-1학기/
+│  │  │  └─ korean-history.archive.enc
+│  │  ├─ 2학년-2학기/
+│  │  │  └─ computer-network.archive.enc
+│  │  └─ 3학년-1학기/
+│  │     ├─ algorithm-summary.archive.enc
+│  │     └─ data-structure-summary.archive.enc
 │  ├─ pdfs/
 │  │  ├─ 1학년 1학기/
 │  │  ├─ 1학년 2학기/
 │  │  ├─ 2학년 1학기/
 │  │  ├─ 2학년 2학기/
 │  │  ├─ 3학년 1학기/
-│  │  │  ├─ 알고리즘/
-│  │  │  │  └─ 알고리즘 총정리.pdf
-│  │  │  ├─ 자료구조/
-│  │  │  │  └─ 자료구조 총정리.pdf
-│  │  │  ├─ 기초컴퓨터프로그래밍/
-│  │  │  │  ├─ 기초컴퓨터프로그래밍 중간 총정리.pdf
-│  │  │  │  └─ 기초컴퓨터프로그래밍 기말 총정리.pdf
-│  │  │  └─ ...
 │  │  └─ 3학년 2학기/
 │  └─ html/
 │     ├─ 1학년 1학기/
@@ -425,31 +425,19 @@
 │     ├─ 2학년 1학기/
 │     ├─ 2학년 2학기/
 │     ├─ 3학년 1학기/
-│     │  ├─ 알고리즘/
-│     │  │  └─ algorithm-summary/
-│     │  │  ├─ manifest.json
-│     │  │  ├─ index.html
-│     │  │  ├─ page-001.webp
-│     │  │  ├─ page-001.text.json
-│     │  │  └─ ...
-│     │  └─ 자료구조/
-│     │     └─ data-structure-summary/
-│     │     ├─ manifest.json
-│     │     ├─ index.html
-│     │     ├─ page-001.webp
-│     │     ├─ page-001.text.json
-│     │     └─ ...
 │     └─ 3학년 2학기/
 └─ tools/
-   └─ render_html_pages.py</code></pre>
+   ├─ render_html_pages.py
+   └─ encrypt_archives.js</code></pre>
       </section>
 
       <section id="data">
         <h2>데이터 구조</h2>
         <p>
           과목 정보는 <code>data/courses.json</code>에서 관리합니다.
-          학기 단위 아래에 과목들이 들어가고, 변환 완료된 과목은 PDF와 HTML manifest 경로를 가집니다.
-          중간/기말처럼 원본 PDF가 여러 개면 <code>sourcePdfs</code>에 순서대로 등록해 하나의 문서처럼 변환합니다.
+          학기 단위 아래에 과목들이 들어가고, 변환 완료된 과목은 암호화 패키지 경로를 가집니다.
+          중간/기말처럼 원본 PDF가 여러 개면 암호화 전 임시 변환 단계에서 <code>sourcePdfs</code>에 순서대로 등록해 하나의 문서처럼 만든 뒤 암호화합니다.
+          공개용 데이터에는 원본 PDF 경로를 남기지 않습니다.
         </p>
         <pre><code>{
   "title": "Soli's Archive",
@@ -468,11 +456,11 @@
           "credits": 3,
           "professor": "박동철",
           "documentStatus": "converted",
-          "sourcePdf": "assets/pdfs/3학년 1학기/자료구조/자료구조 총정리.pdf",
           "html": {
-            "type": "imageManifest",
-            "manifestPath": "assets/html/3학년 1학기/자료구조/data-structure-summary/manifest.json",
-            "assetBase": "assets/html/3학년 1학기/자료구조/data-structure-summary"
+            "type": "encryptedArchive",
+            "archivePath": "assets/encrypted/3학년-1학기/data-structure-summary.archive.enc",
+            "format": "solis-archive-v1",
+            "encrypted": true
           }
         }
       ]
@@ -502,7 +490,7 @@
             <span class="step-number">3</span>
             <div>
               <strong>과목 데이터 연결</strong>
-              <p><code>data/courses.json</code>에 <code>sourcePdf</code> 또는 <code>sourcePdfs</code>와 <code>html</code> manifest 경로를 등록합니다.</p>
+              <p>암호화 전 임시 상태에서 <code>data/courses.json</code>에 원본 PDF 경로와 HTML manifest 경로를 등록합니다.</p>
             </div>
           </div>
           <div class="step">
@@ -515,8 +503,22 @@
           <div class="step">
             <span class="step-number">5</span>
             <div>
-              <strong>웹에서 표시</strong>
-              <p>웹 앱이 manifest를 읽고 PDF 이미지 위에 투명 OCR 텍스트 레이어를 얹습니다.</p>
+              <strong>암호화 패키지 생성</strong>
+              <p><code>ARCHIVE_PASSWORD='비밀번호' node tools/encrypt_archives.js</code>로 페이지 이미지, OCR 텍스트, manifest를 <code>.archive.enc</code>로 묶습니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">6</span>
+            <div>
+              <strong>평문 자료 제거 확인</strong>
+              <p><code>assets/pdfs</code>와 <code>assets/html</code>에는 <code>.gitkeep</code>만 남기고, 공개 저장소에는 암호화 파일만 커밋합니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">7</span>
+            <div>
+              <strong>웹에서 복호화 표시</strong>
+              <p>웹 앱은 <code>.enc</code> 파일을 내려받고, 사용자가 입력한 비밀번호로 브라우저 메모리 안에서만 복호화해 표시합니다.</p>
             </div>
           </div>
         </div>
@@ -542,6 +544,12 @@ python3 -m pip install -r requirements.txt</code></pre>
 
         <h3>특정 과목만 변환</h3>
         <pre><code>python3 tools/render_html_pages.py --course data-structure-summary --lang kor+eng</code></pre>
+
+        <h3>암호화</h3>
+        <pre><code>ARCHIVE_PASSWORD='12자 이상 비밀번호' node tools/encrypt_archives.js</code></pre>
+
+        <h3>평문 자료 제거 확인</h3>
+        <pre><code>find assets/html assets/pdfs -type f ! -name '.gitkeep' -print</code></pre>
       </section>
 
       <section id="files">
@@ -557,7 +565,7 @@ python3 -m pip install -r requirements.txt</code></pre>
           </div>
           <div class="row">
             <strong>data/courses.json</strong>
-            <span>학년, 학기, 과목, 교수, PDF, HTML manifest 경로를 관리합니다.</span>
+            <span>학년, 학기, 과목, 교수, 암호화 문서 경로를 관리합니다.</span>
           </div>
           <div class="row">
             <strong>js/archive.js</strong>
@@ -571,6 +579,10 @@ python3 -m pip install -r requirements.txt</code></pre>
             <strong>tools/render_html_pages.py</strong>
             <span>PDF를 페이지 이미지와 OCR 텍스트 레이어로 변환합니다.</span>
           </div>
+          <div class="row">
+            <strong>tools/encrypt_archives.js</strong>
+            <span>변환된 문서 패키지를 공개 배포용 암호화 파일로 묶습니다.</span>
+          </div>
         </div>
       </section>
 
@@ -583,32 +595,32 @@ python3 -m pip install -r requirements.txt</code></pre>
           <div class="card">
             <span>변환 완료</span>
             <strong>알고리즘</strong>
-            <p><span class="badge green">15페이지 OCR 완료</span></p>
+            <p><span class="badge green">15페이지 OCR + 암호화 완료</span></p>
           </div>
           <div class="card">
             <span>변환 완료</span>
             <strong>자료구조</strong>
-            <p><span class="badge green">26페이지 OCR 완료</span></p>
+            <p><span class="badge green">26페이지 OCR + 암호화 완료</span></p>
           </div>
           <div class="card">
             <span>변환 완료</span>
             <strong>기초컴퓨터프로그래밍</strong>
-            <p><span class="badge green">21페이지 OCR 완료</span></p>
+            <p><span class="badge green">21페이지 OCR + 암호화 완료</span></p>
           </div>
           <div class="card">
             <span>변환 완료</span>
             <strong>기술경영과 보호</strong>
-            <p><span class="badge green">39페이지 OCR 완료</span></p>
+            <p><span class="badge green">39페이지 OCR + 암호화 완료</span></p>
           </div>
           <div class="card">
             <span>변환 완료</span>
             <strong>경영경제 소프트웨어 프로그래밍</strong>
-            <p><span class="badge green">36페이지 OCR 완료</span></p>
+            <p><span class="badge green">36페이지 OCR + 암호화 완료</span></p>
           </div>
           <div class="card">
             <span>변환 완료</span>
             <strong>산업보안법</strong>
-            <p><span class="badge green">65페이지 OCR 완료</span></p>
+            <p><span class="badge green">65페이지 OCR + 암호화 완료</span></p>
           </div>
         </div>
       </section>

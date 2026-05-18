@@ -3,59 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>학습 기록 아카이브</title>
+  <title>Univ Archive</title>
   <meta
     name="description"
-    content="학교에서 학습한 과목 자료를 학기별로 정리한 PDF 기반 아카이브입니다."
+    content="1학년 1학기부터 3학년 2학기까지 수강한 과목과 학습 문서를 트리 구조로 정리하는 개인 대학 아카이브입니다."
   >
-  <link rel="stylesheet" href="./styles.css?v=20260325-02">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f6b72'/%3E%3Cpath d='M22 12h20v40H22z' fill='%23fff' opacity='.9'/%3E%3Cpath d='M30 12h4v40h-4z' fill='%230f6b72' opacity='.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css?v=20260518-tree">
 </head>
-<body class="page-shell">
-  <div class="background-glow background-glow-left"></div>
-  <div class="background-glow background-glow-right"></div>
-
-  <main class="layout">
-    <section class="hero-card">
-      <p class="eyebrow">Study Record Upload Project</p>
-      <h1>학습 기록 아카이브</h1>
-      <p class="hero-copy">
-        학교에서 수강한 과목 정리본을 학기별로 정리해 두는 PDF 중심 웹 아카이브입니다.
-        원본 문서를 최대한 유지하면서 필요할 때 바로 찾아볼 수 있도록 구성했습니다.
-      </p>
-      <div class="hero-meta">
-        <div>
-          <span class="meta-label">운영 방식</span>
-          <strong>정적 웹사이트 / GitHub Pages</strong>
-        </div>
-        <div>
-          <span class="meta-label">표시 기준</span>
-          <strong>원본 PDF 우선</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="archive-panel">
-      <div class="section-heading">
-        <div>
-          <p class="section-kicker">Archive Tree</p>
-          <h2>학기별 자료</h2>
-        </div>
-        <p class="section-description">
-          1학년 1학기부터 3학년 2학기까지의 자료를 학기별로 분류합니다.
-        </p>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="학습 아카이브 트리">
+      <div class="brand">
+        <a class="brand-mark" href="./index.html" aria-label="Univ Archive 홈">
+          <span class="brand-icon" aria-hidden="true"></span>
+          <span>
+            <strong>Univ Archive</strong>
+            <small>Course Knowledge Tree</small>
+          </span>
+        </a>
       </div>
 
-      <div id="status-message" class="status-message" aria-live="polite">
-        자료 목록을 불러오는 중입니다.
-      </div>
+      <label class="search-box" for="archive-search">
+        <span>과목 검색</span>
+        <input id="archive-search" type="search" placeholder="과목명, 코드, 교수명 검색">
+      </label>
 
-      <div id="semester-tree" class="year-grid" hidden></div>
-    </section>
-  </main>
+      <nav id="archive-tree" class="archive-tree" aria-live="polite"></nav>
+    </aside>
 
-  <script type="module" src="./js/index.js?v=20260325-02"></script>
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p id="current-path" class="path-label">Univ Archive</p>
+          <h1 id="page-title">대학 학습 아카이브</h1>
+        </div>
+        <div id="summary-strip" class="summary-strip" aria-label="아카이브 요약"></div>
+      </header>
+
+      <section id="search-results" class="search-results" hidden></section>
+      <section id="content-view" class="content-view" aria-live="polite">
+        <div class="loading-panel">아카이브를 불러오는 중입니다.</div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./js/archive.js?v=20260518-tree"></script>
 </body>
 </html>

@@ -1,96 +1,88 @@
-# Study Record Upload Project
+# Univ Archive
 
-학교에서 공부한 과목 정리본을 학기별로 정리해 두는 정적 웹사이트입니다.  
-현재 버전은 PDF 원본 보존을 우선하며, 각 과목 페이지에서 `PDF 보기`와 `HTML 보기`를 전환할 수 있습니다.  
-`HTML 보기`는 PDF 각 페이지를 이미지로 변환해 쌓아 두는 방식이라 원본 레이아웃을 매우 비슷하게 유지합니다.
+대학에서 수강한 과목과 학습 문서를 학년/학기 폴더 트리로 정리하는 정적 웹 아카이브입니다.
+
+현재 구조는 `PDF 보기` 중심이 아니라, 각 과목마다 HTML 문서 저장 슬롯을 두고 PDF 또는 필기 자료를 HTML 형식으로 옮겨 보관하는 방향으로 재구성되어 있습니다. 3학년 1학기 과목 중 PDF가 연결된 문서는 OCR 기반 검색/선택용 텍스트 레이어를 포함한 HTML 문서 패키지로 생성되어 있습니다.
+
+프로젝트 구조와 작업 흐름은 `project-guide/index.html`에서도 확인할 수 있습니다.
+
+## 현재 포함된 범위
+
+- 1학년 1학기: 2021-1
+- 1학년 2학기: 2021-2
+- 2학년 1학기: 2024-1
+- 2학년 2학기: 2024-2
+- 3학년 1학기: 2025-1
+- 3학년 2학기: 2026-1, 현재 수강중
+- 계절/특별학기
 
 ## 구성
 
-- `index.html`: 학기별 자료 목록
-- `course.html?id=<slug>`: 과목별 PDF 보기 페이지
-- `data/courses.json`: 과목 메타데이터
-- `assets/pdfs/`: 실제 PDF 파일
-- `assets/html/<course-id>/`: HTML 보기용 페이지 이미지 및 `manifest.json`
-- `js/`: 목록/과목 페이지 렌더링 스크립트
-- `tools/render_html_pages.py`: PDF를 HTML 보기용 이미지 자산으로 변환하는 스크립트
-- `styles.css`: 공통 스타일
+- `index.html`: 트리형 아카이브 앱 진입점
+- `course.html`: 이전 과목 상세 URL을 `index.html?course=<id>`로 넘기는 호환용 페이지
+- `data/courses.json`: 학년, 학기, 과목, 문서 상태 데이터
+- `js/archive.js`: 트리 탐색, 검색, 과목 상세 렌더링
+- `styles.css`: 전체 UI 스타일
+- `assets/html/<학기>/<과목명>/<course-id>/`: PDF 원본 렌더링 이미지, OCR 텍스트 JSON, manifest, standalone HTML
+- `assets/pdfs/<학기>/<과목명>/`: PDF 원본 보관 위치
+- `tools/render_html_pages.py`: PDF를 원본 렌더링 이미지와 OCR 텍스트 레이어로 변환하는 도구
+- `requirements.txt`: 변환 스크립트용 Python 의존성
 
-## 새 과목 추가 방법
+## 새 과목 문서 저장 방식
 
-1. PDF 파일을 `assets/pdfs/` 폴더에 넣습니다.
-2. `data/courses.json`에 과목 정보를 한 줄 추가합니다.
-3. 아래 명령으로 HTML 보기 자산을 생성합니다.
+각 과목은 웹 화면에서 아래와 같은 문서 슬롯 경로를 가집니다.
 
-```powershell
-python tools/render_html_pages.py
+```text
+archive/<학년>/<학기>/<course-id>/index.html
 ```
 
-HTML 보기 자산까지 만들어야 과목 페이지에서 `HTML 보기` 탭이 활성화됩니다.
+아직 모든 과목의 실제 문서 파일을 생성하지는 않고, `data/courses.json`에 경로와 상태를 먼저 잡아 두었습니다. PDF를 HTML로 변환한 결과물을 이 슬롯에 연결하면 됩니다.
 
-예시:
+## PDF OCR 변환
 
-```json
-{
-  "id": "operating-system-summary",
-  "title": "운영체제",
-  "displayTitle": "운영체제 총정리",
-  "year": 3,
-  "semester": 2,
-  "pdfPath": "assets/pdfs/운영체제 총정리.pdf",
-  "status": "published",
-  "notes": "3학년 2학기 운영체제 정리 PDF입니다."
-}
+HWP 원본은 보관용으로 두고, 웹 변환은 PDF에서 시작합니다. 변환 결과는 과목별로 아래 파일들을 만듭니다.
+
+```text
+assets/html/<학기>/<과목명>/<course-id>/
+├─ page-001.webp
+├─ page-001.text.json
+├─ manifest.json
+└─ index.html
 ```
 
-필드 설명:
+중간/기말처럼 PDF가 여러 개로 나뉜 과목은 `data/courses.json`의 `sourcePdfs`에 순서대로 등록합니다. 변환 결과는 사용자가 보기에는 하나의 문서처럼 이어진 페이지 번호를 가집니다.
 
-- `id`: URL에 들어가는 고유 식별자입니다. 영어 slug를 권장합니다.
-- `title`: 과목명입니다.
-- `displayTitle`: 화면에 보여줄 제목입니다.
-- `year`: 학년 숫자입니다.
-- `semester`: 학기 숫자입니다. 현재 구조는 `1` 또는 `2`를 사용합니다.
-- `pdfPath`: PDF 파일 경로입니다.
-- `status`: 현재는 `published`를 사용합니다.
-- `notes`: 과목 설명 또는 메모입니다.
+필요 도구:
 
-## 로컬에서 미리보기
-
-이 프로젝트는 `data/courses.json`을 불러오기 때문에 브라우저에서 HTML 파일을 직접 더블클릭하면 동작하지 않을 수 있습니다.  
-간단한 로컬 서버를 실행한 뒤 접속하세요.
-
-PowerShell:
-
-```powershell
-python -m http.server 8000
+```bash
+brew install tesseract tesseract-lang
+python3 -m pip install -r requirements.txt
 ```
 
-그 다음 브라우저에서 아래 주소를 엽니다.
+변환 실행:
+
+```bash
+python3 tools/render_html_pages.py --lang kor+eng
+```
+
+특정 과목만 다시 변환:
+
+```bash
+python3 tools/render_html_pages.py --course data-structure-summary --lang kor+eng
+```
+
+표시용 이미지는 PDF 원본 레이아웃을 유지하고, OCR 결과는 투명 텍스트 레이어와 문서 내부 검색 인덱스로 사용됩니다.
+
+## 로컬 미리보기
+
+JSON과 HTML 변환 자산을 불러와야 하므로 로컬 서버로 확인하세요.
+
+```bash
+python3 -m http.server 8000
+```
+
+브라우저에서 아래 주소를 엽니다.
 
 ```text
 http://localhost:8000
 ```
-
-## GitHub에 업로드
-
-아직 원격 저장소가 없다면 GitHub에서 새 저장소를 만든 뒤 아래처럼 연결하면 됩니다.
-
-```powershell
-git add .
-git commit -m "Initial study archive site"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPOSITORY_URL>
-git push -u origin main
-```
-
-## GitHub Pages 배포
-
-1. GitHub 저장소의 `Settings`로 이동합니다.
-2. `Pages` 메뉴를 엽니다.
-3. `Build and deployment`에서 `Deploy from a branch`를 선택합니다.
-4. 브랜치는 `main`, 폴더는 `/ (root)`를 선택합니다.
-5. 저장 후 잠시 기다리면 배포 주소가 생성됩니다.
-
-## 현재 등록된 자료
-
-- 3학년 1학기 `알고리즘 총정리`
-- 3학년 1학기 `자료구조 총정리`

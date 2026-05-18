@@ -1,5 +1,63 @@
 const DATA_URL = new URL("../data/courses.json", import.meta.url);
+const APP_NAME = "Soli's Archive";
 const ASSET_VERSION = "20260518-search-highlight";
+const SIDEBAR_WIDTH_KEY = "solisArchiveSidebarWidth";
+const DEFAULT_SIDEBAR_WIDTH = 360;
+const MIN_SIDEBAR_WIDTH = 250;
+const MAX_SIDEBAR_WIDTH = 620;
+const COURSE_EMOJIS = {
+  "creative-communication": "💬",
+  "cau-seminar-1": "🎓",
+  "entrepreneurship-accounting": "💼",
+  "basic-programming": "💻",
+  "advanced-programming": "🧑‍💻",
+  "art-technology-introduction": "🎨",
+  "design-thinking-problem-solving": "💡",
+  "concept-studio": "🧩",
+  writing: "✍️",
+  "object-oriented-programming": "🧱",
+  act: "🎯",
+  "communication-in-english": "🗣️",
+  "cau-seminar-2": "🎓",
+  "contents-mathematics": "🧮",
+  "world-of-literature": "📚",
+  "wellbeing-science-risk-society": "🌿",
+  "visual-computing": "🖼️",
+  "open-source-programming": "🐙",
+  "korean-history": "🏛️",
+  "industrial-security": "🛡️",
+  "industrial-security-crime": "🚨",
+  "business-management-security": "🏢",
+  "computer-system-foundation": "🖥️",
+  "information-security-theory": "🔐",
+  "programming-language-theory": "🧬",
+  programming: "⌨️",
+  "human-behavior-psychology": "🧠",
+  "future-society-software": "🚀",
+  "privacy-use-protection": "🪪",
+  "business-economics-data-analysis-software": "📊",
+  "computer-network": "🌐",
+  "algorithm-summary": "🧭",
+  "basic-computer-programming": "💻",
+  "technology-management-protection": "📈",
+  "business-economics-software-programming": "💹",
+  "industrial-security-investigation-forensics": "🕵️",
+  "data-structure-summary": "🌳",
+  "industrial-security-law": "⚖️",
+  "plant-civilization": "🌱",
+  "security-communication": "📡",
+  "operating-system-security": "🛡️",
+  "opensource-sw-python": "🐍",
+  "operating-system": "⚙️",
+  "artificial-intelligence": "🤖",
+  "data-structure-english": "🌳",
+  "computational-thinking-pre-admission": "🧩",
+  "software-centered-world": "🌍",
+  "history-culture-consumption": "🏺",
+  "ai-and-law": "🤖",
+  "practical-hanja": "🈶",
+  "lithuanian-language-culture": "🇱🇹"
+};
 
 const treeRoot = document.querySelector("#archive-tree");
 const contentView = document.querySelector("#content-view");
@@ -8,6 +66,7 @@ const currentPath = document.querySelector("#current-path");
 const summaryStrip = document.querySelector("#summary-strip");
 const searchInput = document.querySelector("#archive-search");
 const searchResults = document.querySelector("#search-results");
+const sidebarResizer = document.querySelector("#sidebar-resizer");
 const textLayerObservers = [];
 
 let archive = null;
@@ -34,10 +93,6 @@ async function init() {
     selectedSemesterId = queryParams.get("semester");
     initialDocumentSearch = queryParams.get("docSearch");
 
-    if (!selectedSemesterId && !selectedCourseId) {
-      selectedSemesterId = archive.semesters[0]?.id ?? null;
-    }
-
     bindEvents();
     render();
   } catch (error) {
@@ -51,6 +106,13 @@ async function init() {
 }
 
 function bindEvents() {
+  setupSidebarResizer();
+
+  document.querySelector(".brand-mark")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    selectHome();
+  });
+
   treeRoot.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-kind]");
 
@@ -82,6 +144,13 @@ function bindEvents() {
   });
 
   contentView.addEventListener("click", (event) => {
+    const semesterButton = event.target.closest("button[data-semester-id]");
+
+    if (semesterButton) {
+      selectSemester(semesterButton.dataset.semesterId);
+      return;
+    }
+
     const button = event.target.closest("button[data-course-id]");
 
     if (button) {
@@ -142,8 +211,14 @@ function render() {
     return;
   }
 
-  const selectedSemester = findSemester(selectedSemesterId) ?? archive.semesters[0];
-  renderSemester(selectedSemester);
+  const selectedSemester = findSemester(selectedSemesterId);
+
+  if (selectedSemester) {
+    renderSemester(selectedSemester);
+    return;
+  }
+
+  renderHome();
 }
 
 function decorateCourses() {
@@ -228,29 +303,245 @@ function renderCourseNode(course) {
 
   return `
     <button class="tree-node course-node${active}${statusClass}" type="button" data-kind="course" data-id="${course.id}">
-      <span class="file-icon" aria-hidden="true"></span>
+      <span class="course-emoji" aria-hidden="true">${escapeHtml(getCourseEmoji(course))}</span>
       <span>${escapeHtml(course.title)}</span>
     </button>
   `;
 }
 
+function renderHome() {
+  resetDocumentState();
+  selectedCourseId = null;
+  selectedSemesterId = null;
+  syncQuery({});
+
+  const courses = getAllCourses();
+  const completedCourses = courses.filter((course) => course.semesterStatus === "completed");
+  const convertedCourses = courses.filter((course) => course.documentStatus === "converted");
+  const categoryEntries = getCategoryEntries(courses);
+  const yearGroups = groupSemestersByYear();
+
+  currentPath.textContent = `${APP_NAME} / Home`;
+  pageTitle.textContent = APP_NAME;
+  document.title = APP_NAME;
+
+  contentView.innerHTML = `
+    <section class="home-overview" aria-label="전체 학습 아카이브 요약">
+      <div class="home-hero">
+        <div>
+          <p class="section-label">Course Knowledge Map</p>
+          <h2>새내기부터 헌내기까지</h2>
+          <p>
+            수강 과목, 전공 축, 변환된 문서 상태를 한 화면에서 확인하고
+            각 학기나 과목으로 바로 들어갈 수 있습니다.
+          </p>
+        </div>
+        <div class="home-scoreboard" aria-label="전체 아카이브 현황">
+          ${renderStat("등록 과목", `${courses.length}개`)}
+          ${renderStat("완료 과목", `${completedCourses.length}개`)}
+          ${renderStat("HTML 문서", `${convertedCourses.length}개`)}
+        </div>
+      </div>
+
+      <section class="home-section" aria-labelledby="home-learning-map">
+        <div class="section-head">
+          <div>
+            <p class="section-label">Semester Map</p>
+            <h3 id="home-learning-map">학기별로 배운 내용</h3>
+          </div>
+        </div>
+        <div class="semester-map">
+          ${yearGroups.map(([yearGroup, semesters]) => `
+            <section class="year-lane" aria-label="${escapeHtml(yearGroup)}">
+              <h4>${escapeHtml(yearGroup)}</h4>
+              <div class="semester-card-grid">
+                ${semesters.map(renderHomeSemesterCard).join("")}
+              </div>
+            </section>
+          `).join("")}
+        </div>
+      </section>
+
+      <section class="home-section" aria-labelledby="home-category-map">
+        <div class="section-head">
+          <div>
+            <p class="section-label">Knowledge Areas</p>
+            <h3 id="home-category-map">학습 영역 분포</h3>
+          </div>
+        </div>
+        <div class="category-map">
+          ${categoryEntries.map(([category, count]) => `
+            <div class="category-tile">
+              <span>${escapeHtml(category)}</span>
+              <strong>${count}개 과목</strong>
+            </div>
+          `).join("")}
+        </div>
+      </section>
+    </section>
+  `;
+}
+
+function setupSidebarResizer() {
+  if (!sidebarResizer) {
+    return;
+  }
+
+  const savedWidth = Number(localStorage.getItem(SIDEBAR_WIDTH_KEY));
+  setSidebarWidth(Number.isFinite(savedWidth) ? savedWidth : DEFAULT_SIDEBAR_WIDTH, false);
+
+  let startX = 0;
+  let startWidth = 0;
+
+  const handlePointerMove = (event) => {
+    const nextWidth = startWidth + event.clientX - startX;
+    setSidebarWidth(nextWidth);
+  };
+
+  const stopResize = () => {
+    document.body.classList.remove("is-resizing-sidebar");
+    window.removeEventListener("pointermove", handlePointerMove);
+    window.removeEventListener("pointerup", stopResize);
+  };
+
+  sidebarResizer.addEventListener("pointerdown", (event) => {
+    startX = event.clientX;
+    startWidth = getCurrentSidebarWidth();
+    document.body.classList.add("is-resizing-sidebar");
+    sidebarResizer.setPointerCapture?.(event.pointerId);
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", stopResize, { once: true });
+  });
+
+  sidebarResizer.addEventListener("dblclick", () => {
+    setSidebarWidth(DEFAULT_SIDEBAR_WIDTH);
+  });
+
+  sidebarResizer.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      setSidebarWidth(getCurrentSidebarWidth() + (event.key === "ArrowRight" ? 24 : -24));
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      setSidebarWidth(MIN_SIDEBAR_WIDTH);
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      setSidebarWidth(getMaxSidebarWidth());
+    }
+  });
+}
+
+function getCurrentSidebarWidth() {
+  return Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--sidebar-width")) ||
+    DEFAULT_SIDEBAR_WIDTH;
+}
+
+function getMaxSidebarWidth() {
+  return Math.min(MAX_SIDEBAR_WIDTH, Math.max(MIN_SIDEBAR_WIDTH, window.innerWidth - 520));
+}
+
+function setSidebarWidth(width, persist = true) {
+  const nextWidth = Math.round(Math.min(getMaxSidebarWidth(), Math.max(MIN_SIDEBAR_WIDTH, width)));
+  document.documentElement.style.setProperty("--sidebar-width", `${nextWidth}px`);
+  sidebarResizer?.setAttribute("aria-valuenow", String(nextWidth));
+  sidebarResizer?.setAttribute("aria-valuemax", String(Math.round(getMaxSidebarWidth())));
+
+  if (persist) {
+    localStorage.setItem(SIDEBAR_WIDTH_KEY, String(nextWidth));
+  }
+}
+
+function renderHomeSemesterCard(semester) {
+  const credits = semester.courses.reduce((sum, course) => sum + Number(course.credits || 0), 0);
+  const converted = semester.courses.filter((course) => course.documentStatus === "converted").length;
+  const categories = getCategoryEntries(semester.courses).slice(0, 4);
+  const focus = getSemesterFocus(semester.id);
+  const featuredCourses = semester.courses.slice(0, 7);
+
+  return `
+    <article class="semester-card">
+      <button class="semester-card-main" type="button" data-semester-id="${semester.id}">
+        <span class="semester-card-term">${escapeHtml(semester.schoolTerm)}</span>
+        <strong>${escapeHtml(semester.label)}</strong>
+        <span class="semester-card-focus">${escapeHtml(focus)}</span>
+      </button>
+      <div class="semester-card-meta">
+        <span>${semester.courses.length}과목</span>
+        <span>${formatCredits(credits)}학점</span>
+        <span>문서 ${converted}/${semester.courses.length}</span>
+      </div>
+      <div class="category-pills">
+        ${categories.map(([category, count]) => `
+          <span>${escapeHtml(category)} ${count}</span>
+        `).join("")}
+      </div>
+      <div class="course-chip-list">
+        ${featuredCourses.map((course) => `
+          <button type="button" data-course-id="${course.id}">
+            ${escapeHtml(getCourseDisplayTitle(course))}
+          </button>
+        `).join("")}
+      </div>
+    </article>
+  `;
+}
+
+function getCategoryEntries(courses) {
+  const counts = new Map();
+
+  courses.forEach((course) => {
+    const category = course.category || "미분류";
+    counts.set(category, (counts.get(category) || 0) + 1);
+  });
+
+  return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ko"));
+}
+
+function getSemesterFocus(id) {
+  const focusBySemester = {
+    "y1-s1": "프로그래밍 입문, 창의적 문제 해결, 콘텐츠/예술공학 기초",
+    "y1-s2": "객체지향, 오픈소스, 수학/문학/영어 기반 교양 확장",
+    "y2-s1": "산업보안 기초, 보안 범죄, 정보보안론, 컴퓨터 시스템 기초",
+    "y2-s2": "프로그래밍 언어, 네트워크, 개인정보 보호, 데이터 분석",
+    "y3-s1": "알고리즘과 자료구조, 산업보안법, 기술경영, 보안 포렌식",
+    "y3-s2": "운영체제, 인공지능, Python/Open Source, 보안 커뮤니케이션",
+    seasonal: "입학 전 SW 사고, AI와 법, 언어/문화/교양 보강"
+  };
+
+  return focusBySemester[id] || "수강 과목 기반 학습 기록";
+}
+
+function getCourseEmoji(course) {
+  return COURSE_EMOJIS[course.id] || "📘";
+}
+
+function getCourseDisplayTitle(course) {
+  return `${getCourseEmoji(course)} ${course.title}`;
+}
+
 function renderSemester(semester) {
+  resetDocumentState();
   selectedCourseId = null;
   selectedSemesterId = semester.id;
   syncQuery({ semester: semester.id });
+  renderTree();
 
   const credits = semester.courses.reduce((sum, course) => sum + Number(course.credits || 0), 0);
   const converted = semester.courses.filter((course) => course.documentStatus === "converted").length;
 
-  currentPath.textContent = `Univ Archive / ${semester.yearGroup} / ${semester.label}`;
+  currentPath.textContent = `${APP_NAME} / ${semester.yearGroup} / ${semester.label}`;
   pageTitle.textContent = semester.label;
+  document.title = `${semester.label} - ${APP_NAME}`;
 
   contentView.innerHTML = `
     <section class="semester-overview">
       <div class="section-head">
         <div>
           <p class="section-label">${escapeHtml(semester.schoolTerm)}</p>
-          <h2>${escapeHtml(semester.label)} 폴더</h2>
         </div>
         <span class="status-pill ${semester.status === "current" ? "is-current" : ""}">
           ${semester.status === "current" ? "수강중" : "완료"}
@@ -290,7 +581,7 @@ function renderCourseRow(course) {
   return `
     <button class="course-row" type="button" data-course-id="${course.id}">
       <span>
-        <strong>${escapeHtml(course.title)}</strong>
+        <strong>${escapeHtml(getCourseDisplayTitle(course))}</strong>
         <small>${escapeHtml(course.code || "코드 없음")}</small>
       </span>
       <span>${escapeHtml(course.category || "-")}</span>
@@ -308,15 +599,17 @@ async function renderCourse(course) {
   syncQuery({ course: course.id });
   renderTree();
 
-  currentPath.textContent = `Univ Archive / ${course.yearGroup} / ${course.semesterLabel} / ${course.title}`;
-  pageTitle.textContent = course.title;
+  const courseDisplayTitle = getCourseDisplayTitle(course);
+
+  currentPath.textContent = `${APP_NAME} / ${course.yearGroup} / ${course.semesterLabel} / ${courseDisplayTitle}`;
+  pageTitle.textContent = courseDisplayTitle;
+  document.title = `${courseDisplayTitle} - ${APP_NAME}`;
 
   contentView.innerHTML = `
     <article class="course-detail">
       <header class="course-detail-head">
         <div>
           <p class="section-label">${escapeHtml(course.semesterLabel)} · ${escapeHtml(course.schoolTerm)}</p>
-          <h2>${escapeHtml(course.title)}</h2>
         </div>
         ${renderDocumentBadge(course.documentStatus)}
       </header>
@@ -843,6 +1136,15 @@ function selectSemester(id) {
   render();
 }
 
+function selectHome() {
+  selectedSemesterId = null;
+  selectedCourseId = null;
+  initialDocumentSearch = null;
+  searchInput.value = "";
+  renderSearchResults("");
+  render();
+}
+
 function selectCourse(id) {
   selectedCourseId = id;
   selectedSemesterId = findCourse(id)?.semesterId ?? selectedSemesterId;
@@ -879,7 +1181,7 @@ function renderSearchResults(rawQuery) {
     <div class="result-list">
       ${matches.map((course) => `
         <button type="button" data-course-id="${course.id}">
-          <strong>${escapeHtml(course.title)}</strong>
+          <strong>${escapeHtml(getCourseDisplayTitle(course))}</strong>
           <span>${escapeHtml(course.semesterLabel)} · ${escapeHtml(course.category || "-")} · ${escapeHtml(course.code || "-")}</span>
         </button>
       `).join("") || `<p class="no-results">일치하는 과목이 없습니다.</p>`}

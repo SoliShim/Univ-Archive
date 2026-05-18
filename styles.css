@@ -787,6 +787,88 @@ button.course-row:focus-visible {
   line-height: 1.6;
 }
 
+.encrypted-document-lock {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 28px;
+  border: 1px solid rgba(15, 107, 114, 0.2);
+  border-radius: 10px;
+  background: #fbfcfc;
+}
+
+.lock-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 1.45rem;
+}
+
+.encrypted-document-lock h3 {
+  margin: 4px 0 10px;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.encrypted-document-lock p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.encrypted-document-form {
+  display: grid;
+  grid-template-columns: minmax(220px, 360px) auto;
+  gap: 10px;
+  align-items: end;
+  margin-top: 18px;
+}
+
+.encrypted-document-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.encrypted-document-form input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  outline: none;
+}
+
+.encrypted-document-form input:focus {
+  border-color: rgba(15, 107, 114, 0.55);
+  box-shadow: 0 0 0 3px rgba(15, 107, 114, 0.12);
+}
+
+.encrypted-document-form button {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent-dark);
+  color: #ffffff;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.encrypted-error {
+  margin-top: 12px !important;
+  color: #a33b2f !important;
+  font-weight: 800;
+}
+
 .document-search {
   position: sticky;
   top: 12px;
@@ -1094,6 +1176,15 @@ button.course-row:focus-visible {
 
   .document-search-actions button {
     flex: 1 1 0;
+  }
+
+  .encrypted-document-lock {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .encrypted-document-form {
+    grid-template-columns: 1fr;
   }
 
   .document-toolbar code {

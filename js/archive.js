@@ -5,6 +5,7 @@ const SIDEBAR_WIDTH_KEY = "solisArchiveSidebarWidth";
 const DEFAULT_SIDEBAR_WIDTH = 360;
 const MIN_SIDEBAR_WIDTH = 250;
 const MAX_SIDEBAR_WIDTH = 620;
+const ENCRYPTED_ARCHIVE_LABEL = "암호화 문서";
 const COURSE_EMOJIS = {
   "creative-communication": "💬",
   "cau-seminar-1": "🎓",
@@ -76,6 +77,8 @@ let initialDocumentSearch = null;
 let documentPages = [];
 let documentMatches = [];
 let documentMatchIndex = -1;
+let documentBlobUrls = [];
+let archiveSessionPassword = null;
 
 init();
 
@@ -180,6 +183,22 @@ function bindEvents() {
   contentView.addEventListener("input", (event) => {
     if (event.target.matches("#document-search-input")) {
       handleDocumentSearch(event.target.value);
+    }
+  });
+
+  contentView.addEventListener("submit", async (event) => {
+    const form = event.target.closest("form[data-encrypted-archive-form]");
+
+    if (!form) {
+      return;
+    }
+
+    event.preventDefault();
+    const course = findCourse(form.dataset.courseId);
+    const password = form.elements.archivePassword?.value || "";
+
+    if (course) {
+      await unlockEncryptedArchive(course, password);
     }
   });
 
@@ -671,6 +690,16 @@ async function renderDocumentBody(course) {
     return;
   }
 
+  if (course.html.type === "encryptedArchive") {
+    renderEncryptedArchivePrompt(course);
+
+    if (archiveSessionPassword) {
+      await unlockEncryptedArchive(course, archiveSessionPassword, { fromSession: true });
+    }
+
+    return;
+  }
+
   if (course.html.type === "imageManifest") {
     body.innerHTML = `<div class="loading-panel">HTML 변환 문서를 불러오는 중입니다.</div>`;
 
@@ -683,39 +712,7 @@ async function renderDocumentBody(course) {
       }
 
       const manifest = await response.json();
-      body.innerHTML = `
-        <div class="converted-note">
-          PDF 원본 렌더링 위에 검색/선택용 텍스트 레이어를 겹쳐 표시합니다.
-          원본 배치를 유지하면서 브라우저 검색과 문서 내부 검색을 사용할 수 있습니다.
-        </div>
-        <section class="document-search" aria-label="문서 내부 검색">
-          <label for="document-search-input">
-            <span>문서 내부 검색</span>
-            <input id="document-search-input" type="search" placeholder="이 과목 문서에서 검색">
-          </label>
-          <div class="document-search-actions">
-            <button type="button" data-doc-action="prev" disabled>이전</button>
-            <button type="button" data-doc-action="next" disabled>다음</button>
-            <button type="button" data-doc-action="clear" disabled>지우기</button>
-          </div>
-          <p id="document-search-status">검색어를 입력하면 페이지별 결과가 표시됩니다.</p>
-        </section>
-        <div class="html-pages">
-          ${manifest.pages.map((page, index) => renderHtmlPage(course, page, index, manifest.pageCount)).join("")}
-        </div>
-      `;
-      documentPages = manifest.pages.map((page) => ({
-        pageNumber: page.pageNumber,
-        spans: page.spans || [],
-        ...buildPageSearchIndex(page.spans || [], page.text || ""),
-        text: compactText(page.text || ""),
-        element: document.querySelector(`.html-page[data-page-number="${page.pageNumber}"]`),
-        snippets: document.querySelector(`.html-page[data-page-number="${page.pageNumber}"] .html-page-snippets`),
-        highlightLayer: document.querySelector(`.html-page[data-page-number="${page.pageNumber}"] .html-page-highlight-layer`)
-      }));
-      setupTextLayers();
-      updateDocumentSearchUi();
-      applyInitialDocumentSearch();
+      renderManifestDocument(course, manifest);
     } catch (error) {
       body.innerHTML = `
         <div class="error-panel">
@@ -727,8 +724,49 @@ async function renderDocumentBody(course) {
   }
 }
 
-function renderHtmlPage(course, page, index, pageCount) {
-  const src = `${course.html.assetBase}/${page.image}?v=${ASSET_VERSION}`;
+function renderManifestDocument(course, manifest, fileUrls = null) {
+  const body = document.querySelector("#document-body");
+  const isEncrypted = course.html?.type === "encryptedArchive";
+
+  body.innerHTML = `
+    <div class="converted-note">
+      ${isEncrypted
+        ? "암호화된 문서를 브라우저 메모리 안에서만 복호화해 표시합니다. 원본 배치와 검색용 텍스트 레이어는 유지됩니다."
+        : "PDF 원본 렌더링 위에 검색/선택용 텍스트 레이어를 겹쳐 표시합니다. 원본 배치를 유지하면서 브라우저 검색과 문서 내부 검색을 사용할 수 있습니다."
+      }
+    </div>
+    <section class="document-search" aria-label="문서 내부 검색">
+      <label for="document-search-input">
+        <span>문서 내부 검색</span>
+        <input id="document-search-input" type="search" placeholder="이 과목 문서에서 검색">
+      </label>
+      <div class="document-search-actions">
+        <button type="button" data-doc-action="prev" disabled>이전</button>
+        <button type="button" data-doc-action="next" disabled>다음</button>
+        <button type="button" data-doc-action="clear" disabled>지우기</button>
+      </div>
+      <p id="document-search-status">검색어를 입력하면 페이지별 결과가 표시됩니다.</p>
+    </section>
+    <div class="html-pages">
+      ${manifest.pages.map((page, index) => renderHtmlPage(course, page, index, manifest.pageCount, fileUrls)).join("")}
+    </div>
+  `;
+  documentPages = manifest.pages.map((page) => ({
+    pageNumber: page.pageNumber,
+    spans: page.spans || [],
+    ...buildPageSearchIndex(page.spans || [], page.text || ""),
+    text: compactText(page.text || ""),
+    element: document.querySelector(`.html-page[data-page-number="${page.pageNumber}"]`),
+    snippets: document.querySelector(`.html-page[data-page-number="${page.pageNumber}"] .html-page-snippets`),
+    highlightLayer: document.querySelector(`.html-page[data-page-number="${page.pageNumber}"] .html-page-highlight-layer`)
+  }));
+  setupTextLayers();
+  updateDocumentSearchUi();
+  applyInitialDocumentSearch();
+}
+
+function renderHtmlPage(course, page, index, pageCount, fileUrls = null) {
+  const src = fileUrls?.[page.image] || `${course.html.assetBase}/${page.image}?v=${ASSET_VERSION}`;
 
   return `
     <figure class="html-page" data-page-number="${page.pageNumber}">
@@ -753,6 +791,159 @@ function renderHtmlPage(course, page, index, pageCount) {
       <div class="html-page-snippets" hidden></div>
     </figure>
   `;
+}
+
+function renderEncryptedArchivePrompt(course, errorMessage = "") {
+  const body = document.querySelector("#document-body");
+
+  body.innerHTML = `
+    <section class="encrypted-document-lock">
+      <div class="lock-icon" aria-hidden="true">🔒</div>
+      <div>
+        <p class="section-label">${ENCRYPTED_ARCHIVE_LABEL}</p>
+        <h3>비밀번호가 필요한 학습 문서입니다.</h3>
+        <p>
+          페이지 이미지와 OCR 텍스트는 공개 파일로 두지 않고 암호화된 패키지로 보관합니다.
+          비밀번호는 서버로 전송되지 않고 이 브라우저 안에서만 복호화에 사용됩니다.
+        </p>
+        <form class="encrypted-document-form" data-encrypted-archive-form data-course-id="${escapeHtml(course.id)}">
+          <label>
+            <span>문서 비밀번호</span>
+            <input
+              type="password"
+              name="archivePassword"
+              autocomplete="current-password"
+              placeholder="비밀번호 입력"
+              required
+            >
+          </label>
+          <button type="submit">잠금 해제</button>
+        </form>
+        ${errorMessage ? `<p class="encrypted-error">${escapeHtml(errorMessage)}</p>` : ""}
+      </div>
+    </section>
+  `;
+}
+
+async function unlockEncryptedArchive(course, password, options = {}) {
+  const body = document.querySelector("#document-body");
+
+  if (!password) {
+    renderEncryptedArchivePrompt(course, "비밀번호를 입력해 주세요.");
+    return;
+  }
+
+  body.innerHTML = `<div class="loading-panel">암호화 문서를 복호화하는 중입니다.</div>`;
+
+  try {
+    const payload = await loadEncryptedArchive(course, password);
+    archiveSessionPassword = password;
+    renderManifestDocument(course, payload.manifest, payload.fileUrls);
+  } catch (error) {
+    if (options.fromSession) {
+      archiveSessionPassword = null;
+    }
+
+    renderEncryptedArchivePrompt(
+      course,
+      "비밀번호가 맞지 않거나 암호화 문서를 열 수 없습니다."
+    );
+  }
+}
+
+async function loadEncryptedArchive(course, password) {
+  const response = await fetch(`${course.html.archivePath}?v=${ASSET_VERSION}`, { cache: "no-store" });
+
+  if (!response.ok) {
+    throw new Error(`암호화 문서를 불러오지 못했습니다. (${response.status})`);
+  }
+
+  const envelope = await response.json();
+  const payload = await decryptArchiveEnvelope(envelope, password);
+  const fileUrls = createArchiveFileUrls(payload.files || {});
+
+  return {
+    manifest: payload.manifest,
+    fileUrls
+  };
+}
+
+async function decryptArchiveEnvelope(envelope, password) {
+  if (!globalThis.crypto?.subtle) {
+    throw new Error("이 브라우저는 Web Crypto를 지원하지 않습니다.");
+  }
+
+  const salt = base64ToBytes(envelope.salt);
+  const iv = base64ToBytes(envelope.iv);
+  const ciphertext = base64ToBytes(envelope.ciphertext);
+  const tag = base64ToBytes(envelope.tag);
+  const encryptedBytes = concatBytes(ciphertext, tag);
+  const passwordBytes = new TextEncoder().encode(password);
+  const keyMaterial = await globalThis.crypto.subtle.importKey(
+    "raw",
+    passwordBytes,
+    "PBKDF2",
+    false,
+    ["deriveKey"]
+  );
+  const key = await globalThis.crypto.subtle.deriveKey(
+    {
+      name: "PBKDF2",
+      salt,
+      iterations: envelope.iterations,
+      hash: "SHA-256"
+    },
+    keyMaterial,
+    { name: "AES-GCM", length: 256 },
+    false,
+    ["decrypt"]
+  );
+  const plaintext = await globalThis.crypto.subtle.decrypt(
+    {
+      name: "AES-GCM",
+      iv
+    },
+    key,
+    encryptedBytes
+  );
+
+  return JSON.parse(new TextDecoder().decode(plaintext));
+}
+
+function createArchiveFileUrls(files) {
+  revokeDocumentBlobUrls();
+
+  return Object.fromEntries(
+    Object.entries(files).map(([filename, file]) => {
+      const blob = new Blob([base64ToBytes(file.data)], { type: file.mime || "application/octet-stream" });
+      const url = URL.createObjectURL(blob);
+      documentBlobUrls.push(url);
+      return [filename, url];
+    })
+  );
+}
+
+function revokeDocumentBlobUrls() {
+  documentBlobUrls.forEach((url) => URL.revokeObjectURL(url));
+  documentBlobUrls = [];
+}
+
+function base64ToBytes(value) {
+  const binary = atob(value);
+  const bytes = new Uint8Array(binary.length);
+
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
+  }
+
+  return bytes;
+}
+
+function concatBytes(first, second) {
+  const result = new Uint8Array(first.length + second.length);
+  result.set(first, 0);
+  result.set(second, first.length);
+  return result;
 }
 
 function renderTextSpan(span) {
@@ -1115,6 +1306,7 @@ function updateDocumentSearchUi() {
 
 function resetDocumentState() {
   disconnectTextLayerObservers();
+  revokeDocumentBlobUrls();
   documentPages = [];
   documentMatches = [];
   documentMatchIndex = -1;

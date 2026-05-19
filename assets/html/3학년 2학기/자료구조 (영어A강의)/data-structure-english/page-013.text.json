@@ -1,0 +1,1985 @@
+{
+  "pageNumber": 13,
+  "sourcePdf": "assets/pdfs/3학년 2학기/자료구조 중간 총정리.pdf",
+  "sourcePageNumber": 13,
+  "width": 595.0,
+  "height": 842.0,
+  "text": "Circular Queue A list where insertion is done at one end (tail), whereas deletion is made at the other end (head), and the elements of the Queue are arranged in a circle rather than a straight line. FIFO (First-In First-Out) architecture Queue *createQueue(int capacity){ Queue *queue = (Queue*)malloc(sizeof(Queue)); if return NULL; queue->front = 0, queue->size = 0; //5126 라는 AS 새로만들! empty2} full 구분위함 queue->rear = capacity - 1; queue->capacity = capacity; queue->array = (int*)malloc(capacity * sizeof(int)); if Dequeue() Enqueve(4) return NULL; GIs IJ ; : — ; ; Front Enqueue(7) Enqueue(5) Enqueue(5) CE E] I t t t t return queue; Dequeve() Dequeve() Error: Queue is full E] I I CE] t t } Dequeue() Enqueve(2) f front. } rear int isFull(Queue *queue){ oO Cr [ me) return -> == -> : Enqueue(9) Enqueue(1) (queue->size queue->capacity); } soe t t t ft int isEmpty(Queue *queue){ return (queue->size == 0); } void enqueue(Queue *queue, int new_element){ if (tisFull(queue)) { queue->rear = (queue->rear + 1) % queue->capacity; queue->array[queue->rear] = new_element; // 늘리고넣기 queue->size += 1; } else printf(\"Queue is Full!4n\"); return; } int dequeue(Queue *queue){ if (lisEmpty(queue)) { int element = queue->array[queue->front]; / 고늘리기! queue->front = (queue->front + 1) % queue->capacity; queue->size -= 1; return element; } else printf(\"Queue is return -1; - 13 -",
+  "spans": [
+    {
+      "text": "Circular",
+      "x": 28.571,
+      "y": 29.714,
+      "width": 33.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.125
+    },
+    {
+      "text": "Queue",
+      "x": 67.714,
+      "y": 29.714,
+      "width": 29.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.775
+    },
+    {
+      "text": "A",
+      "x": 43.429,
+      "y": 46.0,
+      "width": 6.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.738
+    },
+    {
+      "text": "list",
+      "x": 56.286,
+      "y": 45.714,
+      "width": 11.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.395
+    },
+    {
+      "text": "where",
+      "x": 74.0,
+      "y": 45.714,
+      "width": 26.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.835
+    },
+    {
+      "text": "insertion",
+      "x": 107.429,
+      "y": 45.714,
+      "width": 37.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.711
+    },
+    {
+      "text": "is",
+      "x": 152.0,
+      "y": 45.714,
+      "width": 5.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.868
+    },
+    {
+      "text": "done",
+      "x": 164.0,
+      "y": 45.714,
+      "width": 22.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.371
+    },
+    {
+      "text": "at",
+      "x": 192.857,
+      "y": 46.857,
+      "width": 7.714,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 96.371
+    },
+    {
+      "text": "one",
+      "x": 206.857,
+      "y": 47.714,
+      "width": 16.286,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 95.418
+    },
+    {
+      "text": "end",
+      "x": 229.429,
+      "y": 45.714,
+      "width": 16.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 95.123
+    },
+    {
+      "text": "(tail),",
+      "x": 252.0,
+      "y": 45.714,
+      "width": 20.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.123
+    },
+    {
+      "text": "whereas",
+      "x": 279.143,
+      "y": 45.714,
+      "width": 36.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.735
+    },
+    {
+      "text": "deletion",
+      "x": 322.0,
+      "y": 45.714,
+      "width": 35.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.423
+    },
+    {
+      "text": "is",
+      "x": 364.571,
+      "y": 45.714,
+      "width": 5.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.248
+    },
+    {
+      "text": "made",
+      "x": 376.857,
+      "y": 45.714,
+      "width": 24.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.549
+    },
+    {
+      "text": "at",
+      "x": 407.429,
+      "y": 46.857,
+      "width": 8.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 96.549
+    },
+    {
+      "text": "the",
+      "x": 421.429,
+      "y": 45.714,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.793
+    },
+    {
+      "text": "other",
+      "x": 441.714,
+      "y": 45.714,
+      "width": 23.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 95.967
+    },
+    {
+      "text": "end",
+      "x": 471.143,
+      "y": 45.714,
+      "width": 16.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.146
+    },
+    {
+      "text": "(head),",
+      "x": 494.0,
+      "y": 45.714,
+      "width": 29.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.236
+    },
+    {
+      "text": "and",
+      "x": 530.286,
+      "y": 45.714,
+      "width": 15.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.138
+    },
+    {
+      "text": "the",
+      "x": 552.571,
+      "y": 45.714,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.49
+    },
+    {
+      "text": "elements",
+      "x": 43.714,
+      "y": 61.714,
+      "width": 40.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.999
+    },
+    {
+      "text": "of",
+      "x": 89.714,
+      "y": 61.714,
+      "width": 8.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.999
+    },
+    {
+      "text": "the",
+      "x": 103.714,
+      "y": 61.714,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.52
+    },
+    {
+      "text": "Queue",
+      "x": 123.429,
+      "y": 62.0,
+      "width": 29.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.358
+    },
+    {
+      "text": "are",
+      "x": 158.571,
+      "y": 63.714,
+      "width": 13.143,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.76
+    },
+    {
+      "text": "arranged",
+      "x": 177.429,
+      "y": 61.714,
+      "width": 39.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.317
+    },
+    {
+      "text": "in",
+      "x": 223.429,
+      "y": 61.714,
+      "width": 7.143,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 94.806
+    },
+    {
+      "text": "a",
+      "x": 236.286,
+      "y": 63.714,
+      "width": 4.286,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 94.303
+    },
+    {
+      "text": "circle",
+      "x": 246.571,
+      "y": 61.714,
+      "width": 22.857,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.649
+    },
+    {
+      "text": "rather",
+      "x": 275.429,
+      "y": 61.714,
+      "width": 25.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.344
+    },
+    {
+      "text": "than",
+      "x": 306.571,
+      "y": 61.714,
+      "width": 19.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.66
+    },
+    {
+      "text": "a",
+      "x": 329.429,
+      "y": 60.571,
+      "width": 4.286,
+      "height": 12.0,
+      "fontSize": 12.0,
+      "confidence": 96.538
+    },
+    {
+      "text": "straight",
+      "x": 342.286,
+      "y": 61.714,
+      "width": 33.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.236
+    },
+    {
+      "text": "line.",
+      "x": 382.0,
+      "y": 61.714,
+      "width": 16.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.202
+    },
+    {
+      "text": "FIFO",
+      "x": 44.0,
+      "y": 77.714,
+      "width": 19.429,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 93.221
+    },
+    {
+      "text": "(First-In",
+      "x": 69.143,
+      "y": 77.714,
+      "width": 33.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.375
+    },
+    {
+      "text": "First-Out)",
+      "x": 109.143,
+      "y": 77.714,
+      "width": 41.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.375
+    },
+    {
+      "text": "architecture",
+      "x": 156.571,
+      "y": 77.714,
+      "width": 52.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.719
+    },
+    {
+      "text": "Queue",
+      "x": 43.714,
+      "y": 110.0,
+      "width": 29.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.985
+    },
+    {
+      "text": "*createQueue(int",
+      "x": 78.857,
+      "y": 109.714,
+      "width": 76.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.238
+    },
+    {
+      "text": "capacity){",
+      "x": 160.571,
+      "y": 109.714,
+      "width": 42.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 89.898
+    },
+    {
+      "text": "Queue",
+      "x": 64.0,
+      "y": 126.0,
+      "width": 29.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.247
+    },
+    {
+      "text": "*queue",
+      "x": 98.857,
+      "y": 125.714,
+      "width": 31.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.367
+    },
+    {
+      "text": "=",
+      "x": 137.143,
+      "y": 128.0,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.296
+    },
+    {
+      "text": "(Queue*)malloc(sizeof(Queue));",
+      "x": 148.571,
+      "y": 125.714,
+      "width": 139.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.936
+    },
+    {
+      "text": "if",
+      "x": 64.286,
+      "y": 157.714,
+      "width": 4.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.804
+    },
+    {
+      "text": "return",
+      "x": 84.0,
+      "y": 174.857,
+      "width": 26.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 95.42
+    },
+    {
+      "text": "NULL;",
+      "x": 116.857,
+      "y": 174.0,
+      "width": 24.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 95.42
+    },
+    {
+      "text": "queue->front",
+      "x": 63.714,
+      "y": 205.714,
+      "width": 60.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.727
+    },
+    {
+      "text": "=",
+      "x": 130.571,
+      "y": 207.714,
+      "width": 5.143,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 95.28
+    },
+    {
+      "text": "0,",
+      "x": 142.0,
+      "y": 205.714,
+      "width": 6.857,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.301
+    },
+    {
+      "text": "queue->size",
+      "x": 154.857,
+      "y": 205.714,
+      "width": 55.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.015
+    },
+    {
+      "text": "=",
+      "x": 216.571,
+      "y": 207.714,
+      "width": 5.143,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 96.839
+    },
+    {
+      "text": "0;",
+      "x": 228.0,
+      "y": 205.714,
+      "width": 6.571,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.195
+    },
+    {
+      "text": "//5126",
+      "x": 308.286,
+      "y": 205.714,
+      "width": 24.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 57.787
+    },
+    {
+      "text": "라",
+      "x": 334.571,
+      "y": 204.286,
+      "width": 8.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.611
+    },
+    {
+      "text": "는",
+      "x": 345.714,
+      "y": 204.571,
+      "width": 6.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.898
+    },
+    {
+      "text": "AS",
+      "x": 358.857,
+      "y": 204.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 89.682
+    },
+    {
+      "text": "새로",
+      "x": 383.714,
+      "y": 204.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.378
+    },
+    {
+      "text": "만들!",
+      "x": 409.143,
+      "y": 204.286,
+      "width": 20.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 89.552
+    },
+    {
+      "text": "empty2}",
+      "x": 436.286,
+      "y": 204.286,
+      "width": 37.714,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 60.561
+    },
+    {
+      "text": "full",
+      "x": 479.714,
+      "y": 205.714,
+      "width": 12.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.076
+    },
+    {
+      "text": "구분",
+      "x": 498.857,
+      "y": 204.571,
+      "width": 18.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.635
+    },
+    {
+      "text": "위함",
+      "x": 524.0,
+      "y": 204.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.314
+    },
+    {
+      "text": "queue->rear",
+      "x": 64.0,
+      "y": 223.143,
+      "width": 56.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 90.975
+    },
+    {
+      "text": "=",
+      "x": 126.571,
+      "y": 224.0,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 96.102
+    },
+    {
+      "text": "capacity",
+      "x": 138.0,
+      "y": 221.714,
+      "width": 36.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.821
+    },
+    {
+      "text": "-",
+      "x": 179.714,
+      "y": 226.0,
+      "width": 2.857,
+      "height": 0.857,
+      "fontSize": 1,
+      "confidence": 93.223
+    },
+    {
+      "text": "1;",
+      "x": 188.857,
+      "y": 222.0,
+      "width": 6.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 93.028
+    },
+    {
+      "text": "queue->capacity",
+      "x": 64.0,
+      "y": 237.714,
+      "width": 75.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.825
+    },
+    {
+      "text": "=",
+      "x": 145.429,
+      "y": 240.0,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 95.839
+    },
+    {
+      "text": "capacity;",
+      "x": 156.857,
+      "y": 237.714,
+      "width": 37.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.668
+    },
+    {
+      "text": "queue->array",
+      "x": 64.0,
+      "y": 255.143,
+      "width": 61.143,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 90.851
+    },
+    {
+      "text": "=",
+      "x": 131.143,
+      "y": 256.0,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.252
+    },
+    {
+      "text": "(int*)malloc(capacity",
+      "x": 142.857,
+      "y": 253.714,
+      "width": 90.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.064
+    },
+    {
+      "text": "*",
+      "x": 238.857,
+      "y": 253.714,
+      "width": 3.714,
+      "height": 3.429,
+      "fontSize": 3.429,
+      "confidence": 93.147
+    },
+    {
+      "text": "sizeof(int));",
+      "x": 248.286,
+      "y": 253.714,
+      "width": 47.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.025
+    },
+    {
+      "text": "if",
+      "x": 64.286,
+      "y": 285.714,
+      "width": 4.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.132
+    },
+    {
+      "text": "Dequeue()",
+      "x": 386.286,
+      "y": 283.714,
+      "width": 19.429,
+      "height": 11.714,
+      "fontSize": 11.714,
+      "confidence": 56.984
+    },
+    {
+      "text": "Enqueve(4)",
+      "x": 458.571,
+      "y": 289.143,
+      "width": 21.429,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 81.064
+    },
+    {
+      "text": "return",
+      "x": 84.0,
+      "y": 302.857,
+      "width": 26.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 95.42
+    },
+    {
+      "text": "NULL;",
+      "x": 116.857,
+      "y": 302.0,
+      "width": 24.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 95.42
+    },
+    {
+      "text": "GIs",
+      "x": 282.857,
+      "y": 293.429,
+      "width": 15.143,
+      "height": 18.857,
+      "fontSize": 18.857,
+      "confidence": 71.515
+    },
+    {
+      "text": "IJ",
+      "x": 304.0,
+      "y": 294.571,
+      "width": 14.857,
+      "height": 16.0,
+      "fontSize": 16.0,
+      "confidence": 31.832
+    },
+    {
+      "text": ";",
+      "x": 384.286,
+      "y": 297.429,
+      "width": 3.143,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 39.889
+    },
+    {
+      "text": ":",
+      "x": 392.857,
+      "y": 297.429,
+      "width": 2.571,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 38.673
+    },
+    {
+      "text": "—",
+      "x": 430.857,
+      "y": 297.429,
+      "width": 19.143,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 32.028
+    },
+    {
+      "text": ";",
+      "x": 456.571,
+      "y": 297.429,
+      "width": 2.571,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 80.007
+    },
+    {
+      "text": ";",
+      "x": 465.143,
+      "y": 297.429,
+      "width": 2.571,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 56.53
+    },
+    {
+      "text": "Front",
+      "x": 556.0,
+      "y": 307.429,
+      "width": 9.143,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 89.263
+    },
+    {
+      "text": "Enqueue(7)",
+      "x": 314.857,
+      "y": 312.857,
+      "width": 21.429,
+      "height": 4.0,
+      "fontSize": 4.0,
+      "confidence": 71.694
+    },
+    {
+      "text": "Enqueue(5)",
+      "x": 386.286,
+      "y": 310.286,
+      "width": 21.143,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 75.757
+    },
+    {
+      "text": "Enqueue(5)",
+      "x": 458.571,
+      "y": 312.857,
+      "width": 21.429,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 76.159
+    },
+    {
+      "text": "CE",
+      "x": 282.857,
+      "y": 317.143,
+      "width": 15.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 72.072
+    },
+    {
+      "text": "E]",
+      "x": 354.571,
+      "y": 316.0,
+      "width": 10.571,
+      "height": 11.714,
+      "fontSize": 11.714,
+      "confidence": 81.751
+    },
+    {
+      "text": "I",
+      "x": 371.714,
+      "y": 317.143,
+      "width": 1.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 72.111
+    },
+    {
+      "text": "t",
+      "x": 358.286,
+      "y": 326.857,
+      "width": 2.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 89.859
+    },
+    {
+      "text": "t",
+      "x": 384.857,
+      "y": 326.857,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 92.057
+    },
+    {
+      "text": "t",
+      "x": 456.571,
+      "y": 327.143,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 77.949
+    },
+    {
+      "text": "t",
+      "x": 465.143,
+      "y": 327.143,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 84.489
+    },
+    {
+      "text": "return",
+      "x": 64.286,
+      "y": 334.857,
+      "width": 25.714,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 91.982
+    },
+    {
+      "text": "queue;",
+      "x": 96.286,
+      "y": 335.714,
+      "width": 29.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 91.982
+    },
+    {
+      "text": "Dequeve()",
+      "x": 314.857,
+      "y": 332.286,
+      "width": 19.429,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 91.414
+    },
+    {
+      "text": "Dequeve()",
+      "x": 388.286,
+      "y": 331.714,
+      "width": 19.143,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 75.367
+    },
+    {
+      "text": "Error:",
+      "x": 438.571,
+      "y": 338.571,
+      "width": 8.857,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 91.89
+    },
+    {
+      "text": "Queue",
+      "x": 449.714,
+      "y": 338.286,
+      "width": 24.0,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 46.69
+    },
+    {
+      "text": "is",
+      "x": 462.286,
+      "y": 334.286,
+      "width": 3.429,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 63.276
+    },
+    {
+      "text": "full",
+      "x": 467.429,
+      "y": 338.286,
+      "width": 6.286,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 63.276
+    },
+    {
+      "text": "E]",
+      "x": 354.571,
+      "y": 340.286,
+      "width": 10.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 83.205
+    },
+    {
+      "text": "I",
+      "x": 372.0,
+      "y": 340.286,
+      "width": 1.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 63.784
+    },
+    {
+      "text": "I",
+      "x": 380.571,
+      "y": 340.286,
+      "width": 1.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 84.422
+    },
+    {
+      "text": "CE]",
+      "x": 389.143,
+      "y": 340.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 41.209
+    },
+    {
+      "text": "t",
+      "x": 358.0,
+      "y": 350.571,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 92.208
+    },
+    {
+      "text": "t",
+      "x": 392.571,
+      "y": 350.571,
+      "width": 2.857,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 91.35
+    },
+    {
+      "text": "}",
+      "x": 43.429,
+      "y": 349.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 84.632
+    },
+    {
+      "text": "Dequeue()",
+      "x": 314.857,
+      "y": 355.143,
+      "width": 19.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 76.498
+    },
+    {
+      "text": "Enqueve(2)",
+      "x": 386.286,
+      "y": 354.857,
+      "width": 21.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.246
+    },
+    {
+      "text": "f",
+      "x": 434.857,
+      "y": 352.286,
+      "width": 2.0,
+      "height": 11.429,
+      "fontSize": 11.429,
+      "confidence": 40.767
+    },
+    {
+      "text": "front.",
+      "x": 436.0,
+      "y": 353.714,
+      "width": 14.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 42.928
+    },
+    {
+      "text": "}",
+      "x": 455.714,
+      "y": 353.429,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 80.31
+    },
+    {
+      "text": "rear",
+      "x": 461.143,
+      "y": 353.429,
+      "width": 8.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 96.234
+    },
+    {
+      "text": "int",
+      "x": 44.0,
+      "y": 365.714,
+      "width": 10.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.734
+    },
+    {
+      "text": "isFull(Queue",
+      "x": 60.857,
+      "y": 365.714,
+      "width": 54.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 41.165
+    },
+    {
+      "text": "*queue){",
+      "x": 121.143,
+      "y": 365.714,
+      "width": 38.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.533
+    },
+    {
+      "text": "oO",
+      "x": 282.857,
+      "y": 363.143,
+      "width": 10.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 57.152
+    },
+    {
+      "text": "Cr",
+      "x": 354.571,
+      "y": 363.143,
+      "width": 18.571,
+      "height": 16.571,
+      "fontSize": 16.571,
+      "confidence": 25.949
+    },
+    {
+      "text": "[",
+      "x": 380.571,
+      "y": 363.143,
+      "width": 1.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 82.96
+    },
+    {
+      "text": "me)",
+      "x": 389.143,
+      "y": 361.714,
+      "width": 19.714,
+      "height": 19.143,
+      "fontSize": 19.143,
+      "confidence": 39.143
+    },
+    {
+      "text": "return",
+      "x": 64.286,
+      "y": 382.857,
+      "width": 25.714,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 95.923
+    },
+    {
+      "text": "->",
+      "x": 127.714,
+      "y": 382.857,
+      "width": 9.714,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 80.493
+    },
+    {
+      "text": "==",
+      "x": 161.143,
+      "y": 383.714,
+      "width": 12.0,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 95.854
+    },
+    {
+      "text": "->",
+      "x": 208.0,
+      "y": 382.857,
+      "width": 9.714,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 69.779
+    },
+    {
+      "text": ":",
+      "x": 258.857,
+      "y": 384.0,
+      "width": 0.857,
+      "height": 0.857,
+      "fontSize": 1,
+      "confidence": 36.422
+    },
+    {
+      "text": "Enqueue(9)",
+      "x": 314.571,
+      "y": 383.714,
+      "width": 21.429,
+      "height": 4.286,
+      "fontSize": 4.286,
+      "confidence": 90.073
+    },
+    {
+      "text": "Enqueue(1)",
+      "x": 386.286,
+      "y": 383.429,
+      "width": 21.143,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 90.616
+    },
+    {
+      "text": "(queue->size",
+      "x": 96.286,
+      "y": 381.714,
+      "width": 58.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.213
+    },
+    {
+      "text": "queue->capacity);",
+      "x": 179.429,
+      "y": 381.714,
+      "width": 80.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 83.609
+    },
+    {
+      "text": "}",
+      "x": 270.571,
+      "y": 381.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 83.609
+    },
+    {
+      "text": "soe",
+      "x": 358.286,
+      "y": 390.571,
+      "width": 46.0,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 32.822
+    },
+    {
+      "text": "t",
+      "x": 303.714,
+      "y": 398.857,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 91.795
+    },
+    {
+      "text": "t",
+      "x": 329.714,
+      "y": 398.857,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 92.394
+    },
+    {
+      "text": "t",
+      "x": 375.429,
+      "y": 397.714,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 73.006
+    },
+    {
+      "text": "ft",
+      "x": 392.857,
+      "y": 397.714,
+      "width": 2.286,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 38.528
+    },
+    {
+      "text": "int",
+      "x": 44.0,
+      "y": 413.714,
+      "width": 10.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.882
+    },
+    {
+      "text": "isEmpty(Queue",
+      "x": 60.857,
+      "y": 413.714,
+      "width": 66.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.84
+    },
+    {
+      "text": "*queue){",
+      "x": 133.429,
+      "y": 413.714,
+      "width": 38.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 86.693
+    },
+    {
+      "text": "return",
+      "x": 64.286,
+      "y": 430.857,
+      "width": 25.714,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 90.735
+    },
+    {
+      "text": "(queue->size",
+      "x": 96.286,
+      "y": 429.714,
+      "width": 58.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.735
+    },
+    {
+      "text": "==",
+      "x": 161.143,
+      "y": 431.714,
+      "width": 12.0,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 96.504
+    },
+    {
+      "text": "0);",
+      "x": 184.857,
+      "y": 429.714,
+      "width": 4.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 88.597
+    },
+    {
+      "text": "}",
+      "x": 200.0,
+      "y": 429.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.012
+    },
+    {
+      "text": "void",
+      "x": 43.429,
+      "y": 461.714,
+      "width": 18.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.933
+    },
+    {
+      "text": "enqueue(Queue",
+      "x": 68.0,
+      "y": 461.714,
+      "width": 72.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.058
+    },
+    {
+      "text": "*queue,",
+      "x": 145.714,
+      "y": 461.714,
+      "width": 33.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.897
+    },
+    {
+      "text": "int",
+      "x": 186.0,
+      "y": 461.714,
+      "width": 10.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.186
+    },
+    {
+      "text": "new_element){",
+      "x": 202.571,
+      "y": 461.714,
+      "width": 64.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.565
+    },
+    {
+      "text": "if",
+      "x": 64.286,
+      "y": 477.714,
+      "width": 4.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.7
+    },
+    {
+      "text": "(tisFull(queue))",
+      "x": 74.571,
+      "y": 477.714,
+      "width": 64.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 68.192
+    },
+    {
+      "text": "{",
+      "x": 145.143,
+      "y": 477.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.566
+    },
+    {
+      "text": "queue->rear",
+      "x": 83.714,
+      "y": 495.143,
+      "width": 56.571,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 92.762
+    },
+    {
+      "text": "=",
+      "x": 146.571,
+      "y": 496.0,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.297
+    },
+    {
+      "text": "(queue->rear",
+      "x": 157.714,
+      "y": 493.714,
+      "width": 59.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.863
+    },
+    {
+      "text": "+",
+      "x": 223.429,
+      "y": 494.857,
+      "width": 5.143,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.945
+    },
+    {
+      "text": "1)",
+      "x": 235.143,
+      "y": 493.714,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.222
+    },
+    {
+      "text": "%",
+      "x": 248.286,
+      "y": 493.714,
+      "width": 7.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 88.427
+    },
+    {
+      "text": "queue->capacity;",
+      "x": 261.714,
+      "y": 493.714,
+      "width": 77.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.132
+    },
+    {
+      "text": "queue->array[queue->rear]",
+      "x": 83.714,
+      "y": 509.714,
+      "width": 124.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.401
+    },
+    {
+      "text": "=",
+      "x": 214.286,
+      "y": 511.714,
+      "width": 5.143,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 93.209
+    },
+    {
+      "text": "new_element;",
+      "x": 226.0,
+      "y": 509.714,
+      "width": 60.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 90.321
+    },
+    {
+      "text": "//",
+      "x": 348.571,
+      "y": 509.714,
+      "width": 7.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.752
+    },
+    {
+      "text": "늘리고",
+      "x": 361.714,
+      "y": 508.286,
+      "width": 28.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 97.0
+    },
+    {
+      "text": "넣기",
+      "x": 398.0,
+      "y": 508.286,
+      "width": 16.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.696
+    },
+    {
+      "text": "queue->size",
+      "x": 83.714,
+      "y": 525.714,
+      "width": 55.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.344
+    },
+    {
+      "text": "+=",
+      "x": 145.429,
+      "y": 526.857,
+      "width": 12.286,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 93.027
+    },
+    {
+      "text": "1;",
+      "x": 164.286,
+      "y": 525.714,
+      "width": 6.286,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.412
+    },
+    {
+      "text": "}",
+      "x": 63.429,
+      "y": 541.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.773
+    },
+    {
+      "text": "else",
+      "x": 64.0,
+      "y": 557.714,
+      "width": 16.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.406
+    },
+    {
+      "text": "printf(\"Queue",
+      "x": 84.0,
+      "y": 573.714,
+      "width": 60.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 61.828
+    },
+    {
+      "text": "is",
+      "x": 150.571,
+      "y": 573.714,
+      "width": 5.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 88.102
+    },
+    {
+      "text": "Full!4n\");",
+      "x": 162.571,
+      "y": 573.714,
+      "width": 39.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 49.993
+    },
+    {
+      "text": "return;",
+      "x": 64.286,
+      "y": 590.857,
+      "width": 28.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.985
+    },
+    {
+      "text": "}",
+      "x": 43.429,
+      "y": 605.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.748
+    },
+    {
+      "text": "int",
+      "x": 44.0,
+      "y": 621.714,
+      "width": 10.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.178
+    },
+    {
+      "text": "dequeue(Queue",
+      "x": 60.286,
+      "y": 621.714,
+      "width": 72.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.031
+    },
+    {
+      "text": "*queue){",
+      "x": 138.286,
+      "y": 621.714,
+      "width": 38.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 70.939
+    },
+    {
+      "text": "if",
+      "x": 64.286,
+      "y": 637.714,
+      "width": 4.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.054
+    },
+    {
+      "text": "(lisEmpty(queue))",
+      "x": 74.571,
+      "y": 637.714,
+      "width": 77.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 56.785
+    },
+    {
+      "text": "{",
+      "x": 157.429,
+      "y": 637.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.025
+    },
+    {
+      "text": "int",
+      "x": 84.0,
+      "y": 653.714,
+      "width": 10.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.531
+    },
+    {
+      "text": "element",
+      "x": 100.571,
+      "y": 653.714,
+      "width": 36.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.474
+    },
+    {
+      "text": "=",
+      "x": 142.571,
+      "y": 655.714,
+      "width": 5.143,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 93.275
+    },
+    {
+      "text": "queue->array[queue->front];",
+      "x": 154.0,
+      "y": 653.714,
+      "width": 130.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 80.816
+    },
+    {
+      "text": "/",
+      "x": 348.571,
+      "y": 653.714,
+      "width": 7.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.581
+    },
+    {
+      "text": "고",
+      "x": 368.0,
+      "y": 651.143,
+      "width": 7.714,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 96.836
+    },
+    {
+      "text": "늘리기!",
+      "x": 382.0,
+      "y": 652.286,
+      "width": 31.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.224
+    },
+    {
+      "text": "queue->front",
+      "x": 83.714,
+      "y": 669.714,
+      "width": 60.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.37
+    },
+    {
+      "text": "=",
+      "x": 150.857,
+      "y": 672.0,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.141
+    },
+    {
+      "text": "(queue->front",
+      "x": 162.0,
+      "y": 669.714,
+      "width": 64.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.198
+    },
+    {
+      "text": "+",
+      "x": 232.0,
+      "y": 670.857,
+      "width": 5.143,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.768
+    },
+    {
+      "text": "1)",
+      "x": 243.714,
+      "y": 669.714,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.23
+    },
+    {
+      "text": "%",
+      "x": 257.143,
+      "y": 669.714,
+      "width": 7.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 88.724
+    },
+    {
+      "text": "queue->capacity;",
+      "x": 270.571,
+      "y": 669.714,
+      "width": 77.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.341
+    },
+    {
+      "text": "queue->size",
+      "x": 83.714,
+      "y": 685.714,
+      "width": 55.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.339
+    },
+    {
+      "text": "-=",
+      "x": 145.143,
+      "y": 687.714,
+      "width": 9.714,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 93.106
+    },
+    {
+      "text": "1;",
+      "x": 161.429,
+      "y": 685.714,
+      "width": 6.286,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 95.24
+    },
+    {
+      "text": "return",
+      "x": 84.0,
+      "y": 702.857,
+      "width": 26.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 92.886
+    },
+    {
+      "text": "element;",
+      "x": 116.286,
+      "y": 701.714,
+      "width": 37.714,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 92.886
+    },
+    {
+      "text": "}",
+      "x": 63.429,
+      "y": 717.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.327
+    },
+    {
+      "text": "else",
+      "x": 64.0,
+      "y": 733.714,
+      "width": 16.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.406
+    },
+    {
+      "text": "printf(\"Queue",
+      "x": 84.0,
+      "y": 749.714,
+      "width": 60.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 70.867
+    },
+    {
+      "text": "is",
+      "x": 150.571,
+      "y": 749.714,
+      "width": 5.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.042
+    },
+    {
+      "text": "return",
+      "x": 64.286,
+      "y": 766.857,
+      "width": 25.714,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 92.624
+    },
+    {
+      "text": "-1;",
+      "x": 96.286,
+      "y": 766.0,
+      "width": 10.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 90.434
+    },
+    {
+      "text": "-",
+      "x": 282.857,
+      "y": 821.429,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 89.873
+    },
+    {
+      "text": "13",
+      "x": 293.429,
+      "y": 818.0,
+      "width": 9.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 90.77
+    },
+    {
+      "text": "-",
+      "x": 308.571,
+      "y": 821.429,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 90.77
+    }
+  ],
+  "ocrEngine": "tesseract",
+  "ocrLanguage": "kor+eng",
+  "displayRenderScale": 2.2,
+  "ocrRenderScale": 3.5
+}

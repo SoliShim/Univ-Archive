@@ -345,6 +345,7 @@
         <a href="#data">데이터 구조</a>
         <a href="#workflow">작업 흐름</a>
         <a href="#ocr">PDF OCR 변환</a>
+        <a href="#pages">GitHub Pages 관리</a>
         <a href="#files">핵심 파일 역할</a>
         <a href="#status">현재 상태</a>
       </nav>
@@ -544,6 +545,77 @@ python3 -m pip install -r requirements.txt</code></pre>
         <pre><code>python3 tools/render_html_pages.py --course data-structure-summary --lang kor+eng</code></pre>
       </section>
 
+      <section id="pages">
+        <h2>GitHub Pages 관리</h2>
+        <p>
+          이 저장소는 <code>.github/workflows/pages.yml</code>을 통해 GitHub Actions 방식으로 배포합니다.
+          <code>main</code> 브랜치에 push되거나, GitHub 웹사이트에서 workflow를 수동 실행하면 새 배포가 만들어집니다.
+        </p>
+
+        <h3>현재 publish 방식</h3>
+        <div class="flow">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div>
+              <strong>로컬에서 변경 작업</strong>
+              <p>PDF 추가, OCR 변환, <code>data/courses.json</code> 연결을 완료합니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <div>
+              <strong>main 브랜치에 push</strong>
+              <p>push가 완료되면 <code>Deploy static site to GitHub Pages</code> workflow가 자동 실행됩니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <div>
+              <strong>Actions 완료 확인</strong>
+              <p>GitHub 저장소의 <code>Actions</code> 탭에서 workflow가 초록색 체크로 끝났는지 확인합니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">4</span>
+            <div>
+              <strong>사이트 접속</strong>
+              <p>배포가 끝나면 <code>https://solishim.github.io/Univ-Archive/</code>에서 최신 사이트를 확인합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>GitHub 웹사이트에서 unpublish 하는 방법</h3>
+        <ol>
+          <li>GitHub에서 <code>SoliShim/Univ-Archive</code> 저장소로 들어갑니다.</li>
+          <li><code>Settings</code> 탭을 엽니다.</li>
+          <li>왼쪽 메뉴의 <code>Pages</code>로 이동합니다.</li>
+          <li><code>Your site is live at</code> 문구 오른쪽의 점 세 개 메뉴를 누릅니다.</li>
+          <li><code>Unpublish site</code>를 선택합니다.</li>
+        </ol>
+        <p>
+          unpublish는 현재 배포본만 내리는 동작입니다. 저장소 파일, workflow, 설정 자체를 삭제하지는 않습니다.
+        </p>
+
+        <h3>unpublish 후 다시 publish 하는 방법</h3>
+        <ol>
+          <li>GitHub 저장소의 <code>Actions</code> 탭으로 이동합니다.</li>
+          <li><code>Deploy static site to GitHub Pages</code> workflow를 선택합니다.</li>
+          <li><code>Run workflow</code>를 누르고 브랜치는 <code>main</code>으로 둔 뒤 실행합니다.</li>
+          <li>workflow가 성공하면 새 Pages 배포가 만들어지고 사이트가 다시 열립니다.</li>
+        </ol>
+        <p>
+          같은 효과를 내는 다른 방법은 아무 변경 사항이나 <code>main</code>에 새로 push하는 것입니다.
+          이 저장소는 push를 트리거로 Pages 배포가 다시 실행되기 때문입니다.
+        </p>
+
+        <h3>주의할 점</h3>
+        <ul>
+          <li>GitHub Pages를 unpublish해도 public 저장소의 파일 자체가 비공개가 되지는 않습니다.</li>
+          <li>자료 노출을 막고 싶다면 사이트 publish 상태와 별개로 저장소 공개 범위, 자료 저장 위치를 같이 관리해야 합니다.</li>
+          <li>Settings의 Pages source를 바꾸는 방식보다, 이 프로젝트에서는 Actions workflow를 다시 실행하는 방식이 가장 안전합니다.</li>
+        </ul>
+      </section>
+
       <section id="files">
         <h2>핵심 파일 역할</h2>
         <div class="table">
@@ -578,6 +650,7 @@ python3 -m pip install -r requirements.txt</code></pre>
         <h2>현재 상태</h2>
         <p>
           현재 아카이브에는 총 51개 과목, 137학점, 수강중 7개 과목이 등록되어 있습니다.
+          3학년 2학기 자료까지 OCR HTML 변환되어 검색 가능한 문서로 연결되어 있습니다.
         </p>
         <div class="grid">
           <div class="card">
@@ -609,6 +682,11 @@ python3 -m pip install -r requirements.txt</code></pre>
             <span>변환 완료</span>
             <strong>산업보안법</strong>
             <p><span class="badge green">65페이지 OCR 완료</span></p>
+          </div>
+          <div class="card">
+            <span>변환 완료</span>
+            <strong>3학년 2학기 전체</strong>
+            <p><span class="badge green">149페이지 OCR 완료</span></p>
           </div>
         </div>
       </section>

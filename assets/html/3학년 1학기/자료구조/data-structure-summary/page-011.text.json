@@ -1,5 +1,7 @@
 {
   "pageNumber": 11,
+  "sourcePdf": "assets/pdfs/3학년 1학기/자료구조/자료구조 중간 총정리.pdf",
+  "sourcePageNumber": 11,
   "width": 595.0,
   "height": 841.0,
   "text": "동적메모리할당필요할때필요한만큼메모리를할당받아사용하고, 사용이끝나면반납하는기능 > 효율적으로사용가능! void * malloc(size_t size) unsigned int HHOl|E (byte tHe 메모리를할당하고시작 BOYS 반환 int * i= 0000) malloc (sizeof(int)); voids 포인터를리턴해서타입캐스팅을해줘야함 ! =e 할당실패시 CIE} 반환 int * i= 0000) malloc (sizeof(int)); 3) 대입 @ void* — int» void * calloc(size_t count, size_t size) 5126 크기의 HFS 60401 개수만큼저장할 + 있는메모리공간할당 malloc)tt 달리할당된공간을모두 OLB 초기화한다! -> 따로초기화를 Ct 해줘도됨 . 10 a = (int*)malloc(S5 * sizeof(int)); // 초기화안 = int* b = (int*)calloc(5, sizeof(int)); // 0 으로초기화 free) - 동적메모리해제함수할당되었던메모리 SSS 반드시시스템에반납해야함 . void * realloc(void *ptr, size_t size) ptr7t 가리키는메모리 SAAS size HOES 확장또는축소 int* data = // int 100 개크기의메모리할당 data[99] = 30; // 사용가능 data = (int*)realloc(data, sizeof(int)*200); // int 200 개크기로확장 data[199] = 60; // 이제사용가능 free(data); // 반납방법은동일 Lab 1: 함수의매개변수로포인터사용하기 #include <stdio.h> #include <stdio.h> void swap(int x, int y){ void swap(int *x, int *y){ int tmp; int tmp; tmp =x; tmp = *x; x=y3 *x = t=tmp; *t=tmp; } } int main(void){ int main(void){ int a=1, b=2; int a=1, b=2; printf(\"%l : a=%d, b=%d\\n\", a,b); printf(\"4 : a=%d, b=%d\\n\", a,b); swap(a,b) ; swap(&a,&b) ; printf(\"= : a=%d, b=%d\\n\", a,b); : a=%d, b=%d\\n\", a,b); return 0; return 0; } >>> BS 결과전 3=1, b=2 전 a=1, b=2 후 a=1, b=2 후 a=2, b=1 call by value: 함수가 Ute 전달반은 RS 복사하여처리하는방식. 원본값변경되지않음 call by reference : 함수호출시인수로변수의 HA 값 ( 주소값 ) 을함수내부로전달하는방식. 원본 a 변경됨 - 11 -",

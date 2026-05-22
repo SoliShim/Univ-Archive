@@ -1,0 +1,3317 @@
+{
+  "pageNumber": 52,
+  "sourcePdf": "assets/pdfs/3학년 1학기/알고리즘/알고리즘 중간 총정리.pdf",
+  "sourcePageNumber": 52,
+  "width": 595.0,
+  "height": 842.0,
+  "text": "m >, where A,:10 * 100, Ay: 100 * 5, 45: Parenthesization 1: (A, « Az} - As) >[(10 * 100 » (10 * 5 « 50) = 5000 + 2500 = 7500 Parenthesization 2: (A, - Aa) =|(10 * 100 « 50) + (100 * 5 « 50) = 50000 + 25000 = 75000 The above two parenthesizations yield the exactly same result However, computing the product according to the Parenthesization 1 is 10 times faster Given a chain < > of n matrices, to fully parenthesize the product 4142 … A, in a way that minimizes the computational cost A product of matrices is fully parenthesized if it is either a single matrix or the product of two fully parenthesized matrix products, surrounded by parentheses Q For example, given a chain < 47, 47, 43, 44 >, there are five possible fully parenthesized products (((A1A2)A3)A4) = ((A1A2)(A344)) _ ((A1(A2A3)) Ag) _ (41((4243)44)) We are NOT actually multiplying matrices! Instead, we focus on finding the best parenthesization having the lowest cost 계산 HBS 최소화하기 Fully ParanthesizeS 해야한다! Naivest 접근방식 . 1. 모든가능한괄호화방법을나열한다. 2. 각호의스칼라곱횟수를계산한다. 3. 스칼라곱이수가최소인괄호화경우를고른다. 1 ifn=1, P(n) = P(n): the number of parenthesizations >, P(k)P(n—k) ifn>2. of a sequence of n matrices k=1 Recurrence for the brute-force approach cae nt Solving this problem efficiently 201) = P(k)P(n—k)2c > 227 = 2\" = 0(22 - 2) = A(2\") by using dynamic programming! k=1 k=1 k=1 Lower bound of the recurrence Dynamic programming 적용하기 1. Optimal solution 구조의특징을찾는다 2. Optimal 5014801 의값을재귀적으로정의한다. 3. Optimal solution2| 값을계산한다 4. 계산된정보들로부터최적해를구성한다. 행렬체인을계산하는데드는 HS: 4, , 계산비용 + 4,,, , 계산비용 + 이 SS 곱하는비용 - 52 -",
+  "spans": [
+    {
+      "text": "m",
+      "x": 37.429,
+      "y": 32.571,
+      "width": 7.143,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 83.031
+    },
+    {
+      "text": ">,",
+      "x": 134.286,
+      "y": 30.857,
+      "width": 13.714,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 94.875
+    },
+    {
+      "text": "where",
+      "x": 152.571,
+      "y": 29.429,
+      "width": 38.857,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 93.124
+    },
+    {
+      "text": "A,:10",
+      "x": 195.429,
+      "y": 29.429,
+      "width": 39.429,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 76.219
+    },
+    {
+      "text": "*",
+      "x": 240.0,
+      "y": 32.571,
+      "width": 5.429,
+      "height": 5.714,
+      "fontSize": 5.714,
+      "confidence": 75.412
+    },
+    {
+      "text": "100,",
+      "x": 251.143,
+      "y": 29.429,
+      "width": 27.143,
+      "height": 12.571,
+      "fontSize": 12.571,
+      "confidence": 96.062
+    },
+    {
+      "text": "Ay:",
+      "x": 282.571,
+      "y": 29.429,
+      "width": 20.0,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 33.282
+    },
+    {
+      "text": "100",
+      "x": 307.714,
+      "y": 29.429,
+      "width": 23.429,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 49.049
+    },
+    {
+      "text": "*",
+      "x": 336.286,
+      "y": 32.571,
+      "width": 5.429,
+      "height": 5.714,
+      "fontSize": 5.714,
+      "confidence": 76.369
+    },
+    {
+      "text": "5,",
+      "x": 347.143,
+      "y": 29.143,
+      "width": 10.571,
+      "height": 12.857,
+      "fontSize": 12.857,
+      "confidence": 92.405
+    },
+    {
+      "text": "45:",
+      "x": 362.0,
+      "y": 29.429,
+      "width": 19.714,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 51.419
+    },
+    {
+      "text": "Parenthesization",
+      "x": 70.857,
+      "y": 66.857,
+      "width": 74.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 89.454
+    },
+    {
+      "text": "1:",
+      "x": 150.0,
+      "y": 66.857,
+      "width": 6.857,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.636
+    },
+    {
+      "text": "(A,",
+      "x": 166.857,
+      "y": 58.857,
+      "width": 18.571,
+      "height": 22.0,
+      "fontSize": 22.0,
+      "confidence": 83.123
+    },
+    {
+      "text": "«",
+      "x": 188.857,
+      "y": 61.714,
+      "width": 3.714,
+      "height": 16.571,
+      "fontSize": 16.571,
+      "confidence": 58.64
+    },
+    {
+      "text": "Az}",
+      "x": 198.0,
+      "y": 58.857,
+      "width": 13.143,
+      "height": 22.0,
+      "fontSize": 22.0,
+      "confidence": 74.527
+    },
+    {
+      "text": "-",
+      "x": 216.286,
+      "y": 58.857,
+      "width": 4.0,
+      "height": 22.0,
+      "fontSize": 22.0,
+      "confidence": 69.801
+    },
+    {
+      "text": "As)",
+      "x": 225.429,
+      "y": 58.857,
+      "width": 12.0,
+      "height": 22.0,
+      "fontSize": 22.0,
+      "confidence": 43.345
+    },
+    {
+      "text": ">[(10",
+      "x": 243.429,
+      "y": 66.0,
+      "width": 30.571,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 26.427
+    },
+    {
+      "text": "*",
+      "x": 278.0,
+      "y": 69.429,
+      "width": 4.286,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 80.283
+    },
+    {
+      "text": "100",
+      "x": 286.571,
+      "y": 66.857,
+      "width": 18.286,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.198
+    },
+    {
+      "text": "»",
+      "x": 308.857,
+      "y": 69.429,
+      "width": 4.286,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 45.872
+    },
+    {
+      "text": "(10",
+      "x": 348.286,
+      "y": 66.857,
+      "width": 11.714,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 92.391
+    },
+    {
+      "text": "*",
+      "x": 364.0,
+      "y": 69.429,
+      "width": 4.286,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 39.918
+    },
+    {
+      "text": "5",
+      "x": 374.0,
+      "y": 66.571,
+      "width": 2.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 89.457
+    },
+    {
+      "text": "«",
+      "x": 381.714,
+      "y": 69.429,
+      "width": 4.286,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 88.97
+    },
+    {
+      "text": "50)",
+      "x": 390.0,
+      "y": 66.571,
+      "width": 11.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 52.948
+    },
+    {
+      "text": "=",
+      "x": 411.429,
+      "y": 70.0,
+      "width": 7.714,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 96.628
+    },
+    {
+      "text": "5000",
+      "x": 423.714,
+      "y": 66.571,
+      "width": 25.143,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 93.795
+    },
+    {
+      "text": "+",
+      "x": 452.857,
+      "y": 67.714,
+      "width": 7.429,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 95.777
+    },
+    {
+      "text": "2500",
+      "x": 464.286,
+      "y": 66.571,
+      "width": 25.429,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 94.083
+    },
+    {
+      "text": "=",
+      "x": 494.0,
+      "y": 70.0,
+      "width": 7.714,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 94.083
+    },
+    {
+      "text": "7500",
+      "x": 506.571,
+      "y": 66.571,
+      "width": 24.857,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.056
+    },
+    {
+      "text": "Parenthesization",
+      "x": 70.857,
+      "y": 94.857,
+      "width": 74.857,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 92.913
+    },
+    {
+      "text": "2:",
+      "x": 149.143,
+      "y": 94.857,
+      "width": 7.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 97.004
+    },
+    {
+      "text": "(A,",
+      "x": 162.571,
+      "y": 85.714,
+      "width": 16.857,
+      "height": 25.143,
+      "fontSize": 25.143,
+      "confidence": 64.762
+    },
+    {
+      "text": "-",
+      "x": 210.571,
+      "y": 90.286,
+      "width": 2.286,
+      "height": 16.857,
+      "fontSize": 16.857,
+      "confidence": 48.775
+    },
+    {
+      "text": "Aa)",
+      "x": 216.857,
+      "y": 85.714,
+      "width": 18.0,
+      "height": 25.143,
+      "fontSize": 25.143,
+      "confidence": 70.997
+    },
+    {
+      "text": "=|(10",
+      "x": 242.571,
+      "y": 94.0,
+      "width": 29.143,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 89.982
+    },
+    {
+      "text": "*",
+      "x": 275.714,
+      "y": 96.571,
+      "width": 4.286,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 64.382
+    },
+    {
+      "text": "100",
+      "x": 284.286,
+      "y": 94.0,
+      "width": 18.286,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.148
+    },
+    {
+      "text": "«",
+      "x": 306.571,
+      "y": 96.571,
+      "width": 4.286,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 83.157
+    },
+    {
+      "text": "50)",
+      "x": 314.857,
+      "y": 93.714,
+      "width": 11.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 91.038
+    },
+    {
+      "text": "+",
+      "x": 335.714,
+      "y": 94.857,
+      "width": 7.429,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.224
+    },
+    {
+      "text": "(100",
+      "x": 352.571,
+      "y": 94.0,
+      "width": 18.286,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 91.399
+    },
+    {
+      "text": "*",
+      "x": 374.857,
+      "y": 96.571,
+      "width": 4.0,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 68.937
+    },
+    {
+      "text": "5",
+      "x": 383.143,
+      "y": 93.714,
+      "width": 5.143,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 92.218
+    },
+    {
+      "text": "«",
+      "x": 394.571,
+      "y": 96.571,
+      "width": 2.0,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 66.42
+    },
+    {
+      "text": "50)",
+      "x": 400.857,
+      "y": 93.714,
+      "width": 11.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 92.322
+    },
+    {
+      "text": "=",
+      "x": 422.286,
+      "y": 97.143,
+      "width": 7.429,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 96.801
+    },
+    {
+      "text": "50000",
+      "x": 434.571,
+      "y": 93.714,
+      "width": 31.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 95.616
+    },
+    {
+      "text": "+",
+      "x": 470.0,
+      "y": 94.857,
+      "width": 7.714,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.249
+    },
+    {
+      "text": "25000",
+      "x": 481.714,
+      "y": 93.714,
+      "width": 31.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.902
+    },
+    {
+      "text": "=",
+      "x": 518.286,
+      "y": 97.143,
+      "width": 7.429,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 96.578
+    },
+    {
+      "text": "75000",
+      "x": 530.571,
+      "y": 93.714,
+      "width": 31.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.482
+    },
+    {
+      "text": "The",
+      "x": 130.571,
+      "y": 135.143,
+      "width": 19.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.917
+    },
+    {
+      "text": "above",
+      "x": 154.286,
+      "y": 135.143,
+      "width": 31.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 95.933
+    },
+    {
+      "text": "two",
+      "x": 189.714,
+      "y": 135.714,
+      "width": 18.286,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.265
+    },
+    {
+      "text": "parenthesizations",
+      "x": 212.286,
+      "y": 135.143,
+      "width": 92.286,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 89.028
+    },
+    {
+      "text": "yield",
+      "x": 308.286,
+      "y": 135.143,
+      "width": 23.714,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 96.689
+    },
+    {
+      "text": "the",
+      "x": 336.0,
+      "y": 135.143,
+      "width": 16.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.687
+    },
+    {
+      "text": "exactly",
+      "x": 356.0,
+      "y": 135.143,
+      "width": 36.857,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 95.944
+    },
+    {
+      "text": "same",
+      "x": 396.286,
+      "y": 137.429,
+      "width": 28.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 96.668
+    },
+    {
+      "text": "result",
+      "x": 429.143,
+      "y": 135.143,
+      "width": 28.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.751
+    },
+    {
+      "text": "However,",
+      "x": 67.714,
+      "y": 148.857,
+      "width": 48.286,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.128
+    },
+    {
+      "text": "computing",
+      "x": 120.857,
+      "y": 148.857,
+      "width": 53.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 96.128
+    },
+    {
+      "text": "the",
+      "x": 178.571,
+      "y": 148.857,
+      "width": 16.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.318
+    },
+    {
+      "text": "product",
+      "x": 199.143,
+      "y": 148.857,
+      "width": 38.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 96.318
+    },
+    {
+      "text": "according",
+      "x": 241.714,
+      "y": 148.857,
+      "width": 50.571,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 96.193
+    },
+    {
+      "text": "to",
+      "x": 296.286,
+      "y": 149.429,
+      "width": 9.714,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.5
+    },
+    {
+      "text": "the",
+      "x": 309.714,
+      "y": 148.857,
+      "width": 16.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.247
+    },
+    {
+      "text": "Parenthesization",
+      "x": 330.0,
+      "y": 148.857,
+      "width": 87.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.254
+    },
+    {
+      "text": "1",
+      "x": 422.571,
+      "y": 148.857,
+      "width": 3.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.774
+    },
+    {
+      "text": "is",
+      "x": 431.714,
+      "y": 148.857,
+      "width": 7.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.774
+    },
+    {
+      "text": "10",
+      "x": 444.286,
+      "y": 148.857,
+      "width": 11.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.227
+    },
+    {
+      "text": "times",
+      "x": 459.714,
+      "y": 148.857,
+      "width": 28.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.76
+    },
+    {
+      "text": "faster",
+      "x": 491.429,
+      "y": 148.857,
+      "width": 29.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.619
+    },
+    {
+      "text": "Given",
+      "x": 168.0,
+      "y": 172.286,
+      "width": 30.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.205
+    },
+    {
+      "text": "a",
+      "x": 202.0,
+      "y": 174.571,
+      "width": 5.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.211
+    },
+    {
+      "text": "chain",
+      "x": 212.0,
+      "y": 172.286,
+      "width": 27.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.213
+    },
+    {
+      "text": "<",
+      "x": 243.714,
+      "y": 174.0,
+      "width": 7.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 88.725
+    },
+    {
+      "text": ">",
+      "x": 322.857,
+      "y": 174.0,
+      "width": 7.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 94.284
+    },
+    {
+      "text": "of",
+      "x": 334.571,
+      "y": 172.286,
+      "width": 19.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.724
+    },
+    {
+      "text": "n",
+      "x": 350.0,
+      "y": 171.143,
+      "width": 4.857,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 91.724
+    },
+    {
+      "text": "matrices,",
+      "x": 358.286,
+      "y": 172.286,
+      "width": 46.571,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.241
+    },
+    {
+      "text": "to",
+      "x": 51.143,
+      "y": 186.571,
+      "width": 9.429,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.929
+    },
+    {
+      "text": "fully",
+      "x": 64.286,
+      "y": 186.0,
+      "width": 20.857,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 93.297
+    },
+    {
+      "text": "parenthesize",
+      "x": 89.143,
+      "y": 186.0,
+      "width": 66.571,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 91.63
+    },
+    {
+      "text": "the",
+      "x": 159.429,
+      "y": 186.0,
+      "width": 16.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.485
+    },
+    {
+      "text": "product",
+      "x": 180.0,
+      "y": 186.0,
+      "width": 38.286,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 96.407
+    },
+    {
+      "text": "4142",
+      "x": 221.714,
+      "y": 186.571,
+      "width": 24.571,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 59.421
+    },
+    {
+      "text": "…",
+      "x": 251.429,
+      "y": 190.571,
+      "width": 3.714,
+      "height": 1.429,
+      "fontSize": 1.429,
+      "confidence": 86.604
+    },
+    {
+      "text": "A,",
+      "x": 264.857,
+      "y": 186.571,
+      "width": 9.143,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 82.077
+    },
+    {
+      "text": "in",
+      "x": 279.143,
+      "y": 186.0,
+      "width": 8.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 77.69
+    },
+    {
+      "text": "a",
+      "x": 291.143,
+      "y": 188.286,
+      "width": 6.0,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 77.69
+    },
+    {
+      "text": "way",
+      "x": 300.857,
+      "y": 188.286,
+      "width": 21.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.046
+    },
+    {
+      "text": "that",
+      "x": 325.143,
+      "y": 186.0,
+      "width": 19.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 95.957
+    },
+    {
+      "text": "minimizes",
+      "x": 348.857,
+      "y": 186.0,
+      "width": 51.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.195
+    },
+    {
+      "text": "the",
+      "x": 404.0,
+      "y": 186.0,
+      "width": 16.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.684
+    },
+    {
+      "text": "computational",
+      "x": 424.0,
+      "y": 186.0,
+      "width": 72.286,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 96.909
+    },
+    {
+      "text": "cost",
+      "x": 500.857,
+      "y": 186.571,
+      "width": 21.143,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.611
+    },
+    {
+      "text": "A",
+      "x": 46.286,
+      "y": 220.286,
+      "width": 8.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 95.526
+    },
+    {
+      "text": "product",
+      "x": 62.0,
+      "y": 219.429,
+      "width": 47.714,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 95.781
+    },
+    {
+      "text": "of",
+      "x": 116.571,
+      "y": 219.429,
+      "width": 12.571,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 96.678
+    },
+    {
+      "text": "matrices",
+      "x": 135.714,
+      "y": 220.0,
+      "width": 52.0,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.349
+    },
+    {
+      "text": "is",
+      "x": 195.143,
+      "y": 220.0,
+      "width": 8.0,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.349
+    },
+    {
+      "text": "fully",
+      "x": 208.286,
+      "y": 219.429,
+      "width": 27.714,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 93.298
+    },
+    {
+      "text": "parenthesized",
+      "x": 242.0,
+      "y": 219.429,
+      "width": 87.143,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 92.077
+    },
+    {
+      "text": "if",
+      "x": 335.429,
+      "y": 219.429,
+      "width": 7.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 96.851
+    },
+    {
+      "text": "it",
+      "x": 349.714,
+      "y": 220.0,
+      "width": 7.429,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.144
+    },
+    {
+      "text": "is",
+      "x": 364.286,
+      "y": 220.0,
+      "width": 8.286,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.945
+    },
+    {
+      "text": "either",
+      "x": 379.714,
+      "y": 219.429,
+      "width": 36.286,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 95.653
+    },
+    {
+      "text": "a",
+      "x": 422.857,
+      "y": 222.286,
+      "width": 5.714,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 96.386
+    },
+    {
+      "text": "single",
+      "x": 436.0,
+      "y": 219.429,
+      "width": 34.857,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 96.184
+    },
+    {
+      "text": "matrix",
+      "x": 478.286,
+      "y": 220.0,
+      "width": 38.857,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.485
+    },
+    {
+      "text": "or",
+      "x": 523.714,
+      "y": 222.286,
+      "width": 13.143,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 96.814
+    },
+    {
+      "text": "the",
+      "x": 542.857,
+      "y": 219.429,
+      "width": 20.0,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 96.942
+    },
+    {
+      "text": "product",
+      "x": 47.143,
+      "y": 237.143,
+      "width": 47.714,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 96.605
+    },
+    {
+      "text": "of",
+      "x": 99.143,
+      "y": 236.857,
+      "width": 12.571,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 96.529
+    },
+    {
+      "text": "two",
+      "x": 114.857,
+      "y": 238.286,
+      "width": 23.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.606
+    },
+    {
+      "text": "fully",
+      "x": 142.286,
+      "y": 236.857,
+      "width": 26.571,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 93.296
+    },
+    {
+      "text": "parenthesized",
+      "x": 173.143,
+      "y": 237.143,
+      "width": 86.286,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 91.633
+    },
+    {
+      "text": "matrix",
+      "x": 264.857,
+      "y": 237.714,
+      "width": 38.857,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.541
+    },
+    {
+      "text": "products,",
+      "x": 308.286,
+      "y": 237.143,
+      "width": 56.857,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 96.582
+    },
+    {
+      "text": "surrounded",
+      "x": 370.0,
+      "y": 237.143,
+      "width": 70.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 96.224
+    },
+    {
+      "text": "by",
+      "x": 446.286,
+      "y": 237.143,
+      "width": 13.714,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 96.852
+    },
+    {
+      "text": "parentheses",
+      "x": 464.571,
+      "y": 237.143,
+      "width": 75.143,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 96.417
+    },
+    {
+      "text": "Q",
+      "x": 50.0,
+      "y": 258.0,
+      "width": 6.857,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 90.871
+    },
+    {
+      "text": "For",
+      "x": 65.429,
+      "y": 257.143,
+      "width": 14.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 94.642
+    },
+    {
+      "text": "example,",
+      "x": 83.143,
+      "y": 256.571,
+      "width": 43.143,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 95.448
+    },
+    {
+      "text": "given",
+      "x": 129.714,
+      "y": 257.143,
+      "width": 25.143,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 88.023
+    },
+    {
+      "text": "a",
+      "x": 158.571,
+      "y": 258.857,
+      "width": 4.571,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 31.564
+    },
+    {
+      "text": "chain",
+      "x": 166.857,
+      "y": 256.571,
+      "width": 24.857,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 31.564
+    },
+    {
+      "text": "<",
+      "x": 195.714,
+      "y": 257.714,
+      "width": 7.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 89.237
+    },
+    {
+      "text": "47,",
+      "x": 209.143,
+      "y": 256.571,
+      "width": 12.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 64.305
+    },
+    {
+      "text": "47,",
+      "x": 228.286,
+      "y": 255.143,
+      "width": 11.143,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 44.918
+    },
+    {
+      "text": "43,",
+      "x": 245.143,
+      "y": 256.571,
+      "width": 11.429,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 68.637
+    },
+    {
+      "text": "44",
+      "x": 262.857,
+      "y": 256.571,
+      "width": 8.571,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 68.637
+    },
+    {
+      "text": ">,",
+      "x": 276.0,
+      "y": 257.714,
+      "width": 10.571,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.748
+    },
+    {
+      "text": "there",
+      "x": 289.714,
+      "y": 256.571,
+      "width": 26.0,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.931
+    },
+    {
+      "text": "are",
+      "x": 319.143,
+      "y": 258.857,
+      "width": 14.857,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 96.96
+    },
+    {
+      "text": "five",
+      "x": 337.143,
+      "y": 256.286,
+      "width": 17.143,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.994
+    },
+    {
+      "text": "possible",
+      "x": 358.286,
+      "y": 256.571,
+      "width": 38.286,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.666
+    },
+    {
+      "text": "fully",
+      "x": 399.714,
+      "y": 256.286,
+      "width": 20.286,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 93.267
+    },
+    {
+      "text": "parenthesized",
+      "x": 423.714,
+      "y": 256.571,
+      "width": 67.143,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 91.408
+    },
+    {
+      "text": "products",
+      "x": 494.857,
+      "y": 256.571,
+      "width": 41.714,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.595
+    },
+    {
+      "text": "(((A1A2)A3)A4)",
+      "x": 38.571,
+      "y": 290.571,
+      "width": 82.571,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 66.13
+    },
+    {
+      "text": "=",
+      "x": 132.571,
+      "y": 289.429,
+      "width": 5.143,
+      "height": 15.429,
+      "fontSize": 15.429,
+      "confidence": 42.245
+    },
+    {
+      "text": "((A1A2)(A344))",
+      "x": 142.571,
+      "y": 291.143,
+      "width": 82.857,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 59.625
+    },
+    {
+      "text": "_",
+      "x": 234.857,
+      "y": 289.429,
+      "width": 5.143,
+      "height": 15.429,
+      "fontSize": 15.429,
+      "confidence": 56.915
+    },
+    {
+      "text": "((A1(A2A3))",
+      "x": 246.857,
+      "y": 290.857,
+      "width": 83.143,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 29.461
+    },
+    {
+      "text": "Ag)",
+      "x": 315.143,
+      "y": 289.429,
+      "width": 18.0,
+      "height": 15.429,
+      "fontSize": 15.429,
+      "confidence": 29.461
+    },
+    {
+      "text": "_",
+      "x": 339.143,
+      "y": 289.429,
+      "width": 5.143,
+      "height": 15.429,
+      "fontSize": 15.429,
+      "confidence": 25.663
+    },
+    {
+      "text": "(41((4243)44))",
+      "x": 351.429,
+      "y": 291.714,
+      "width": 82.857,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 52.298
+    },
+    {
+      "text": "We",
+      "x": 176.571,
+      "y": 342.286,
+      "width": 17.429,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.558
+    },
+    {
+      "text": "are",
+      "x": 198.0,
+      "y": 344.286,
+      "width": 16.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.558
+    },
+    {
+      "text": "NOT",
+      "x": 218.571,
+      "y": 342.0,
+      "width": 24.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.62
+    },
+    {
+      "text": "actually",
+      "x": 246.286,
+      "y": 342.286,
+      "width": 40.0,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 96.032
+    },
+    {
+      "text": "multiplying",
+      "x": 290.286,
+      "y": 342.286,
+      "width": 54.571,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 96.46
+    },
+    {
+      "text": "matrices!",
+      "x": 349.143,
+      "y": 342.286,
+      "width": 46.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.369
+    },
+    {
+      "text": "Instead,",
+      "x": 86.857,
+      "y": 355.429,
+      "width": 40.286,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 96.509
+    },
+    {
+      "text": "we",
+      "x": 131.143,
+      "y": 357.714,
+      "width": 15.143,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 96.934
+    },
+    {
+      "text": "focus",
+      "x": 149.714,
+      "y": 355.429,
+      "width": 28.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.416
+    },
+    {
+      "text": "on",
+      "x": 181.429,
+      "y": 357.714,
+      "width": 12.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 96.586
+    },
+    {
+      "text": "finding",
+      "x": 197.714,
+      "y": 355.429,
+      "width": 34.0,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 96.269
+    },
+    {
+      "text": "the",
+      "x": 235.714,
+      "y": 355.429,
+      "width": 16.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.298
+    },
+    {
+      "text": "best",
+      "x": 256.0,
+      "y": 355.429,
+      "width": 21.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.896
+    },
+    {
+      "text": "parenthesization",
+      "x": 281.714,
+      "y": 355.429,
+      "width": 85.429,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 92.179
+    },
+    {
+      "text": "having",
+      "x": 371.714,
+      "y": 355.429,
+      "width": 33.429,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 96.502
+    },
+    {
+      "text": "the",
+      "x": 409.143,
+      "y": 355.429,
+      "width": 15.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.908
+    },
+    {
+      "text": "lowest",
+      "x": 429.143,
+      "y": 355.429,
+      "width": 33.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.181
+    },
+    {
+      "text": "cost",
+      "x": 465.714,
+      "y": 356.0,
+      "width": 21.429,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.411
+    },
+    {
+      "text": "계산",
+      "x": 44.0,
+      "y": 380.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.253
+    },
+    {
+      "text": "HBS",
+      "x": 69.429,
+      "y": 380.286,
+      "width": 28.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 74.425
+    },
+    {
+      "text": "최소화",
+      "x": 104.0,
+      "y": 380.286,
+      "width": 29.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.324
+    },
+    {
+      "text": "하기",
+      "x": 139.143,
+      "y": 380.286,
+      "width": 17.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.646
+    },
+    {
+      "text": "Fully",
+      "x": 209.143,
+      "y": 381.714,
+      "width": 19.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.283
+    },
+    {
+      "text": "ParanthesizeS",
+      "x": 234.857,
+      "y": 380.571,
+      "width": 65.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 87.934
+    },
+    {
+      "text": "해야",
+      "x": 306.286,
+      "y": 380.286,
+      "width": 19.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.621
+    },
+    {
+      "text": "한다!",
+      "x": 331.429,
+      "y": 380.286,
+      "width": 21.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.461
+    },
+    {
+      "text": "Naivest",
+      "x": 29.143,
+      "y": 412.286,
+      "width": 34.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 59.399
+    },
+    {
+      "text": "접",
+      "x": 69.429,
+      "y": 412.286,
+      "width": 41.143,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.241
+    },
+    {
+      "text": "근",
+      "x": 80.0,
+      "y": 411.143,
+      "width": 10.286,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 93.206
+    },
+    {
+      "text": "방",
+      "x": 90.0,
+      "y": 411.143,
+      "width": 10.286,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "식",
+      "x": 100.0,
+      "y": 411.143,
+      "width": 7.143,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 92.974
+    },
+    {
+      "text": ".",
+      "x": 106.857,
+      "y": 411.143,
+      "width": 4.286,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 92.741
+    },
+    {
+      "text": "1.",
+      "x": 44.0,
+      "y": 430.0,
+      "width": 6.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.39
+    },
+    {
+      "text": "모든",
+      "x": 56.571,
+      "y": 428.571,
+      "width": 18.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.746
+    },
+    {
+      "text": "가능한",
+      "x": 82.0,
+      "y": 428.286,
+      "width": 28.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.306
+    },
+    {
+      "text": "괄",
+      "x": 118.286,
+      "y": 428.286,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.407
+    },
+    {
+      "text": "호",
+      "x": 128.571,
+      "y": 428.286,
+      "width": 6.857,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 93.294
+    },
+    {
+      "text": "화",
+      "x": 138.857,
+      "y": 428.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.284
+    },
+    {
+      "text": "방",
+      "x": 152.571,
+      "y": 428.286,
+      "width": 8.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.284
+    },
+    {
+      "text": "법",
+      "x": 162.857,
+      "y": 428.286,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.279
+    },
+    {
+      "text": "을",
+      "x": 174.0,
+      "y": 428.286,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "나",
+      "x": 187.714,
+      "y": 428.286,
+      "width": 8.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "열",
+      "x": 198.0,
+      "y": 428.286,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.296
+    },
+    {
+      "text": "한",
+      "x": 208.286,
+      "y": 428.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.755
+    },
+    {
+      "text": "다.",
+      "x": 218.571,
+      "y": 428.286,
+      "width": 9.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.936
+    },
+    {
+      "text": "2.",
+      "x": 43.714,
+      "y": 446.0,
+      "width": 6.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.277
+    },
+    {
+      "text": "각",
+      "x": 56.857,
+      "y": 444.286,
+      "width": 8.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.175
+    },
+    {
+      "text": "호",
+      "x": 82.857,
+      "y": 444.286,
+      "width": 7.429,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 92.483
+    },
+    {
+      "text": "의",
+      "x": 94.0,
+      "y": 444.286,
+      "width": 5.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.369
+    },
+    {
+      "text": "스",
+      "x": 107.714,
+      "y": 445.143,
+      "width": 7.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.281
+    },
+    {
+      "text": "칼",
+      "x": 118.857,
+      "y": 444.286,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.815
+    },
+    {
+      "text": "라",
+      "x": 129.143,
+      "y": 444.286,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": "곱",
+      "x": 139.429,
+      "y": 444.571,
+      "width": 6.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 90.972
+    },
+    {
+      "text": "횟",
+      "x": 153.143,
+      "y": 444.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.263
+    },
+    {
+      "text": "수",
+      "x": 163.429,
+      "y": 444.571,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.297
+    },
+    {
+      "text": "를",
+      "x": 173.714,
+      "y": 444.571,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 83.016
+    },
+    {
+      "text": "계",
+      "x": 187.429,
+      "y": 444.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.278
+    },
+    {
+      "text": "산",
+      "x": 197.714,
+      "y": 444.286,
+      "width": 7.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.287
+    },
+    {
+      "text": "한",
+      "x": 208.0,
+      "y": 444.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "다.",
+      "x": 218.286,
+      "y": 444.286,
+      "width": 9.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.952
+    },
+    {
+      "text": "3.",
+      "x": 43.714,
+      "y": 462.0,
+      "width": 6.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.306
+    },
+    {
+      "text": "스",
+      "x": 57.429,
+      "y": 461.143,
+      "width": 8.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.294
+    },
+    {
+      "text": "칼",
+      "x": 68.571,
+      "y": 460.286,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.302
+    },
+    {
+      "text": "라",
+      "x": 78.571,
+      "y": 460.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.257
+    },
+    {
+      "text": "곱이",
+      "x": 86.571,
+      "y": 460.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 66.708
+    },
+    {
+      "text": "수가",
+      "x": 111.714,
+      "y": 460.286,
+      "width": 19.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.306
+    },
+    {
+      "text": "최",
+      "x": 137.143,
+      "y": 460.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.108
+    },
+    {
+      "text": "소",
+      "x": 148.286,
+      "y": 461.143,
+      "width": 7.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.819
+    },
+    {
+      "text": "인",
+      "x": 158.571,
+      "y": 460.286,
+      "width": 6.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 89.6
+    },
+    {
+      "text": "괄",
+      "x": 172.571,
+      "y": 460.286,
+      "width": 8.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 83.412
+    },
+    {
+      "text": "호",
+      "x": 182.571,
+      "y": 460.286,
+      "width": 8.0,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 93.3
+    },
+    {
+      "text": "화",
+      "x": 193.714,
+      "y": 460.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.276
+    },
+    {
+      "text": "경",
+      "x": 207.714,
+      "y": 460.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.071
+    },
+    {
+      "text": "우",
+      "x": 218.0,
+      "y": 460.571,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.296
+    },
+    {
+      "text": "를",
+      "x": 228.286,
+      "y": 460.571,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.304
+    },
+    {
+      "text": "고른다.",
+      "x": 241.714,
+      "y": 460.286,
+      "width": 30.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.712
+    },
+    {
+      "text": "1",
+      "x": 142.286,
+      "y": 478.571,
+      "width": 3.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.699
+    },
+    {
+      "text": "ifn=1,",
+      "x": 237.143,
+      "y": 478.286,
+      "width": 42.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 88.918
+    },
+    {
+      "text": "P(n)",
+      "x": 91.714,
+      "y": 495.429,
+      "width": 22.0,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 91.583
+    },
+    {
+      "text": "=",
+      "x": 118.571,
+      "y": 499.143,
+      "width": 7.714,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 96.667
+    },
+    {
+      "text": "P(n):",
+      "x": 304.0,
+      "y": 493.714,
+      "width": 21.429,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.584
+    },
+    {
+      "text": "the",
+      "x": 328.571,
+      "y": 493.714,
+      "width": 13.143,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.395
+    },
+    {
+      "text": "number",
+      "x": 344.857,
+      "y": 493.714,
+      "width": 31.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.815
+    },
+    {
+      "text": "of",
+      "x": 379.143,
+      "y": 493.429,
+      "width": 8.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.298
+    },
+    {
+      "text": "parenthesizations",
+      "x": 390.0,
+      "y": 493.429,
+      "width": 72.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.28
+    },
+    {
+      "text": ">,",
+      "x": 141.714,
+      "y": 499.429,
+      "width": 15.143,
+      "height": 18.571,
+      "fontSize": 18.571,
+      "confidence": 48.895
+    },
+    {
+      "text": "P(k)P(n—k)",
+      "x": 159.714,
+      "y": 503.429,
+      "width": 65.714,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 67.022
+    },
+    {
+      "text": "ifn>2.",
+      "x": 236.857,
+      "y": 503.714,
+      "width": 41.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 88.733
+    },
+    {
+      "text": "of",
+      "x": 325.714,
+      "y": 504.286,
+      "width": 8.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.737
+    },
+    {
+      "text": "a",
+      "x": 336.286,
+      "y": 506.286,
+      "width": 4.857,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 96.788
+    },
+    {
+      "text": "sequence",
+      "x": 344.286,
+      "y": 506.286,
+      "width": 40.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.848
+    },
+    {
+      "text": "of",
+      "x": 387.714,
+      "y": 504.286,
+      "width": 8.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.223
+    },
+    {
+      "text": "n",
+      "x": 398.0,
+      "y": 506.286,
+      "width": 5.143,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 93.223
+    },
+    {
+      "text": "matrices",
+      "x": 406.286,
+      "y": 504.571,
+      "width": 34.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.07
+    },
+    {
+      "text": "k=1",
+      "x": 141.429,
+      "y": 519.714,
+      "width": 14.286,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 92.542
+    },
+    {
+      "text": "Recurrence",
+      "x": 114.286,
+      "y": 540.571,
+      "width": 47.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.593
+    },
+    {
+      "text": "for",
+      "x": 164.857,
+      "y": 540.571,
+      "width": 11.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.523
+    },
+    {
+      "text": "the",
+      "x": 178.571,
+      "y": 540.857,
+      "width": 12.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.931
+    },
+    {
+      "text": "brute-force",
+      "x": 194.857,
+      "y": 540.571,
+      "width": 44.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.479
+    },
+    {
+      "text": "approach",
+      "x": 242.571,
+      "y": 540.857,
+      "width": 38.857,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.67
+    },
+    {
+      "text": "cae",
+      "x": 65.429,
+      "y": 573.143,
+      "width": 13.143,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 33.486
+    },
+    {
+      "text": "nt",
+      "x": 155.143,
+      "y": 573.143,
+      "width": 13.143,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 73.1
+    },
+    {
+      "text": "Solving",
+      "x": 366.286,
+      "y": 574.571,
+      "width": 33.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.609
+    },
+    {
+      "text": "this",
+      "x": 403.143,
+      "y": 574.857,
+      "width": 16.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.863
+    },
+    {
+      "text": "problem",
+      "x": 423.143,
+      "y": 574.857,
+      "width": 36.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.836
+    },
+    {
+      "text": "efficiently",
+      "x": 462.571,
+      "y": 574.571,
+      "width": 43.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.985
+    },
+    {
+      "text": "201)",
+      "x": 33.714,
+      "y": 584.571,
+      "width": 18.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 86.886
+    },
+    {
+      "text": "=",
+      "x": 56.0,
+      "y": 587.714,
+      "width": 6.0,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 96.422
+    },
+    {
+      "text": "P(k)P(n—k)2c",
+      "x": 80.571,
+      "y": 585.143,
+      "width": 72.286,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 59.697
+    },
+    {
+      "text": ">",
+      "x": 155.429,
+      "y": 580.0,
+      "width": 12.0,
+      "height": 18.0,
+      "fontSize": 18.0,
+      "confidence": 90.909
+    },
+    {
+      "text": "227",
+      "x": 170.571,
+      "y": 583.714,
+      "width": 28.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 31.24
+    },
+    {
+      "text": "=",
+      "x": 202.857,
+      "y": 587.714,
+      "width": 6.0,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 90.123
+    },
+    {
+      "text": "2\"",
+      "x": 227.714,
+      "y": 584.857,
+      "width": 9.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 71.038
+    },
+    {
+      "text": "=",
+      "x": 240.571,
+      "y": 587.714,
+      "width": 6.0,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 87.095
+    },
+    {
+      "text": "0(22",
+      "x": 250.286,
+      "y": 584.571,
+      "width": 17.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 62.194
+    },
+    {
+      "text": "-",
+      "x": 271.429,
+      "y": 588.571,
+      "width": 6.0,
+      "height": 0.857,
+      "fontSize": 1,
+      "confidence": 92.394
+    },
+    {
+      "text": "2)",
+      "x": 280.286,
+      "y": 584.571,
+      "width": 8.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.427
+    },
+    {
+      "text": "=",
+      "x": 292.286,
+      "y": 587.714,
+      "width": 6.0,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 88.721
+    },
+    {
+      "text": "A(2\")",
+      "x": 301.429,
+      "y": 584.571,
+      "width": 24.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 44.064
+    },
+    {
+      "text": "by",
+      "x": 363.429,
+      "y": 586.0,
+      "width": 10.571,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.618
+    },
+    {
+      "text": "using",
+      "x": 377.143,
+      "y": 586.0,
+      "width": 24.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.618
+    },
+    {
+      "text": "dynamic",
+      "x": 404.857,
+      "y": 586.0,
+      "width": 38.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.653
+    },
+    {
+      "text": "programming!",
+      "x": 446.0,
+      "y": 586.0,
+      "width": 62.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.37
+    },
+    {
+      "text": "k=1",
+      "x": 65.714,
+      "y": 599.429,
+      "width": 12.571,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 84.651
+    },
+    {
+      "text": "k=1",
+      "x": 155.429,
+      "y": 599.429,
+      "width": 12.571,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.59
+    },
+    {
+      "text": "k=1",
+      "x": 212.571,
+      "y": 599.429,
+      "width": 12.571,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 91.497
+    },
+    {
+      "text": "Lower",
+      "x": 115.714,
+      "y": 614.286,
+      "width": 25.143,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.864
+    },
+    {
+      "text": "bound",
+      "x": 144.0,
+      "y": 614.286,
+      "width": 25.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.609
+    },
+    {
+      "text": "of",
+      "x": 172.286,
+      "y": 614.0,
+      "width": 8.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.68
+    },
+    {
+      "text": "the",
+      "x": 182.571,
+      "y": 614.286,
+      "width": 12.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.233
+    },
+    {
+      "text": "recurrence",
+      "x": 198.857,
+      "y": 616.0,
+      "width": 44.286,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 96.125
+    },
+    {
+      "text": "Dynamic",
+      "x": 29.143,
+      "y": 637.714,
+      "width": 38.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.827
+    },
+    {
+      "text": "programming",
+      "x": 73.143,
+      "y": 637.714,
+      "width": 60.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 88.084
+    },
+    {
+      "text": "적",
+      "x": 140.0,
+      "y": 636.286,
+      "width": 8.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 78.108
+    },
+    {
+      "text": "용",
+      "x": 150.286,
+      "y": 636.286,
+      "width": 8.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 91.697
+    },
+    {
+      "text": "하기",
+      "x": 160.857,
+      "y": 636.286,
+      "width": 17.143,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.752
+    },
+    {
+      "text": "1.",
+      "x": 44.0,
+      "y": 670.0,
+      "width": 6.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.304
+    },
+    {
+      "text": "Optimal",
+      "x": 56.571,
+      "y": 669.714,
+      "width": 34.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.14
+    },
+    {
+      "text": "solution",
+      "x": 97.429,
+      "y": 669.714,
+      "width": 35.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 87.878
+    },
+    {
+      "text": "구",
+      "x": 140.571,
+      "y": 668.857,
+      "width": 6.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.183
+    },
+    {
+      "text": "조",
+      "x": 149.143,
+      "y": 668.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.156
+    },
+    {
+      "text": "의",
+      "x": 160.286,
+      "y": 667.143,
+      "width": 7.714,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 77.283
+    },
+    {
+      "text": "특",
+      "x": 175.429,
+      "y": 668.571,
+      "width": 6.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.293
+    },
+    {
+      "text": "징",
+      "x": 185.143,
+      "y": 668.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.143
+    },
+    {
+      "text": "을",
+      "x": 196.286,
+      "y": 668.286,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 94.695
+    },
+    {
+      "text": "찾는다",
+      "x": 209.143,
+      "y": 668.286,
+      "width": 28.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.041
+    },
+    {
+      "text": "2.",
+      "x": 43.714,
+      "y": 686.0,
+      "width": 6.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.753
+    },
+    {
+      "text": "Optimal",
+      "x": 56.571,
+      "y": 685.714,
+      "width": 34.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.293
+    },
+    {
+      "text": "5014801",
+      "x": 97.429,
+      "y": 684.286,
+      "width": 44.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 34.613
+    },
+    {
+      "text": "의",
+      "x": 134.286,
+      "y": 683.143,
+      "width": 7.429,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 92.039
+    },
+    {
+      "text": "값",
+      "x": 149.143,
+      "y": 684.286,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.039
+    },
+    {
+      "text": "을",
+      "x": 159.714,
+      "y": 683.143,
+      "width": 8.0,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 85.95
+    },
+    {
+      "text": "재",
+      "x": 174.571,
+      "y": 684.286,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.696
+    },
+    {
+      "text": "귀",
+      "x": 185.143,
+      "y": 684.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.889
+    },
+    {
+      "text": "적",
+      "x": 195.429,
+      "y": 684.286,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.994
+    },
+    {
+      "text": "으",
+      "x": 205.143,
+      "y": 685.143,
+      "width": 7.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.3
+    },
+    {
+      "text": "로",
+      "x": 215.714,
+      "y": 685.143,
+      "width": 7.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.304
+    },
+    {
+      "text": "정",
+      "x": 229.714,
+      "y": 684.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.192
+    },
+    {
+      "text": "의",
+      "x": 240.286,
+      "y": 684.286,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.291
+    },
+    {
+      "text": "한",
+      "x": 250.571,
+      "y": 684.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 88.265
+    },
+    {
+      "text": "다.",
+      "x": 260.286,
+      "y": 684.286,
+      "width": 9.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.952
+    },
+    {
+      "text": "3.",
+      "x": 43.714,
+      "y": 702.0,
+      "width": 6.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.456
+    },
+    {
+      "text": "Optimal",
+      "x": 56.571,
+      "y": 701.714,
+      "width": 34.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.294
+    },
+    {
+      "text": "solution2|",
+      "x": 97.429,
+      "y": 700.286,
+      "width": 44.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 29.886
+    },
+    {
+      "text": "값",
+      "x": 149.143,
+      "y": 700.286,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.481
+    },
+    {
+      "text": "을",
+      "x": 160.0,
+      "y": 699.143,
+      "width": 7.714,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 87.566
+    },
+    {
+      "text": "계",
+      "x": 174.571,
+      "y": 700.286,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.285
+    },
+    {
+      "text": "산",
+      "x": 184.857,
+      "y": 700.286,
+      "width": 8.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.83
+    },
+    {
+      "text": "한다",
+      "x": 196.0,
+      "y": 700.286,
+      "width": 17.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 94.498
+    },
+    {
+      "text": "4.",
+      "x": 43.429,
+      "y": 718.0,
+      "width": 6.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.3
+    },
+    {
+      "text": "계",
+      "x": 57.429,
+      "y": 716.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.297
+    },
+    {
+      "text": "산",
+      "x": 68.0,
+      "y": 716.286,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.289
+    },
+    {
+      "text": "된",
+      "x": 78.857,
+      "y": 716.286,
+      "width": 6.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.306
+    },
+    {
+      "text": "정",
+      "x": 92.286,
+      "y": 716.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.283
+    },
+    {
+      "text": "보",
+      "x": 102.857,
+      "y": 717.143,
+      "width": 7.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.285
+    },
+    {
+      "text": "들",
+      "x": 112.571,
+      "y": 716.571,
+      "width": 7.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.286
+    },
+    {
+      "text": "로",
+      "x": 123.429,
+      "y": 717.143,
+      "width": 7.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.338
+    },
+    {
+      "text": "부터",
+      "x": 131.714,
+      "y": 716.286,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.299
+    },
+    {
+      "text": "최",
+      "x": 157.429,
+      "y": 716.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.369
+    },
+    {
+      "text": "적",
+      "x": 168.0,
+      "y": 716.286,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.865
+    },
+    {
+      "text": "해",
+      "x": 178.857,
+      "y": 716.286,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.223
+    },
+    {
+      "text": "를",
+      "x": 188.571,
+      "y": 716.571,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 79.147
+    },
+    {
+      "text": "구",
+      "x": 202.857,
+      "y": 716.857,
+      "width": 7.429,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.891
+    },
+    {
+      "text": "성",
+      "x": 212.0,
+      "y": 716.286,
+      "width": 30.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.425
+    },
+    {
+      "text": "한",
+      "x": 223.429,
+      "y": 715.143,
+      "width": 10.0,
+      "height": 14.286,
+      "fontSize": 14.286,
+      "confidence": 93.284
+    },
+    {
+      "text": "다.",
+      "x": 233.143,
+      "y": 715.143,
+      "width": 10.286,
+      "height": 14.286,
+      "fontSize": 14.286,
+      "confidence": 96.816
+    },
+    {
+      "text": "행렬",
+      "x": 44.0,
+      "y": 748.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.293
+    },
+    {
+      "text": "체",
+      "x": 70.571,
+      "y": 748.286,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.276
+    },
+    {
+      "text": "인",
+      "x": 80.857,
+      "y": 748.286,
+      "width": 6.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.291
+    },
+    {
+      "text": "을",
+      "x": 91.143,
+      "y": 748.286,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": "계",
+      "x": 104.857,
+      "y": 748.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.12
+    },
+    {
+      "text": "산",
+      "x": 115.143,
+      "y": 748.286,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.264
+    },
+    {
+      "text": "하는",
+      "x": 126.286,
+      "y": 748.286,
+      "width": 15.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.301
+    },
+    {
+      "text": "데",
+      "x": 149.714,
+      "y": 748.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.298
+    },
+    {
+      "text": "드는",
+      "x": 164.0,
+      "y": 748.571,
+      "width": 17.429,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.134
+    },
+    {
+      "text": "HS:",
+      "x": 189.429,
+      "y": 748.286,
+      "width": 25.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 57.722
+    },
+    {
+      "text": "4,",
+      "x": 229.143,
+      "y": 749.714,
+      "width": 19.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.336
+    },
+    {
+      "text": ",",
+      "x": 243.429,
+      "y": 747.143,
+      "width": 3.714,
+      "height": 14.857,
+      "fontSize": 14.857,
+      "confidence": 90.336
+    },
+    {
+      "text": "계산",
+      "x": 254.857,
+      "y": 748.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.362
+    },
+    {
+      "text": "비용",
+      "x": 280.286,
+      "y": 748.286,
+      "width": 18.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.631
+    },
+    {
+      "text": "+",
+      "x": 308.286,
+      "y": 751.143,
+      "width": 1.714,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 76.918
+    },
+    {
+      "text": "4,,,",
+      "x": 317.143,
+      "y": 749.714,
+      "width": 30.571,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 47.735
+    },
+    {
+      "text": ",",
+      "x": 342.571,
+      "y": 747.143,
+      "width": 4.857,
+      "height": 14.857,
+      "fontSize": 14.857,
+      "confidence": 67.142
+    },
+    {
+      "text": "계산",
+      "x": 354.286,
+      "y": 748.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.783
+    },
+    {
+      "text": "비용",
+      "x": 379.714,
+      "y": 748.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.78
+    },
+    {
+      "text": "+",
+      "x": 404.286,
+      "y": 751.143,
+      "width": 4.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 95.661
+    },
+    {
+      "text": "이",
+      "x": 416.286,
+      "y": 748.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": "SS",
+      "x": 430.857,
+      "y": 748.286,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.427
+    },
+    {
+      "text": "곱하는",
+      "x": 456.0,
+      "y": 748.286,
+      "width": 28.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.935
+    },
+    {
+      "text": "비용",
+      "x": 491.429,
+      "y": 748.286,
+      "width": 18.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.702
+    },
+    {
+      "text": "-",
+      "x": 282.857,
+      "y": 821.429,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 91.815
+    },
+    {
+      "text": "52",
+      "x": 292.857,
+      "y": 818.0,
+      "width": 9.714,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 90.82
+    },
+    {
+      "text": "-",
+      "x": 308.571,
+      "y": 821.429,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 90.82
+    }
+  ],
+  "ocrEngine": "tesseract",
+  "ocrLanguage": "kor+eng",
+  "displayRenderScale": 2.2,
+  "ocrRenderScale": 3.5
+}

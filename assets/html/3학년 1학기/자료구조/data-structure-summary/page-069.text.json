@@ -1,0 +1,4703 @@
+{
+  "pageNumber": 69,
+  "sourcePdf": "assets/pdfs/3학년 1학기/자료구조/자료구조 기말고사 총정리 part2.pdf",
+  "sourcePageNumber": 12,
+  "width": 595.0,
+  "height": 841.0,
+  "text": "typedef struct GraphTypef 1 2 3 4 5 6 int n; // 정점의개수 0| 0 7 | INF x. 3 | 10 | INF int weight[MAX][MAX]; // 인접행렬 1|7| o| 4] 10| 2 | 6 1 따 }GType; 2 INF] 4 | 0 | 2 | INF] INF ： ' 3|1 | 10} 2 0 9 4 int A[MAX][MAX]; // 최단경로거리행렬 4| 3| 2 | INF] 0 | 13] 5 5| 6 | INF) 9 | 13! O | INF void Floyd(GType* g) 6 INF] 4 | 5 [INF| 0 Q ] J 4 5 6 for (i = 0; i<g->n; i++) 인접행렬을최단경로 .101 for (j = 0; j<g->n; j++) 거리행렬 Aol 복사 : 10 | | 4] 0| 2[ 6 | 10 [INF int i, j, k; printA(g); for (k = 0; k<g->n; k++) { // 각정점을순서대로아고에 te | 0 1 빠 for (i = 0; i<g->n; i++) HAS 모든행에대해 for (j = 0; j<g->n; j++) = //AS| 모든열에대해 iL = a if + 시티] 40101) 0| 0| 7| 13] 3 | 10 |1 바 | 시 11100] = ALi)[k] + 시 0]; 1|7| 0| 4| 6 | 2| 6 11 바 printA(g); 2] 6 | 10 [INF } 3/13 6| 0| 8| 9 | 4 |} 4| 3| 61 8| 0| 8| 5 int main(void) 510] 6 | 10] 9 | 8 | 0 | INF] { 6 | INF| INF| INF) 4 5 | INF] 0 GType g={7, 0 ] 2 j 4 5 6 0|0] 7|] 끄 3 [10] 17 1|7| 0] 4] 6| 2 | 6 |10 [6/10] 6 6| 0| 9 | 4 41312] 6| 8] 0| 8] 5 5110] 6|10] 8| 0 | 3 6| 4| 5 | 13| 0 을 0, 7, INF, INF, 3, 10, INF}, {7, 0, 4, 10, 2, 6, INF}, {INF, 4, 0, 2, INF, INF, INF 3, {INF, 10, 2, 0, 11, 9, 4}, {3, 2, INF, 11, 0, INF, 5}, { 10, 6, INF, 9, INF, 0, INF}, { INF, INF, INF, 4, 5, INF, 0}} 4 0 1 ? 3 4 5 6 Floyd(&g); of o] 57 9J11[ 3 [10/8 return 0; 1|5| 0| 6| 2| 6| 7 | } 6 3/11; 6] 2} 0| 6] 8| 0| 8| 5 Floyd 알고리즘복잡도 5| 10| 6|10| 9 | 0] 13 개의정점이있다면, floyd2| 최단경로알고리즘은 3 중반복문이 6| 8] 7| 6| 0 실행되므시가본잡도는이되 ㅁ ㄷ 실행되므로시간복잡도는 OC ) 이된다. ccs Oo; oO] 9] 11] 3 | 10] 8 모든정점상의최단경로를구하려면알고리즘 (n?)S nH 1151] 014] 6| 2] 7 반복해도되며, 이경우전체복잡도는이된다. | 5|10| 6|10| 9| 0 |13 6[8|7| 6| 51110 - 43 -",
+  "spans": [
+    {
+      "text": "typedef",
+      "x": 36.571,
+      "y": 40.0,
+      "width": 36.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 96.797
+    },
+    {
+      "text": "struct",
+      "x": 76.857,
+      "y": 41.143,
+      "width": 27.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 93.141
+    },
+    {
+      "text": "GraphTypef",
+      "x": 108.286,
+      "y": 40.0,
+      "width": 54.571,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 64.91
+    },
+    {
+      "text": "1",
+      "x": 438.571,
+      "y": 35.714,
+      "width": 1.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 65.404
+    },
+    {
+      "text": "2",
+      "x": 459.143,
+      "y": 35.714,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 49.465
+    },
+    {
+      "text": "3",
+      "x": 481.714,
+      "y": 35.714,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 65.628
+    },
+    {
+      "text": "4",
+      "x": 503.143,
+      "y": 35.714,
+      "width": 4.0,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 62.127
+    },
+    {
+      "text": "5",
+      "x": 525.714,
+      "y": 35.714,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 91.775
+    },
+    {
+      "text": "6",
+      "x": 546.857,
+      "y": 35.714,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 83.218
+    },
+    {
+      "text": "int",
+      "x": 51.429,
+      "y": 53.143,
+      "width": 12.571,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 91.728
+    },
+    {
+      "text": "n;",
+      "x": 68.0,
+      "y": 53.714,
+      "width": 8.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 91.728
+    },
+    {
+      "text": "//",
+      "x": 165.714,
+      "y": 52.857,
+      "width": 9.429,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 91.435
+    },
+    {
+      "text": "정",
+      "x": 177.714,
+      "y": 51.714,
+      "width": 7.429,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 87.338
+    },
+    {
+      "text": "점",
+      "x": 188.857,
+      "y": 51.714,
+      "width": 6.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.631
+    },
+    {
+      "text": "의",
+      "x": 200.0,
+      "y": 51.714,
+      "width": 6.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.431
+    },
+    {
+      "text": "개수",
+      "x": 212.571,
+      "y": 51.714,
+      "width": 19.429,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.242
+    },
+    {
+      "text": "0|",
+      "x": 396.857,
+      "y": 50.286,
+      "width": 4.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 86.257
+    },
+    {
+      "text": "0",
+      "x": 416.0,
+      "y": 49.429,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 94.015
+    },
+    {
+      "text": "7",
+      "x": 438.571,
+      "y": 49.429,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.773
+    },
+    {
+      "text": "|",
+      "x": 446.857,
+      "y": 48.286,
+      "width": 4.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 73.578
+    },
+    {
+      "text": "INF",
+      "x": 456.571,
+      "y": 49.429,
+      "width": 12.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 94.958
+    },
+    {
+      "text": "x.",
+      "x": 478.286,
+      "y": 47.429,
+      "width": 17.143,
+      "height": 22.571,
+      "fontSize": 22.571,
+      "confidence": 54.817
+    },
+    {
+      "text": "3",
+      "x": 504.571,
+      "y": 49.429,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 72.021
+    },
+    {
+      "text": "|",
+      "x": 515.143,
+      "y": 48.286,
+      "width": 4.571,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 72.021
+    },
+    {
+      "text": "10",
+      "x": 524.286,
+      "y": 49.429,
+      "width": 8.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 88.373
+    },
+    {
+      "text": "|",
+      "x": 536.857,
+      "y": 48.286,
+      "width": 4.571,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 88.373
+    },
+    {
+      "text": "INF",
+      "x": 543.429,
+      "y": 49.429,
+      "width": 13.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.276
+    },
+    {
+      "text": "int",
+      "x": 51.429,
+      "y": 65.429,
+      "width": 12.857,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 93.274
+    },
+    {
+      "text": "weight[MAX][MAX];",
+      "x": 67.714,
+      "y": 65.143,
+      "width": 90.286,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 90.371
+    },
+    {
+      "text": "//",
+      "x": 165.714,
+      "y": 65.143,
+      "width": 9.429,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 43.102
+    },
+    {
+      "text": "인",
+      "x": 177.429,
+      "y": 64.0,
+      "width": 7.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.442
+    },
+    {
+      "text": "접",
+      "x": 188.0,
+      "y": 64.0,
+      "width": 7.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.751
+    },
+    {
+      "text": "행렬",
+      "x": 198.571,
+      "y": 64.0,
+      "width": 18.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 89.203
+    },
+    {
+      "text": "1|7|",
+      "x": 398.286,
+      "y": 61.714,
+      "width": 21.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 81.374
+    },
+    {
+      "text": "o|",
+      "x": 438.571,
+      "y": 61.714,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 59.29
+    },
+    {
+      "text": "4]",
+      "x": 460.571,
+      "y": 61.714,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 63.465
+    },
+    {
+      "text": "10|",
+      "x": 480.571,
+      "y": 61.714,
+      "width": 8.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 63.465
+    },
+    {
+      "text": "2",
+      "x": 504.571,
+      "y": 61.714,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 46.469
+    },
+    {
+      "text": "|",
+      "x": 516.0,
+      "y": 58.571,
+      "width": 5.714,
+      "height": 14.857,
+      "fontSize": 14.857,
+      "confidence": 46.469
+    },
+    {
+      "text": "6",
+      "x": 526.286,
+      "y": 61.714,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.01
+    },
+    {
+      "text": "1",
+      "x": 544.286,
+      "y": 61.714,
+      "width": 2.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 36.685
+    },
+    {
+      "text": "따",
+      "x": 548.286,
+      "y": 61.714,
+      "width": 8.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 37.51
+    },
+    {
+      "text": "}GType;",
+      "x": 36.286,
+      "y": 76.571,
+      "width": 36.0,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 79.978
+    },
+    {
+      "text": "2",
+      "x": 396.857,
+      "y": 74.857,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 82.724
+    },
+    {
+      "text": "INF]",
+      "x": 406.286,
+      "y": 74.286,
+      "width": 20.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 52.688
+    },
+    {
+      "text": "4",
+      "x": 438.571,
+      "y": 74.286,
+      "width": 4.286,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 71.504
+    },
+    {
+      "text": "|",
+      "x": 448.286,
+      "y": 71.714,
+      "width": 5.714,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 71.504
+    },
+    {
+      "text": "0",
+      "x": 460.571,
+      "y": 74.286,
+      "width": 4.0,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 73.051
+    },
+    {
+      "text": "|",
+      "x": 470.0,
+      "y": 71.714,
+      "width": 4.571,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 85.639
+    },
+    {
+      "text": "2",
+      "x": 481.714,
+      "y": 74.286,
+      "width": 4.286,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 90.299
+    },
+    {
+      "text": "|",
+      "x": 491.714,
+      "y": 71.714,
+      "width": 4.571,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 87.56
+    },
+    {
+      "text": "INF]",
+      "x": 500.286,
+      "y": 74.286,
+      "width": 13.143,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 27.132
+    },
+    {
+      "text": "INF",
+      "x": 544.286,
+      "y": 74.286,
+      "width": 12.857,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 84.05
+    },
+    {
+      "text": "：",
+      "x": 28.286,
+      "y": 85.429,
+      "width": 2.0,
+      "height": 1.714,
+      "fontSize": 1.714,
+      "confidence": 59.633
+    },
+    {
+      "text": "'",
+      "x": 70.571,
+      "y": 84.0,
+      "width": 1.714,
+      "height": 3.714,
+      "fontSize": 3.714,
+      "confidence": 34.567
+    },
+    {
+      "text": "3|1",
+      "x": 397.429,
+      "y": 86.571,
+      "width": 28.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 75.377
+    },
+    {
+      "text": "|",
+      "x": 428.0,
+      "y": 85.429,
+      "width": 5.143,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 91.514
+    },
+    {
+      "text": "10}",
+      "x": 436.571,
+      "y": 86.571,
+      "width": 8.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 63.047
+    },
+    {
+      "text": "2",
+      "x": 460.571,
+      "y": 86.571,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.042
+    },
+    {
+      "text": "0",
+      "x": 482.571,
+      "y": 86.571,
+      "width": 4.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 36.577
+    },
+    {
+      "text": "9",
+      "x": 526.286,
+      "y": 86.571,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 94.554
+    },
+    {
+      "text": "4",
+      "x": 548.286,
+      "y": 86.571,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.062
+    },
+    {
+      "text": "int",
+      "x": 36.571,
+      "y": 103.429,
+      "width": 12.857,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 93.131
+    },
+    {
+      "text": "A[MAX][MAX];",
+      "x": 55.143,
+      "y": 100.0,
+      "width": 61.429,
+      "height": 14.857,
+      "fontSize": 14.857,
+      "confidence": 90.192
+    },
+    {
+      "text": "//",
+      "x": 165.714,
+      "y": 103.143,
+      "width": 9.429,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 92.342
+    },
+    {
+      "text": "최",
+      "x": 177.143,
+      "y": 102.0,
+      "width": 8.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.052
+    },
+    {
+      "text": "단",
+      "x": 188.0,
+      "y": 102.0,
+      "width": 8.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.3
+    },
+    {
+      "text": "경",
+      "x": 199.143,
+      "y": 102.0,
+      "width": 7.429,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.277
+    },
+    {
+      "text": "로",
+      "x": 210.0,
+      "y": 102.286,
+      "width": 8.0,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.292
+    },
+    {
+      "text": "거",
+      "x": 220.857,
+      "y": 102.0,
+      "width": 7.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.278
+    },
+    {
+      "text": "리",
+      "x": 231.714,
+      "y": 102.0,
+      "width": 6.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.147
+    },
+    {
+      "text": "행렬",
+      "x": 242.857,
+      "y": 102.0,
+      "width": 17.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.942
+    },
+    {
+      "text": "4|",
+      "x": 396.857,
+      "y": 99.429,
+      "width": 3.429,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 83.894
+    },
+    {
+      "text": "3|",
+      "x": 418.286,
+      "y": 97.143,
+      "width": 15.714,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 75.714
+    },
+    {
+      "text": "2",
+      "x": 438.0,
+      "y": 98.857,
+      "width": 4.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 87.054
+    },
+    {
+      "text": "|",
+      "x": 447.714,
+      "y": 97.143,
+      "width": 4.0,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 84.842
+    },
+    {
+      "text": "INF]",
+      "x": 456.571,
+      "y": 98.857,
+      "width": 12.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 74.776
+    },
+    {
+      "text": "0",
+      "x": 504.571,
+      "y": 98.857,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 60.222
+    },
+    {
+      "text": "|",
+      "x": 514.571,
+      "y": 97.143,
+      "width": 4.0,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 60.222
+    },
+    {
+      "text": "13]",
+      "x": 524.286,
+      "y": 98.857,
+      "width": 8.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 63.152
+    },
+    {
+      "text": "5",
+      "x": 548.286,
+      "y": 98.857,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.615
+    },
+    {
+      "text": "5|",
+      "x": 396.857,
+      "y": 111.714,
+      "width": 3.429,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 67.82
+    },
+    {
+      "text": "6",
+      "x": 438.571,
+      "y": 111.714,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 83.267
+    },
+    {
+      "text": "|",
+      "x": 448.0,
+      "y": 110.0,
+      "width": 5.143,
+      "height": 11.429,
+      "fontSize": 11.429,
+      "confidence": 83.267
+    },
+    {
+      "text": "INF)",
+      "x": 456.571,
+      "y": 111.143,
+      "width": 12.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 57.759
+    },
+    {
+      "text": "9",
+      "x": 482.571,
+      "y": 111.714,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 94.038
+    },
+    {
+      "text": "|",
+      "x": 493.714,
+      "y": 110.0,
+      "width": 5.143,
+      "height": 11.429,
+      "fontSize": 11.429,
+      "confidence": 90.843
+    },
+    {
+      "text": "13!",
+      "x": 502.286,
+      "y": 111.714,
+      "width": 8.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 25.993
+    },
+    {
+      "text": "O",
+      "x": 526.286,
+      "y": 111.714,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 84.883
+    },
+    {
+      "text": "|",
+      "x": 536.571,
+      "y": 110.0,
+      "width": 4.0,
+      "height": 11.429,
+      "fontSize": 11.429,
+      "confidence": 85.298
+    },
+    {
+      "text": "INF",
+      "x": 544.286,
+      "y": 111.143,
+      "width": 12.857,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 85.298
+    },
+    {
+      "text": "void",
+      "x": 36.286,
+      "y": 128.571,
+      "width": 18.0,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.306
+    },
+    {
+      "text": "Floyd(GType*",
+      "x": 60.0,
+      "y": 128.571,
+      "width": 62.286,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 88.679
+    },
+    {
+      "text": "g)",
+      "x": 125.714,
+      "y": 128.857,
+      "width": 8.571,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 91.924
+    },
+    {
+      "text": "6",
+      "x": 396.857,
+      "y": 124.857,
+      "width": 4.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 92.539
+    },
+    {
+      "text": "INF]",
+      "x": 456.571,
+      "y": 124.0,
+      "width": 12.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 66.746
+    },
+    {
+      "text": "4",
+      "x": 482.571,
+      "y": 124.0,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.076
+    },
+    {
+      "text": "|",
+      "x": 492.0,
+      "y": 119.429,
+      "width": 5.714,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 90.076
+    },
+    {
+      "text": "5",
+      "x": 504.571,
+      "y": 124.0,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 88.885
+    },
+    {
+      "text": "[INF|",
+      "x": 522.286,
+      "y": 124.0,
+      "width": 12.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 69.124
+    },
+    {
+      "text": "0",
+      "x": 548.286,
+      "y": 124.0,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.575
+    },
+    {
+      "text": "Q",
+      "x": 415.429,
+      "y": 148.857,
+      "width": 4.0,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 85.765
+    },
+    {
+      "text": "]",
+      "x": 438.571,
+      "y": 148.0,
+      "width": 1.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 67.882
+    },
+    {
+      "text": "J",
+      "x": 484.0,
+      "y": 148.857,
+      "width": 1.143,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 41.823
+    },
+    {
+      "text": "4",
+      "x": 503.714,
+      "y": 148.0,
+      "width": 2.857,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 96.469
+    },
+    {
+      "text": "5",
+      "x": 525.714,
+      "y": 148.0,
+      "width": 3.429,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 90.268
+    },
+    {
+      "text": "6",
+      "x": 546.857,
+      "y": 148.857,
+      "width": 4.286,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 96.816
+    },
+    {
+      "text": "for",
+      "x": 51.429,
+      "y": 166.571,
+      "width": 12.571,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 92.531
+    },
+    {
+      "text": "(i",
+      "x": 69.143,
+      "y": 166.857,
+      "width": 5.714,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 91.443
+    },
+    {
+      "text": "=",
+      "x": 80.571,
+      "y": 170.0,
+      "width": 3.143,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 83.784
+    },
+    {
+      "text": "0;",
+      "x": 87.429,
+      "y": 166.571,
+      "width": 8.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 83.784
+    },
+    {
+      "text": "i<g->n;",
+      "x": 100.857,
+      "y": 160.571,
+      "width": 30.571,
+      "height": 20.286,
+      "fontSize": 20.286,
+      "confidence": 66.178
+    },
+    {
+      "text": "i++)",
+      "x": 136.286,
+      "y": 160.571,
+      "width": 18.286,
+      "height": 20.286,
+      "fontSize": 20.286,
+      "confidence": 92.814
+    },
+    {
+      "text": "인",
+      "x": 269.714,
+      "y": 167.429,
+      "width": 7.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.164
+    },
+    {
+      "text": "접",
+      "x": 279.714,
+      "y": 167.429,
+      "width": 6.571,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 90.213
+    },
+    {
+      "text": "행",
+      "x": 288.857,
+      "y": 167.429,
+      "width": 7.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 91.986
+    },
+    {
+      "text": "렬",
+      "x": 298.286,
+      "y": 167.429,
+      "width": 7.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 90.836
+    },
+    {
+      "text": "을",
+      "x": 307.714,
+      "y": 167.429,
+      "width": 6.571,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.306
+    },
+    {
+      "text": "최",
+      "x": 320.286,
+      "y": 167.429,
+      "width": 7.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.252
+    },
+    {
+      "text": "단",
+      "x": 330.0,
+      "y": 167.429,
+      "width": 8.0,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.217
+    },
+    {
+      "text": "경로",
+      "x": 339.429,
+      "y": 167.429,
+      "width": 17.429,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.99
+    },
+    {
+      "text": ".101",
+      "x": 524.286,
+      "y": 161.714,
+      "width": 8.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 53.845
+    },
+    {
+      "text": "for",
+      "x": 79.429,
+      "y": 179.429,
+      "width": 13.429,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.129
+    },
+    {
+      "text": "(j",
+      "x": 97.429,
+      "y": 179.714,
+      "width": 6.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 91.525
+    },
+    {
+      "text": "=",
+      "x": 109.143,
+      "y": 182.571,
+      "width": 3.429,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 87.053
+    },
+    {
+      "text": "0;",
+      "x": 116.571,
+      "y": 179.429,
+      "width": 8.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 87.053
+    },
+    {
+      "text": "j<g->n;",
+      "x": 129.714,
+      "y": 173.143,
+      "width": 32.286,
+      "height": 17.714,
+      "fontSize": 17.714,
+      "confidence": 81.95
+    },
+    {
+      "text": "j++)",
+      "x": 166.857,
+      "y": 179.714,
+      "width": 18.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 94.428
+    },
+    {
+      "text": "거",
+      "x": 274.286,
+      "y": 178.857,
+      "width": 7.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.262
+    },
+    {
+      "text": "리",
+      "x": 285.143,
+      "y": 178.857,
+      "width": 5.714,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.286
+    },
+    {
+      "text": "행렬",
+      "x": 293.429,
+      "y": 178.857,
+      "width": 35.714,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 96.307
+    },
+    {
+      "text": "Aol",
+      "x": 315.714,
+      "y": 173.429,
+      "width": 15.143,
+      "height": 17.714,
+      "fontSize": 17.714,
+      "confidence": 58.16
+    },
+    {
+      "text": "복사",
+      "x": 334.571,
+      "y": 178.857,
+      "width": 17.429,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 97.008
+    },
+    {
+      "text": ":",
+      "x": 438.571,
+      "y": 174.857,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 35.4
+    },
+    {
+      "text": "10",
+      "x": 480.571,
+      "y": 174.857,
+      "width": 8.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 38.624
+    },
+    {
+      "text": "|",
+      "x": 492.571,
+      "y": 173.714,
+      "width": 3.714,
+      "height": 17.714,
+      "fontSize": 17.714,
+      "confidence": 74.27
+    },
+    {
+      "text": "|",
+      "x": 506.857,
+      "y": 174.857,
+      "width": 1.143,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 61.598
+    },
+    {
+      "text": "4]",
+      "x": 440.286,
+      "y": 182.0,
+      "width": 15.714,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 64.768
+    },
+    {
+      "text": "0|",
+      "x": 462.857,
+      "y": 182.0,
+      "width": 15.429,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 84.858
+    },
+    {
+      "text": "2[",
+      "x": 482.571,
+      "y": 182.0,
+      "width": 13.714,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 42.22
+    },
+    {
+      "text": "6",
+      "x": 504.571,
+      "y": 187.143,
+      "width": 2.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.045
+    },
+    {
+      "text": "|",
+      "x": 512.286,
+      "y": 182.0,
+      "width": 5.714,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 75.811
+    },
+    {
+      "text": "10",
+      "x": 524.286,
+      "y": 186.286,
+      "width": 8.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 75.811
+    },
+    {
+      "text": "[INF",
+      "x": 536.857,
+      "y": 182.0,
+      "width": 20.286,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 84.87
+    },
+    {
+      "text": "int",
+      "x": 51.429,
+      "y": 154.286,
+      "width": 12.857,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 92.619
+    },
+    {
+      "text": "i,",
+      "x": 67.714,
+      "y": 154.286,
+      "width": 6.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 92.619
+    },
+    {
+      "text": "j,",
+      "x": 77.714,
+      "y": 154.286,
+      "width": 6.857,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 92.704
+    },
+    {
+      "text": "k;",
+      "x": 89.143,
+      "y": 154.0,
+      "width": 8.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 92.976
+    },
+    {
+      "text": "printA(g);",
+      "x": 52.0,
+      "y": 205.714,
+      "width": 44.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 74.12
+    },
+    {
+      "text": "for",
+      "x": 51.429,
+      "y": 230.0,
+      "width": 13.714,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 88.754
+    },
+    {
+      "text": "(k",
+      "x": 69.143,
+      "y": 230.0,
+      "width": 8.571,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 88.754
+    },
+    {
+      "text": "=",
+      "x": 82.286,
+      "y": 233.429,
+      "width": 3.714,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 95.15
+    },
+    {
+      "text": "0;",
+      "x": 90.857,
+      "y": 230.0,
+      "width": 7.429,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 93.225
+    },
+    {
+      "text": "k<g->n;",
+      "x": 103.143,
+      "y": 230.0,
+      "width": 34.0,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 70.736
+    },
+    {
+      "text": "k++)",
+      "x": 142.0,
+      "y": 230.0,
+      "width": 27.143,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 74.147
+    },
+    {
+      "text": "{",
+      "x": 165.143,
+      "y": 222.571,
+      "width": 5.429,
+      "height": 20.286,
+      "fontSize": 20.286,
+      "confidence": 92.212
+    },
+    {
+      "text": "//",
+      "x": 251.429,
+      "y": 229.143,
+      "width": 20.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 81.09
+    },
+    {
+      "text": "각",
+      "x": 261.429,
+      "y": 222.857,
+      "width": 8.0,
+      "height": 20.286,
+      "fontSize": 20.286,
+      "confidence": 82.105
+    },
+    {
+      "text": "정",
+      "x": 276.857,
+      "y": 229.143,
+      "width": 7.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 93.196
+    },
+    {
+      "text": "점",
+      "x": 287.429,
+      "y": 228.857,
+      "width": 8.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.514
+    },
+    {
+      "text": "을",
+      "x": 298.0,
+      "y": 228.857,
+      "width": 6.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.126
+    },
+    {
+      "text": "순",
+      "x": 312.0,
+      "y": 229.143,
+      "width": 18.571,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 93.291
+    },
+    {
+      "text": "서",
+      "x": 322.286,
+      "y": 222.857,
+      "width": 10.571,
+      "height": 20.286,
+      "fontSize": 20.286,
+      "confidence": 93.258
+    },
+    {
+      "text": "대로",
+      "x": 333.714,
+      "y": 228.857,
+      "width": 19.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 97.02
+    },
+    {
+      "text": "아고",
+      "x": 396.857,
+      "y": 224.0,
+      "width": 72.571,
+      "height": 19.143,
+      "fontSize": 19.143,
+      "confidence": 25.595
+    },
+    {
+      "text": "에",
+      "x": 482.571,
+      "y": 224.0,
+      "width": 4.0,
+      "height": 19.143,
+      "fontSize": 19.143,
+      "confidence": 39.384
+    },
+    {
+      "text": "te",
+      "x": 503.714,
+      "y": 224.0,
+      "width": 4.857,
+      "height": 19.143,
+      "fontSize": 19.143,
+      "confidence": 29.846
+    },
+    {
+      "text": "|",
+      "x": 516.0,
+      "y": 222.857,
+      "width": 4.286,
+      "height": 21.429,
+      "fontSize": 21.429,
+      "confidence": 27.487
+    },
+    {
+      "text": "0",
+      "x": 521.714,
+      "y": 224.0,
+      "width": 13.714,
+      "height": 19.143,
+      "fontSize": 19.143,
+      "confidence": 27.487
+    },
+    {
+      "text": "1",
+      "x": 544.286,
+      "y": 224.0,
+      "width": 2.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 43.457
+    },
+    {
+      "text": "빠",
+      "x": 548.286,
+      "y": 224.0,
+      "width": 8.857,
+      "height": 19.143,
+      "fontSize": 19.143,
+      "confidence": 27.585
+    },
+    {
+      "text": "for",
+      "x": 79.429,
+      "y": 242.857,
+      "width": 13.429,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 96.831
+    },
+    {
+      "text": "(i",
+      "x": 96.857,
+      "y": 243.143,
+      "width": 5.714,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 94.76
+    },
+    {
+      "text": "=",
+      "x": 106.857,
+      "y": 246.0,
+      "width": 4.571,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 94.76
+    },
+    {
+      "text": "0;",
+      "x": 115.429,
+      "y": 242.857,
+      "width": 8.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.196
+    },
+    {
+      "text": "i<g->n;",
+      "x": 128.286,
+      "y": 243.143,
+      "width": 32.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 92.211
+    },
+    {
+      "text": "i++)",
+      "x": 164.857,
+      "y": 243.143,
+      "width": 17.429,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 95.826
+    },
+    {
+      "text": "HAS",
+      "x": 251.429,
+      "y": 242.0,
+      "width": 23.429,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 65.554
+    },
+    {
+      "text": "모든",
+      "x": 282.857,
+      "y": 242.0,
+      "width": 19.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 93.301
+    },
+    {
+      "text": "행",
+      "x": 307.714,
+      "y": 241.714,
+      "width": 18.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.299
+    },
+    {
+      "text": "에",
+      "x": 320.0,
+      "y": 240.571,
+      "width": 7.143,
+      "height": 15.714,
+      "fontSize": 15.714,
+      "confidence": 91.752
+    },
+    {
+      "text": "대해",
+      "x": 332.571,
+      "y": 241.714,
+      "width": 18.857,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 96.98
+    },
+    {
+      "text": "for",
+      "x": 122.286,
+      "y": 256.0,
+      "width": 13.714,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.259
+    },
+    {
+      "text": "(j",
+      "x": 140.0,
+      "y": 256.286,
+      "width": 6.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 92.963
+    },
+    {
+      "text": "=",
+      "x": 150.571,
+      "y": 259.143,
+      "width": 4.857,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 94.269
+    },
+    {
+      "text": "0;",
+      "x": 159.143,
+      "y": 255.714,
+      "width": 8.571,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 93.036
+    },
+    {
+      "text": "j<g->n;",
+      "x": 171.714,
+      "y": 256.286,
+      "width": 33.143,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 79.25
+    },
+    {
+      "text": "j++)",
+      "x": 209.143,
+      "y": 256.286,
+      "width": 18.857,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 86.329
+    },
+    {
+      "text": "=",
+      "x": 241.143,
+      "y": 253.143,
+      "width": 5.429,
+      "height": 16.0,
+      "fontSize": 16.0,
+      "confidence": 44.469
+    },
+    {
+      "text": "//AS|",
+      "x": 251.429,
+      "y": 254.286,
+      "width": 25.714,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 62.658
+    },
+    {
+      "text": "모든",
+      "x": 282.857,
+      "y": 254.571,
+      "width": 19.714,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.991
+    },
+    {
+      "text": "열에",
+      "x": 308.0,
+      "y": 254.286,
+      "width": 18.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.287
+    },
+    {
+      "text": "대해",
+      "x": 332.571,
+      "y": 254.286,
+      "width": 18.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 97.011
+    },
+    {
+      "text": "iL",
+      "x": 415.429,
+      "y": 260.286,
+      "width": 24.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 65.241
+    },
+    {
+      "text": "=",
+      "x": 459.143,
+      "y": 260.286,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 58.74
+    },
+    {
+      "text": "a",
+      "x": 481.714,
+      "y": 260.286,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 53.217
+    },
+    {
+      "text": "if",
+      "x": 165.143,
+      "y": 268.286,
+      "width": 6.857,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 92.63
+    },
+    {
+      "text": "+",
+      "x": 213.143,
+      "y": 270.571,
+      "width": 4.857,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 93.286
+    },
+    {
+      "text": "시티]",
+      "x": 218.857,
+      "y": 268.0,
+      "width": 32.571,
+      "height": 15.143,
+      "fontSize": 15.143,
+      "confidence": 34.755
+    },
+    {
+      "text": "40101)",
+      "x": 256.286,
+      "y": 268.286,
+      "width": 40.0,
+      "height": 14.857,
+      "fontSize": 14.857,
+      "confidence": 49.881
+    },
+    {
+      "text": "0|",
+      "x": 396.857,
+      "y": 274.857,
+      "width": 4.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 81.283
+    },
+    {
+      "text": "0|",
+      "x": 418.286,
+      "y": 268.286,
+      "width": 14.571,
+      "height": 15.143,
+      "fontSize": 15.143,
+      "confidence": 87.307
+    },
+    {
+      "text": "7|",
+      "x": 438.571,
+      "y": 274.0,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 84.023
+    },
+    {
+      "text": "13]",
+      "x": 480.571,
+      "y": 271.429,
+      "width": 14.857,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 83.097
+    },
+    {
+      "text": "3",
+      "x": 504.571,
+      "y": 274.0,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 95.242
+    },
+    {
+      "text": "|",
+      "x": 515.714,
+      "y": 268.286,
+      "width": 5.143,
+      "height": 15.143,
+      "fontSize": 15.143,
+      "confidence": 95.177
+    },
+    {
+      "text": "10",
+      "x": 524.286,
+      "y": 274.0,
+      "width": 8.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.997
+    },
+    {
+      "text": "|1",
+      "x": 537.429,
+      "y": 268.286,
+      "width": 8.857,
+      "height": 15.143,
+      "fontSize": 15.143,
+      "confidence": 76.774
+    },
+    {
+      "text": "바",
+      "x": 548.286,
+      "y": 274.0,
+      "width": 8.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 76.371
+    },
+    {
+      "text": "|",
+      "x": 90.286,
+      "y": 294.286,
+      "width": 1.429,
+      "height": 1.429,
+      "fontSize": 1.429,
+      "confidence": 71.002
+    },
+    {
+      "text": "시",
+      "x": 207.429,
+      "y": 281.143,
+      "width": 10.286,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 77.401
+    },
+    {
+      "text": "11100]",
+      "x": 218.286,
+      "y": 280.0,
+      "width": 17.714,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 48.189
+    },
+    {
+      "text": "=",
+      "x": 240.571,
+      "y": 284.571,
+      "width": 4.571,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 92.722
+    },
+    {
+      "text": "ALi)[k]",
+      "x": 248.286,
+      "y": 281.143,
+      "width": 29.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 26.39
+    },
+    {
+      "text": "+",
+      "x": 282.571,
+      "y": 283.714,
+      "width": 4.571,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 93.138
+    },
+    {
+      "text": "시",
+      "x": 293.714,
+      "y": 281.143,
+      "width": 10.286,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 33.145
+    },
+    {
+      "text": "0];",
+      "x": 310.571,
+      "y": 281.143,
+      "width": 13.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 43.908
+    },
+    {
+      "text": "1|7|",
+      "x": 397.429,
+      "y": 286.286,
+      "width": 22.571,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 74.422
+    },
+    {
+      "text": "0|",
+      "x": 438.571,
+      "y": 286.286,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 83.227
+    },
+    {
+      "text": "4|",
+      "x": 460.571,
+      "y": 286.286,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 84.613
+    },
+    {
+      "text": "6",
+      "x": 482.571,
+      "y": 286.286,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 26.551
+    },
+    {
+      "text": "|",
+      "x": 492.571,
+      "y": 280.571,
+      "width": 5.714,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 26.551
+    },
+    {
+      "text": "2|",
+      "x": 503.714,
+      "y": 286.286,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 80.098
+    },
+    {
+      "text": "6",
+      "x": 526.286,
+      "y": 286.286,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 63.52
+    },
+    {
+      "text": "11",
+      "x": 537.429,
+      "y": 280.571,
+      "width": 8.857,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 63.52
+    },
+    {
+      "text": "바",
+      "x": 548.286,
+      "y": 286.286,
+      "width": 8.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 88.238
+    },
+    {
+      "text": "printA(g);",
+      "x": 79.143,
+      "y": 293.143,
+      "width": 45.714,
+      "height": 14.286,
+      "fontSize": 14.286,
+      "confidence": 87.467
+    },
+    {
+      "text": "2]",
+      "x": 481.714,
+      "y": 298.571,
+      "width": 4.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 39.761
+    },
+    {
+      "text": "6",
+      "x": 504.571,
+      "y": 298.571,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 39.761
+    },
+    {
+      "text": "|",
+      "x": 514.571,
+      "y": 294.571,
+      "width": 4.0,
+      "height": 14.286,
+      "fontSize": 14.286,
+      "confidence": 68.692
+    },
+    {
+      "text": "10",
+      "x": 524.286,
+      "y": 298.571,
+      "width": 8.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 28.889
+    },
+    {
+      "text": "[INF",
+      "x": 544.286,
+      "y": 298.571,
+      "width": 12.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 28.889
+    },
+    {
+      "text": "}",
+      "x": 51.429,
+      "y": 306.286,
+      "width": 3.714,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 53.064
+    },
+    {
+      "text": "3/13",
+      "x": 396.857,
+      "y": 311.714,
+      "width": 26.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 39.99
+    },
+    {
+      "text": "6|",
+      "x": 441.714,
+      "y": 305.143,
+      "width": 13.714,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 86.62
+    },
+    {
+      "text": "0|",
+      "x": 482.571,
+      "y": 311.714,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 80.079
+    },
+    {
+      "text": "8|",
+      "x": 503.714,
+      "y": 311.714,
+      "width": 4.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 87.159
+    },
+    {
+      "text": "9",
+      "x": 526.286,
+      "y": 311.714,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 91.946
+    },
+    {
+      "text": "|",
+      "x": 538.0,
+      "y": 305.143,
+      "width": 5.429,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 90.754
+    },
+    {
+      "text": "4",
+      "x": 548.286,
+      "y": 311.714,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.754
+    },
+    {
+      "text": "|}",
+      "x": 28.286,
+      "y": 319.429,
+      "width": 12.0,
+      "height": 12.0,
+      "fontSize": 12.0,
+      "confidence": 77.888
+    },
+    {
+      "text": "4|",
+      "x": 396.857,
+      "y": 324.0,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 46.908
+    },
+    {
+      "text": "3|",
+      "x": 416.571,
+      "y": 324.0,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 46.908
+    },
+    {
+      "text": "61",
+      "x": 460.571,
+      "y": 324.0,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 34.441
+    },
+    {
+      "text": "8|",
+      "x": 484.857,
+      "y": 319.429,
+      "width": 15.429,
+      "height": 14.286,
+      "fontSize": 14.286,
+      "confidence": 75.106
+    },
+    {
+      "text": "0|",
+      "x": 504.571,
+      "y": 324.0,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 66.583
+    },
+    {
+      "text": "8|",
+      "x": 525.714,
+      "y": 324.0,
+      "width": 4.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 52.154
+    },
+    {
+      "text": "5",
+      "x": 548.286,
+      "y": 324.0,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 94.225
+    },
+    {
+      "text": "int",
+      "x": 35.714,
+      "y": 339.429,
+      "width": 13.143,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 93.284
+    },
+    {
+      "text": "main(void)",
+      "x": 52.571,
+      "y": 338.857,
+      "width": 50.857,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 90.472
+    },
+    {
+      "text": "510]",
+      "x": 396.857,
+      "y": 336.286,
+      "width": 26.0,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 46.392
+    },
+    {
+      "text": "6",
+      "x": 438.571,
+      "y": 336.286,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 62.617
+    },
+    {
+      "text": "|",
+      "x": 448.286,
+      "y": 334.0,
+      "width": 4.571,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 62.617
+    },
+    {
+      "text": "10]",
+      "x": 458.571,
+      "y": 336.286,
+      "width": 8.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 37.976
+    },
+    {
+      "text": "9",
+      "x": 482.571,
+      "y": 336.286,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 80.999
+    },
+    {
+      "text": "|",
+      "x": 492.857,
+      "y": 334.0,
+      "width": 5.714,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 80.999
+    },
+    {
+      "text": "8",
+      "x": 503.714,
+      "y": 336.286,
+      "width": 4.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 81.838
+    },
+    {
+      "text": "|",
+      "x": 514.571,
+      "y": 334.0,
+      "width": 4.571,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 85.4
+    },
+    {
+      "text": "0",
+      "x": 526.286,
+      "y": 336.286,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 49.187
+    },
+    {
+      "text": "|",
+      "x": 536.286,
+      "y": 334.0,
+      "width": 3.429,
+      "height": 13.714,
+      "fontSize": 13.714,
+      "confidence": 58.179
+    },
+    {
+      "text": "INF]",
+      "x": 544.286,
+      "y": 336.286,
+      "width": 17.143,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 58.179
+    },
+    {
+      "text": "{",
+      "x": 35.429,
+      "y": 351.714,
+      "width": 4.0,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 88.034
+    },
+    {
+      "text": "6",
+      "x": 396.857,
+      "y": 350.0,
+      "width": 4.0,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 88.496
+    },
+    {
+      "text": "|",
+      "x": 405.714,
+      "y": 347.429,
+      "width": 4.857,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 84.24
+    },
+    {
+      "text": "INF|",
+      "x": 412.571,
+      "y": 348.571,
+      "width": 12.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 82.214
+    },
+    {
+      "text": "INF|",
+      "x": 434.571,
+      "y": 348.571,
+      "width": 12.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 78.566
+    },
+    {
+      "text": "INF)",
+      "x": 456.571,
+      "y": 348.571,
+      "width": 12.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 32.147
+    },
+    {
+      "text": "4",
+      "x": 482.571,
+      "y": 348.571,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 95.658
+    },
+    {
+      "text": "5",
+      "x": 504.571,
+      "y": 348.571,
+      "width": 4.0,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 95.929
+    },
+    {
+      "text": "|",
+      "x": 515.429,
+      "y": 347.429,
+      "width": 4.0,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 36.851
+    },
+    {
+      "text": "INF]",
+      "x": 522.286,
+      "y": 348.571,
+      "width": 12.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 36.851
+    },
+    {
+      "text": "0",
+      "x": 548.286,
+      "y": 348.571,
+      "width": 4.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.069
+    },
+    {
+      "text": "GType",
+      "x": 51.143,
+      "y": 364.571,
+      "width": 28.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 90.578
+    },
+    {
+      "text": "g={7,",
+      "x": 84.0,
+      "y": 364.571,
+      "width": 32.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 89.955
+    },
+    {
+      "text": "0",
+      "x": 415.429,
+      "y": 372.571,
+      "width": 4.0,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 94.265
+    },
+    {
+      "text": "]",
+      "x": 438.571,
+      "y": 372.571,
+      "width": 1.429,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 85.765
+    },
+    {
+      "text": "2",
+      "x": 459.143,
+      "y": 372.571,
+      "width": 3.429,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 84.668
+    },
+    {
+      "text": "j",
+      "x": 483.143,
+      "y": 372.571,
+      "width": 2.0,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 62.929
+    },
+    {
+      "text": "4",
+      "x": 503.143,
+      "y": 372.571,
+      "width": 3.429,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 82.876
+    },
+    {
+      "text": "5",
+      "x": 525.714,
+      "y": 372.571,
+      "width": 3.429,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 96.024
+    },
+    {
+      "text": "6",
+      "x": 546.857,
+      "y": 372.571,
+      "width": 4.286,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 96.852
+    },
+    {
+      "text": "0|0]",
+      "x": 396.857,
+      "y": 387.143,
+      "width": 23.143,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 51.808
+    },
+    {
+      "text": "7|]",
+      "x": 439.429,
+      "y": 387.143,
+      "width": 2.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 39.83
+    },
+    {
+      "text": "끄",
+      "x": 458.571,
+      "y": 387.143,
+      "width": 7.429,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 68.9
+    },
+    {
+      "text": "3",
+      "x": 504.571,
+      "y": 387.143,
+      "width": 3.429,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 76.693
+    },
+    {
+      "text": "[10]",
+      "x": 524.286,
+      "y": 387.143,
+      "width": 8.286,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 59.798
+    },
+    {
+      "text": "17",
+      "x": 546.286,
+      "y": 387.143,
+      "width": 8.286,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 59.798
+    },
+    {
+      "text": "1|7|",
+      "x": 398.286,
+      "y": 399.429,
+      "width": 21.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 66.112
+    },
+    {
+      "text": "0]",
+      "x": 440.857,
+      "y": 394.857,
+      "width": 15.429,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 92.425
+    },
+    {
+      "text": "4]",
+      "x": 463.143,
+      "y": 394.857,
+      "width": 15.429,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 84.994
+    },
+    {
+      "text": "6|",
+      "x": 484.571,
+      "y": 394.857,
+      "width": 15.429,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 79.017
+    },
+    {
+      "text": "2",
+      "x": 504.571,
+      "y": 399.429,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 69.336
+    },
+    {
+      "text": "|",
+      "x": 516.0,
+      "y": 394.857,
+      "width": 6.571,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 69.336
+    },
+    {
+      "text": "6",
+      "x": 526.286,
+      "y": 399.429,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 70.35
+    },
+    {
+      "text": "|10",
+      "x": 546.286,
+      "y": 399.429,
+      "width": 8.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 70.35
+    },
+    {
+      "text": "[6/10]",
+      "x": 504.571,
+      "y": 411.714,
+      "width": 28.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 57.846
+    },
+    {
+      "text": "6",
+      "x": 548.286,
+      "y": 411.714,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 95.657
+    },
+    {
+      "text": "6|",
+      "x": 440.857,
+      "y": 419.429,
+      "width": 15.429,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 84.303
+    },
+    {
+      "text": "0|",
+      "x": 479.714,
+      "y": 424.0,
+      "width": 13.143,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 83.009
+    },
+    {
+      "text": "9",
+      "x": 526.286,
+      "y": 424.0,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 88.968
+    },
+    {
+      "text": "|",
+      "x": 538.571,
+      "y": 419.429,
+      "width": 4.286,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 88.968
+    },
+    {
+      "text": "4",
+      "x": 548.286,
+      "y": 424.0,
+      "width": 3.429,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 92.449
+    },
+    {
+      "text": "41312]",
+      "x": 396.857,
+      "y": 436.286,
+      "width": 45.143,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 53.94
+    },
+    {
+      "text": "6|",
+      "x": 460.571,
+      "y": 436.286,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 63.556
+    },
+    {
+      "text": "8]",
+      "x": 485.143,
+      "y": 431.714,
+      "width": 15.429,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 55.893
+    },
+    {
+      "text": "0|",
+      "x": 506.571,
+      "y": 431.714,
+      "width": 16.571,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 75.371
+    },
+    {
+      "text": "8]",
+      "x": 528.857,
+      "y": 431.714,
+      "width": 14.571,
+      "height": 16.286,
+      "fontSize": 16.286,
+      "confidence": 78.335
+    },
+    {
+      "text": "5",
+      "x": 548.286,
+      "y": 436.286,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 94.685
+    },
+    {
+      "text": "5110]",
+      "x": 396.857,
+      "y": 448.571,
+      "width": 26.0,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 34.109
+    },
+    {
+      "text": "6|10]",
+      "x": 438.571,
+      "y": 448.571,
+      "width": 28.286,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 50.339
+    },
+    {
+      "text": "8|",
+      "x": 506.286,
+      "y": 444.0,
+      "width": 16.0,
+      "height": 16.571,
+      "fontSize": 16.571,
+      "confidence": 80.282
+    },
+    {
+      "text": "0",
+      "x": 524.0,
+      "y": 444.0,
+      "width": 4.286,
+      "height": 16.571,
+      "fontSize": 16.571,
+      "confidence": 59.506
+    },
+    {
+      "text": "|",
+      "x": 533.714,
+      "y": 448.571,
+      "width": 0.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 59.506
+    },
+    {
+      "text": "3",
+      "x": 548.286,
+      "y": 448.571,
+      "width": 3.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 94.163
+    },
+    {
+      "text": "6|",
+      "x": 462.0,
+      "y": 458.286,
+      "width": 14.286,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 73.855
+    },
+    {
+      "text": "4|",
+      "x": 484.857,
+      "y": 459.429,
+      "width": 10.571,
+      "height": 11.714,
+      "fontSize": 11.714,
+      "confidence": 60.286
+    },
+    {
+      "text": "5",
+      "x": 505.714,
+      "y": 460.857,
+      "width": 2.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 51.668
+    },
+    {
+      "text": "|",
+      "x": 516.286,
+      "y": 458.286,
+      "width": 4.571,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 51.668
+    },
+    {
+      "text": "13|",
+      "x": 525.143,
+      "y": 458.286,
+      "width": 17.714,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 80.041
+    },
+    {
+      "text": "0",
+      "x": 548.286,
+      "y": 460.857,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 79.87
+    },
+    {
+      "text": "을",
+      "x": 50.857,
+      "y": 377.429,
+      "width": 7.429,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 67.681
+    },
+    {
+      "text": "0,",
+      "x": 62.0,
+      "y": 377.429,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 77.67
+    },
+    {
+      "text": "7,",
+      "x": 78.286,
+      "y": 377.429,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.969
+    },
+    {
+      "text": "INF,",
+      "x": 94.857,
+      "y": 377.429,
+      "width": 16.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 92.265
+    },
+    {
+      "text": "INF,",
+      "x": 116.0,
+      "y": 377.429,
+      "width": 15.714,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 92.265
+    },
+    {
+      "text": "3,",
+      "x": 143.143,
+      "y": 377.429,
+      "width": 7.714,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 94.761
+    },
+    {
+      "text": "10,",
+      "x": 159.429,
+      "y": 377.429,
+      "width": 13.429,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.412
+    },
+    {
+      "text": "INF},",
+      "x": 178.0,
+      "y": 377.429,
+      "width": 24.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 84.03
+    },
+    {
+      "text": "{7,",
+      "x": 50.857,
+      "y": 390.286,
+      "width": 15.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 91.957
+    },
+    {
+      "text": "0,",
+      "x": 74.286,
+      "y": 390.286,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.464
+    },
+    {
+      "text": "4,",
+      "x": 96.571,
+      "y": 390.286,
+      "width": 8.571,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 95.606
+    },
+    {
+      "text": "10,",
+      "x": 113.714,
+      "y": 390.286,
+      "width": 13.143,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 95.343
+    },
+    {
+      "text": "2,",
+      "x": 138.0,
+      "y": 390.286,
+      "width": 8.571,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.819
+    },
+    {
+      "text": "6,",
+      "x": 157.714,
+      "y": 390.286,
+      "width": 8.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 95.841
+    },
+    {
+      "text": "INF},",
+      "x": 170.857,
+      "y": 390.286,
+      "width": 25.143,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 74.082
+    },
+    {
+      "text": "{INF,",
+      "x": 50.857,
+      "y": 403.143,
+      "width": 23.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 82.368
+    },
+    {
+      "text": "4,",
+      "x": 82.0,
+      "y": 403.429,
+      "width": 8.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 84.391
+    },
+    {
+      "text": "0,",
+      "x": 104.571,
+      "y": 403.143,
+      "width": 8.571,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 84.391
+    },
+    {
+      "text": "2,",
+      "x": 124.286,
+      "y": 403.143,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 95.207
+    },
+    {
+      "text": "INF,",
+      "x": 137.429,
+      "y": 403.143,
+      "width": 16.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 95.523
+    },
+    {
+      "text": "INF,",
+      "x": 158.571,
+      "y": 403.143,
+      "width": 16.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.697
+    },
+    {
+      "text": "INF",
+      "x": 179.429,
+      "y": 403.143,
+      "width": 24.857,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 55.98
+    },
+    {
+      "text": "3,",
+      "x": 196.286,
+      "y": 399.143,
+      "width": 9.429,
+      "height": 15.714,
+      "fontSize": 15.714,
+      "confidence": 55.98
+    },
+    {
+      "text": "{INF,",
+      "x": 50.857,
+      "y": 416.0,
+      "width": 23.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 40.777
+    },
+    {
+      "text": "10,",
+      "x": 79.714,
+      "y": 416.0,
+      "width": 13.429,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 40.777
+    },
+    {
+      "text": "2,",
+      "x": 107.143,
+      "y": 416.0,
+      "width": 8.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 94.742
+    },
+    {
+      "text": "0,",
+      "x": 126.571,
+      "y": 416.0,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.223
+    },
+    {
+      "text": "11,",
+      "x": 143.714,
+      "y": 416.286,
+      "width": 13.143,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 94.809
+    },
+    {
+      "text": "9,",
+      "x": 168.0,
+      "y": 416.0,
+      "width": 8.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 95.342
+    },
+    {
+      "text": "4},",
+      "x": 187.143,
+      "y": 416.0,
+      "width": 15.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 89.089
+    },
+    {
+      "text": "{3,",
+      "x": 50.857,
+      "y": 428.857,
+      "width": 15.429,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 87.628
+    },
+    {
+      "text": "2,",
+      "x": 74.286,
+      "y": 428.857,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.804
+    },
+    {
+      "text": "INF,",
+      "x": 91.143,
+      "y": 428.857,
+      "width": 15.714,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 90.747
+    },
+    {
+      "text": "11,",
+      "x": 115.143,
+      "y": 428.857,
+      "width": 13.429,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 94.176
+    },
+    {
+      "text": "0,",
+      "x": 139.429,
+      "y": 428.857,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 51.148
+    },
+    {
+      "text": "INF,",
+      "x": 152.857,
+      "y": 428.857,
+      "width": 16.0,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 51.148
+    },
+    {
+      "text": "5},",
+      "x": 180.286,
+      "y": 428.857,
+      "width": 15.143,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 89.711
+    },
+    {
+      "text": "{",
+      "x": 50.857,
+      "y": 441.714,
+      "width": 3.714,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 91.681
+    },
+    {
+      "text": "10,",
+      "x": 58.857,
+      "y": 441.429,
+      "width": 13.143,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 93.627
+    },
+    {
+      "text": "6,",
+      "x": 80.0,
+      "y": 441.714,
+      "width": 8.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 95.936
+    },
+    {
+      "text": "INF,",
+      "x": 96.571,
+      "y": 441.714,
+      "width": 16.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 95.403
+    },
+    {
+      "text": "9,",
+      "x": 123.429,
+      "y": 441.714,
+      "width": 8.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 86.191
+    },
+    {
+      "text": "INF,",
+      "x": 137.143,
+      "y": 441.714,
+      "width": 15.429,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 86.191
+    },
+    {
+      "text": "0,",
+      "x": 163.714,
+      "y": 441.429,
+      "width": 8.286,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 89.474
+    },
+    {
+      "text": "INF},",
+      "x": 177.143,
+      "y": 441.429,
+      "width": 25.143,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 79.132
+    },
+    {
+      "text": "{",
+      "x": 50.857,
+      "y": 454.286,
+      "width": 3.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 26.478
+    },
+    {
+      "text": "INF,",
+      "x": 58.857,
+      "y": 454.286,
+      "width": 15.429,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 26.478
+    },
+    {
+      "text": "INF,",
+      "x": 79.429,
+      "y": 454.286,
+      "width": 16.0,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 95.283
+    },
+    {
+      "text": "INF,",
+      "x": 100.286,
+      "y": 454.286,
+      "width": 15.714,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 95.283
+    },
+    {
+      "text": "4,",
+      "x": 126.857,
+      "y": 454.857,
+      "width": 8.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 95.872
+    },
+    {
+      "text": "5,",
+      "x": 146.857,
+      "y": 454.571,
+      "width": 8.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 59.289
+    },
+    {
+      "text": "INF,",
+      "x": 160.0,
+      "y": 454.571,
+      "width": 15.714,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 59.289
+    },
+    {
+      "text": "0}}",
+      "x": 186.857,
+      "y": 454.286,
+      "width": 19.714,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 92.12
+    },
+    {
+      "text": "4",
+      "x": 50.857,
+      "y": 467.143,
+      "width": 6.571,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 27.778
+    },
+    {
+      "text": "0",
+      "x": 418.0,
+      "y": 483.143,
+      "width": 4.571,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 91.217
+    },
+    {
+      "text": "1",
+      "x": 441.429,
+      "y": 483.143,
+      "width": 2.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 68.034
+    },
+    {
+      "text": "?",
+      "x": 462.571,
+      "y": 483.143,
+      "width": 4.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 60.789
+    },
+    {
+      "text": "3",
+      "x": 486.0,
+      "y": 483.143,
+      "width": 2.857,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 96.925
+    },
+    {
+      "text": "4",
+      "x": 506.857,
+      "y": 483.143,
+      "width": 3.143,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 96.773
+    },
+    {
+      "text": "5",
+      "x": 529.429,
+      "y": 483.143,
+      "width": 3.429,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 95.153
+    },
+    {
+      "text": "6",
+      "x": 550.857,
+      "y": 483.143,
+      "width": 4.571,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.864
+    },
+    {
+      "text": "Floyd(&g);",
+      "x": 51.429,
+      "y": 492.857,
+      "width": 49.143,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 89.756
+    },
+    {
+      "text": "of",
+      "x": 399.143,
+      "y": 497.714,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 53.368
+    },
+    {
+      "text": "o]",
+      "x": 418.571,
+      "y": 497.143,
+      "width": 4.857,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 53.368
+    },
+    {
+      "text": "57",
+      "x": 442.0,
+      "y": 497.143,
+      "width": 3.429,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 65.683
+    },
+    {
+      "text": "9J11[",
+      "x": 463.429,
+      "y": 497.143,
+      "width": 28.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 44.448
+    },
+    {
+      "text": "3",
+      "x": 508.0,
+      "y": 497.143,
+      "width": 4.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 67.336
+    },
+    {
+      "text": "[10/8",
+      "x": 528.0,
+      "y": 494.571,
+      "width": 28.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 28.098
+    },
+    {
+      "text": "return",
+      "x": 51.429,
+      "y": 506.857,
+      "width": 29.143,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.944
+    },
+    {
+      "text": "0;",
+      "x": 84.571,
+      "y": 505.714,
+      "width": 8.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.262
+    },
+    {
+      "text": "1|5|",
+      "x": 400.571,
+      "y": 509.714,
+      "width": 22.857,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 73.318
+    },
+    {
+      "text": "0|",
+      "x": 444.571,
+      "y": 504.286,
+      "width": 14.857,
+      "height": 15.714,
+      "fontSize": 15.714,
+      "confidence": 85.841
+    },
+    {
+      "text": "6|",
+      "x": 488.571,
+      "y": 504.286,
+      "width": 16.0,
+      "height": 15.714,
+      "fontSize": 15.714,
+      "confidence": 71.548
+    },
+    {
+      "text": "2|",
+      "x": 510.286,
+      "y": 504.286,
+      "width": 16.857,
+      "height": 15.714,
+      "fontSize": 15.714,
+      "confidence": 71.548
+    },
+    {
+      "text": "6|",
+      "x": 532.0,
+      "y": 504.286,
+      "width": 14.857,
+      "height": 15.714,
+      "fontSize": 15.714,
+      "confidence": 70.48
+    },
+    {
+      "text": "7",
+      "x": 552.857,
+      "y": 509.714,
+      "width": 3.429,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 47.335
+    },
+    {
+      "text": "|",
+      "x": 559.143,
+      "y": 505.714,
+      "width": 6.286,
+      "height": 1.429,
+      "fontSize": 1.429,
+      "confidence": 87.85
+    },
+    {
+      "text": "}",
+      "x": 35.429,
+      "y": 518.571,
+      "width": 4.0,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 92.127
+    },
+    {
+      "text": "6",
+      "x": 552.286,
+      "y": 522.571,
+      "width": 4.0,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 94.585
+    },
+    {
+      "text": "3/11;",
+      "x": 400.0,
+      "y": 533.429,
+      "width": 35.714,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 39.912
+    },
+    {
+      "text": "6]",
+      "x": 442.857,
+      "y": 533.429,
+      "width": 15.429,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 62.356
+    },
+    {
+      "text": "2}",
+      "x": 465.143,
+      "y": 533.429,
+      "width": 15.714,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 50.06
+    },
+    {
+      "text": "0|",
+      "x": 487.714,
+      "y": 533.429,
+      "width": 16.571,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 82.471
+    },
+    {
+      "text": "6]",
+      "x": 463.429,
+      "y": 547.143,
+      "width": 4.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 69.887
+    },
+    {
+      "text": "8|",
+      "x": 488.0,
+      "y": 543.714,
+      "width": 16.571,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 73.93
+    },
+    {
+      "text": "0|",
+      "x": 510.857,
+      "y": 543.714,
+      "width": 15.714,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 77.524
+    },
+    {
+      "text": "8|",
+      "x": 532.571,
+      "y": 543.714,
+      "width": 14.857,
+      "height": 14.571,
+      "fontSize": 14.571,
+      "confidence": 83.556
+    },
+    {
+      "text": "5",
+      "x": 552.857,
+      "y": 547.143,
+      "width": 3.429,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 94.915
+    },
+    {
+      "text": "Floyd",
+      "x": 29.143,
+      "y": 556.571,
+      "width": 23.143,
+      "height": 10.286,
+      "fontSize": 10.286,
+      "confidence": 94.483
+    },
+    {
+      "text": "알고리즘",
+      "x": 58.571,
+      "y": 555.714,
+      "width": 38.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.512
+    },
+    {
+      "text": "복잡도",
+      "x": 103.143,
+      "y": 555.714,
+      "width": 28.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 97.011
+    },
+    {
+      "text": "5|",
+      "x": 399.143,
+      "y": 561.143,
+      "width": 4.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 75.877
+    },
+    {
+      "text": "10|",
+      "x": 417.143,
+      "y": 560.0,
+      "width": 8.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 80.168
+    },
+    {
+      "text": "6|10|",
+      "x": 441.429,
+      "y": 560.0,
+      "width": 28.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 58.407
+    },
+    {
+      "text": "9",
+      "x": 488.0,
+      "y": 560.0,
+      "width": 1.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 79.213
+    },
+    {
+      "text": "|",
+      "x": 498.571,
+      "y": 556.571,
+      "width": 5.429,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 79.213
+    },
+    {
+      "text": "0]",
+      "x": 530.0,
+      "y": 560.0,
+      "width": 4.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 66.455
+    },
+    {
+      "text": "13",
+      "x": 550.286,
+      "y": 560.0,
+      "width": 8.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 67.894
+    },
+    {
+      "text": "개의",
+      "x": 44.0,
+      "y": 571.714,
+      "width": 23.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 35.574
+    },
+    {
+      "text": "정",
+      "x": 75.714,
+      "y": 571.714,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.297
+    },
+    {
+      "text": "점",
+      "x": 86.286,
+      "y": 571.714,
+      "width": 11.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.289
+    },
+    {
+      "text": "이",
+      "x": 101.714,
+      "y": 571.714,
+      "width": 0.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.822
+    },
+    {
+      "text": "있다면,",
+      "x": 110.286,
+      "y": 571.714,
+      "width": 30.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 92.408
+    },
+    {
+      "text": "floyd2|",
+      "x": 146.286,
+      "y": 571.714,
+      "width": 31.143,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 89.474
+    },
+    {
+      "text": "최단",
+      "x": 184.571,
+      "y": 571.714,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.863
+    },
+    {
+      "text": "경로",
+      "x": 209.714,
+      "y": 571.714,
+      "width": 18.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.281
+    },
+    {
+      "text": "알",
+      "x": 235.714,
+      "y": 571.714,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.364
+    },
+    {
+      "text": "고",
+      "x": 246.286,
+      "y": 572.571,
+      "width": 6.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.301
+    },
+    {
+      "text": "리",
+      "x": 256.571,
+      "y": 571.714,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": "즘",
+      "x": 267.143,
+      "y": 572.0,
+      "width": 6.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.225
+    },
+    {
+      "text": "은",
+      "x": 277.429,
+      "y": 572.0,
+      "width": 5.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 83.198
+    },
+    {
+      "text": "3",
+      "x": 288.857,
+      "y": 569.143,
+      "width": 6.857,
+      "height": 15.143,
+      "fontSize": 15.143,
+      "confidence": 92.416
+    },
+    {
+      "text": "중",
+      "x": 294.857,
+      "y": 572.0,
+      "width": 8.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.091
+    },
+    {
+      "text": "반",
+      "x": 310.286,
+      "y": 571.714,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.281
+    },
+    {
+      "text": "복",
+      "x": 320.857,
+      "y": 572.0,
+      "width": 7.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.267
+    },
+    {
+      "text": "문",
+      "x": 331.429,
+      "y": 572.0,
+      "width": 7.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.272
+    },
+    {
+      "text": "이",
+      "x": 340.857,
+      "y": 571.714,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 97.02
+    },
+    {
+      "text": "6|",
+      "x": 399.143,
+      "y": 573.143,
+      "width": 4.0,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 54.783
+    },
+    {
+      "text": "8]",
+      "x": 421.143,
+      "y": 568.0,
+      "width": 15.429,
+      "height": 15.429,
+      "fontSize": 15.429,
+      "confidence": 81.16
+    },
+    {
+      "text": "7|",
+      "x": 442.0,
+      "y": 572.571,
+      "width": 3.429,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 76.59
+    },
+    {
+      "text": "6|",
+      "x": 474.571,
+      "y": 569.143,
+      "width": 2.0,
+      "height": 2.0,
+      "fontSize": 2.0,
+      "confidence": 74.014
+    },
+    {
+      "text": "0",
+      "x": 552.286,
+      "y": 572.571,
+      "width": 4.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.509
+    },
+    {
+      "text": "실",
+      "x": 44.0,
+      "y": 589.429,
+      "width": 7.714,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 64.288
+    },
+    {
+      "text": "행",
+      "x": 55.429,
+      "y": 589.429,
+      "width": 6.571,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 59.036
+    },
+    {
+      "text": "되",
+      "x": 65.143,
+      "y": 588.0,
+      "width": 10.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 87.751
+    },
+    {
+      "text": "므",
+      "x": 75.429,
+      "y": 590.286,
+      "width": 5.714,
+      "height": 4.286,
+      "fontSize": 4.286,
+      "confidence": 92.324
+    },
+    {
+      "text": "시가",
+      "x": 98.857,
+      "y": 589.429,
+      "width": 19.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.721
+    },
+    {
+      "text": "본",
+      "x": 124.857,
+      "y": 589.714,
+      "width": 7.714,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 89.249
+    },
+    {
+      "text": "잡",
+      "x": 135.714,
+      "y": 589.429,
+      "width": 7.143,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 78.651
+    },
+    {
+      "text": "도는",
+      "x": 153.714,
+      "y": 590.0,
+      "width": 8.857,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.239
+    },
+    {
+      "text": "이",
+      "x": 194.0,
+      "y": 590.0,
+      "width": 4.857,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 89.197
+    },
+    {
+      "text": "되",
+      "x": 208.571,
+      "y": 589.429,
+      "width": 15.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 90.942
+    },
+    {
+      "text": "ㅁ",
+      "x": 218.857,
+      "y": 588.286,
+      "width": 2.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 84.426
+    },
+    {
+      "text": "ㄷ",
+      "x": 221.143,
+      "y": 588.286,
+      "width": 4.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 49.321
+    },
+    {
+      "text": "실",
+      "x": 45.714,
+      "y": 594.571,
+      "width": 6.286,
+      "height": 4.0,
+      "fontSize": 4.0,
+      "confidence": 92.248
+    },
+    {
+      "text": "행",
+      "x": 55.714,
+      "y": 595.429,
+      "width": 6.286,
+      "height": 3.429,
+      "fontSize": 3.429,
+      "confidence": 93.304
+    },
+    {
+      "text": "되므로",
+      "x": 64.0,
+      "y": 589.429,
+      "width": 28.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.869
+    },
+    {
+      "text": "시간",
+      "x": 105.429,
+      "y": 589.429,
+      "width": 11.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.306
+    },
+    {
+      "text": "복",
+      "x": 125.143,
+      "y": 595.429,
+      "width": 6.286,
+      "height": 3.429,
+      "fontSize": 3.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "잡",
+      "x": 135.429,
+      "y": 594.857,
+      "width": 6.0,
+      "height": 4.0,
+      "fontSize": 4.0,
+      "confidence": 93.282
+    },
+    {
+      "text": "도",
+      "x": 146.571,
+      "y": 590.286,
+      "width": 12.286,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.273
+    },
+    {
+      "text": "는",
+      "x": 158.571,
+      "y": 585.143,
+      "width": 8.857,
+      "height": 19.429,
+      "fontSize": 19.429,
+      "confidence": 93.295
+    },
+    {
+      "text": "OC",
+      "x": 169.143,
+      "y": 590.571,
+      "width": 10.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 55.743
+    },
+    {
+      "text": ")",
+      "x": 190.0,
+      "y": 590.857,
+      "width": 2.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 72.316
+    },
+    {
+      "text": "이",
+      "x": 200.571,
+      "y": 589.429,
+      "width": 0.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.194
+    },
+    {
+      "text": "된다.",
+      "x": 210.286,
+      "y": 585.143,
+      "width": 19.143,
+      "height": 19.429,
+      "fontSize": 19.429,
+      "confidence": 93.719
+    },
+    {
+      "text": "ccs",
+      "x": 418.0,
+      "y": 597.429,
+      "width": 48.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 27.716
+    },
+    {
+      "text": "Oo;",
+      "x": 399.143,
+      "y": 609.429,
+      "width": 15.429,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 31.39
+    },
+    {
+      "text": "oO]",
+      "x": 420.286,
+      "y": 609.429,
+      "width": 14.571,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 69.731
+    },
+    {
+      "text": "9]",
+      "x": 463.429,
+      "y": 609.429,
+      "width": 14.571,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 59.233
+    },
+    {
+      "text": "11]",
+      "x": 483.429,
+      "y": 609.429,
+      "width": 18.0,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 73.378
+    },
+    {
+      "text": "3",
+      "x": 508.571,
+      "y": 610.571,
+      "width": 2.857,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 39.569
+    },
+    {
+      "text": "|",
+      "x": 517.714,
+      "y": 609.429,
+      "width": 5.429,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 39.569
+    },
+    {
+      "text": "10]",
+      "x": 528.0,
+      "y": 609.429,
+      "width": 16.571,
+      "height": 12.286,
+      "fontSize": 12.286,
+      "confidence": 80.267
+    },
+    {
+      "text": "8",
+      "x": 552.286,
+      "y": 610.571,
+      "width": 4.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 88.435
+    },
+    {
+      "text": "모든",
+      "x": 43.714,
+      "y": 623.429,
+      "width": 18.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.305
+    },
+    {
+      "text": "정",
+      "x": 70.286,
+      "y": 623.143,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.296
+    },
+    {
+      "text": "점",
+      "x": 80.571,
+      "y": 623.143,
+      "width": 6.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.299
+    },
+    {
+      "text": "상의",
+      "x": 90.857,
+      "y": 623.143,
+      "width": 16.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 83.501
+    },
+    {
+      "text": "최",
+      "x": 115.714,
+      "y": 623.143,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.736
+    },
+    {
+      "text": "단",
+      "x": 126.0,
+      "y": 623.143,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.265
+    },
+    {
+      "text": "경",
+      "x": 136.286,
+      "y": 623.143,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "로",
+      "x": 146.571,
+      "y": 624.0,
+      "width": 6.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 91.95
+    },
+    {
+      "text": "를",
+      "x": 156.571,
+      "y": 623.429,
+      "width": 6.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 86.278
+    },
+    {
+      "text": "구",
+      "x": 170.571,
+      "y": 623.143,
+      "width": 11.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.229
+    },
+    {
+      "text": "하",
+      "x": 185.429,
+      "y": 623.143,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.279
+    },
+    {
+      "text": "려",
+      "x": 194.0,
+      "y": 623.143,
+      "width": 2.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.018
+    },
+    {
+      "text": "면",
+      "x": 202.286,
+      "y": 623.143,
+      "width": 4.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.982
+    },
+    {
+      "text": "알고리즘",
+      "x": 262.571,
+      "y": 623.143,
+      "width": 38.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 41.639
+    },
+    {
+      "text": "(n?)S",
+      "x": 317.143,
+      "y": 622.571,
+      "width": 27.429,
+      "height": 10.571,
+      "fontSize": 10.571,
+      "confidence": 44.579
+    },
+    {
+      "text": "nH",
+      "x": 350.857,
+      "y": 623.143,
+      "width": 14.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 27.603
+    },
+    {
+      "text": "1151]",
+      "x": 400.0,
+      "y": 623.429,
+      "width": 23.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 49.188
+    },
+    {
+      "text": "014]",
+      "x": 463.429,
+      "y": 623.429,
+      "width": 4.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 41.255
+    },
+    {
+      "text": "6|",
+      "x": 485.429,
+      "y": 623.429,
+      "width": 4.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 72.729
+    },
+    {
+      "text": "2]",
+      "x": 507.429,
+      "y": 623.429,
+      "width": 4.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 84.276
+    },
+    {
+      "text": "7",
+      "x": 552.857,
+      "y": 623.429,
+      "width": 3.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 86.893
+    },
+    {
+      "text": "반",
+      "x": 44.286,
+      "y": 640.571,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.274
+    },
+    {
+      "text": "복",
+      "x": 56.571,
+      "y": 640.857,
+      "width": 6.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.305
+    },
+    {
+      "text": "해도",
+      "x": 66.286,
+      "y": 640.571,
+      "width": 16.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.995
+    },
+    {
+      "text": "되며,",
+      "x": 89.143,
+      "y": 640.571,
+      "width": 20.571,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 96.995
+    },
+    {
+      "text": "이",
+      "x": 116.571,
+      "y": 640.571,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.938
+    },
+    {
+      "text": "경우",
+      "x": 131.429,
+      "y": 640.571,
+      "width": 18.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.105
+    },
+    {
+      "text": "전체",
+      "x": 156.286,
+      "y": 640.571,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "복",
+      "x": 182.857,
+      "y": 640.857,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.949
+    },
+    {
+      "text": "잡",
+      "x": 194.286,
+      "y": 640.571,
+      "width": 5.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.295
+    },
+    {
+      "text": "도",
+      "x": 205.143,
+      "y": 640.857,
+      "width": 10.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.989
+    },
+    {
+      "text": "는",
+      "x": 215.714,
+      "y": 638.857,
+      "width": 8.857,
+      "height": 15.429,
+      "fontSize": 15.429,
+      "confidence": 91.947
+    },
+    {
+      "text": "이",
+      "x": 252.286,
+      "y": 638.857,
+      "width": 6.857,
+      "height": 15.429,
+      "fontSize": 15.429,
+      "confidence": 93.277
+    },
+    {
+      "text": "된다.",
+      "x": 265.714,
+      "y": 640.571,
+      "width": 21.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.459
+    },
+    {
+      "text": "|",
+      "x": 474.571,
+      "y": 644.571,
+      "width": 2.0,
+      "height": 2.0,
+      "fontSize": 2.0,
+      "confidence": 83.906
+    },
+    {
+      "text": "5|10|",
+      "x": 399.143,
+      "y": 782.0,
+      "width": 37.429,
+      "height": 17.143,
+      "fontSize": 17.143,
+      "confidence": 73.797
+    },
+    {
+      "text": "6|10|",
+      "x": 444.0,
+      "y": 782.0,
+      "width": 37.714,
+      "height": 17.143,
+      "fontSize": 17.143,
+      "confidence": 68.626
+    },
+    {
+      "text": "9|",
+      "x": 488.0,
+      "y": 782.0,
+      "width": 16.286,
+      "height": 17.143,
+      "fontSize": 17.143,
+      "confidence": 73.768
+    },
+    {
+      "text": "0",
+      "x": 531.714,
+      "y": 786.857,
+      "width": 2.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 85.23
+    },
+    {
+      "text": "|13",
+      "x": 542.571,
+      "y": 782.0,
+      "width": 16.286,
+      "height": 17.143,
+      "fontSize": 17.143,
+      "confidence": 72.531
+    },
+    {
+      "text": "6[8|7|",
+      "x": 399.143,
+      "y": 799.429,
+      "width": 157.143,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 41.227
+    },
+    {
+      "text": "6|",
+      "x": 465.429,
+      "y": 794.0,
+      "width": 16.571,
+      "height": 17.429,
+      "fontSize": 17.429,
+      "confidence": 70.556
+    },
+    {
+      "text": "51110",
+      "x": 508.857,
+      "y": 799.429,
+      "width": 47.429,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 38.907
+    },
+    {
+      "text": "-",
+      "x": 282.571,
+      "y": 820.571,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 89.265
+    },
+    {
+      "text": "43",
+      "x": 292.857,
+      "y": 817.143,
+      "width": 9.714,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 90.375
+    },
+    {
+      "text": "-",
+      "x": 308.571,
+      "y": 820.571,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 90.375
+    }
+  ],
+  "ocrEngine": "tesseract",
+  "ocrLanguage": "kor+eng",
+  "displayRenderScale": 2.2,
+  "ocrRenderScale": 3.5
+}

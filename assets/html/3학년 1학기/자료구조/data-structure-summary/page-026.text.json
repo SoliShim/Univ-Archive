@@ -1,5 +1,7 @@
 {
   "pageNumber": 26,
+  "sourcePdf": "assets/pdfs/3학년 1학기/자료구조/자료구조 중간 총정리.pdf",
+  "sourcePageNumber": 26,
   "width": 595.0,
   "height": 841.0,
   "text": "// 전단참조함수: FSI peek() 함수와동일 element get_front(CircularDeque *q) { if (is_empty(q)) error( 、 규가공백상태입니다\"); return q->data[(q->front+1) % MAX_QUEUE_SIZE]; } // 큐에없는새로운함수 void add_front(CircularDeque *q, element item) { if (is_full(q)) 포화상태입니다\"); q->data[q->front] = item; q->front = (q->front - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE; } // 큐에없는새로운함수 element delete_rear(CircularDeque *q) { int prev = q->rear; if (is_empty(q)) SASH SLC\"); q->rear = (q->rear - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE; return q->data[prev]; } // 큐에없는새로운함수 element get_rear(CircularDeque *q) { if (is_empty(q)) 공백상태입니다\"); return q->data[q->rear]; } int main(void) { CircularDeque queue; init_deque(&queue); for (int i = 0; i < 3; i++) { add_front(&queue, i); deque_print(&queue); } for (int i = 0; i < 3; i++) { delete_rear(&queue); deque_print(&queue); } return 0; } - 26 -",

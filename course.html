@@ -7,13 +7,46 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-    const next = new URL("./index.html", window.location.href);
 
-    if (id) {
-      next.searchParams.set("course", id);
+    function toFolderSlug(value) {
+      return String(value)
+        .replace(/\s+/g, "-")
+        .replace(/[^\w가-힣-]/g, "")
+        .toLowerCase();
     }
 
-    window.location.replace(next);
+    async function redirect() {
+      const fallback = new URL("./index.html", window.location.href);
+
+      if (!id) {
+        window.location.replace(fallback);
+        return;
+      }
+
+      fallback.searchParams.set("course", id);
+
+      try {
+        const response = await fetch("./data/courses.json", { cache: "no-store" });
+        const archive = await response.json();
+
+        for (const semester of archive.semesters || []) {
+          const course = (semester.courses || []).find((entry) => entry.id === id);
+
+          if (course) {
+            window.location.replace(
+              `./archive/${toFolderSlug(semester.yearGroup)}/${toFolderSlug(semester.label)}/${course.id}/index.html`
+            );
+            return;
+          }
+        }
+      } catch {
+        // Fall back to the root app route below.
+      }
+
+      window.location.replace(fallback);
+    }
+
+    redirect();
   </script>
 </head>
 <body>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소비의역사와문화 | Soli's Archive</title>
+  <meta
+    name="description"
+    content="1학년 1학기부터 3학년 2학기까지 수강한 과목과 학습 문서를 트리 구조로 정리하는 개인 대학 아카이브입니다."
+  >
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f6b72'/%3E%3Cpath d='M22 12h20v40H22z' fill='%23fff' opacity='.9'/%3E%3Cpath d='M30 12h4v40h-4z' fill='%230f6b72' opacity='.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../../styles.css?v=20260523-ai-order">
+</head>
+<body data-course-id="history-culture-consumption" data-root-prefix="../../../../">
+  <div class="app-shell">
+    <button
+      id="sidebar-visibility-toggle"
+      class="sidebar-visibility-toggle"
+      type="button"
+      aria-expanded="true"
+      aria-controls="archive-sidebar"
+      aria-label="트리 숨기기"
+      title="트리 숨기기"
+    >
+      <span aria-hidden="true">&lt;</span>
+    </button>
+
+    <aside id="archive-sidebar" class="sidebar" aria-label="학습 아카이브 트리">
+      <div class="brand">
+        <a class="brand-mark" href="../../../../index.html" aria-label="Soli's Archive 홈">
+          <span class="brand-icon" aria-hidden="true"></span>
+          <span>
+            <strong>Soli's Archive</strong>
+            <small>Course Knowledge Tree</small>
+          </span>
+        </a>
+      </div>
+
+      <form class="search-box" action="../../../../course-search.html" method="get" data-search-form="course">
+        <label for="archive-search">과목 검색</label>
+        <div class="search-control">
+          <input id="archive-search" name="q" type="search" placeholder="과목명, 코드, 교수명 검색">
+          <button type="submit" aria-label="과목 검색">
+            <span aria-hidden="true">⌕</span>
+          </button>
+        </div>
+      </form>
+
+      <form class="search-box" action="../../../../global-search.html" method="get" data-search-form="global">
+        <label for="global-archive-search">통합검색</label>
+        <div class="search-control">
+          <input id="global-archive-search" name="q" type="search" placeholder="모든 과목 문서에서 검색">
+          <button type="submit" aria-label="통합검색">
+            <span aria-hidden="true">⌕</span>
+          </button>
+        </div>
+      </form>
+
+      <nav id="archive-tree" class="archive-tree" aria-live="polite"></nav>
+    </aside>
+
+    <button
+      id="sidebar-resizer"
+      class="sidebar-resizer"
+      type="button"
+      role="separator"
+      aria-label="트리 영역 너비 조절"
+      aria-orientation="vertical"
+      aria-valuemin="250"
+      aria-valuemax="620"
+    ></button>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p id="current-path" class="path-label">Soli's Archive</p>
+          <h1 id="page-title">Soli's Archive</h1>
+        </div>
+        <div id="summary-strip" class="summary-strip" aria-label="아카이브 요약"></div>
+      </header>
+
+      <section id="search-results" class="search-results" hidden></section>
+      <section id="content-view" class="content-view" aria-live="polite">
+        <div class="loading-panel">아카이브를 불러오는 중입니다.</div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="../../../../js/archive.js?v=20260523-ai-order"></script>
+</body>
+</html>

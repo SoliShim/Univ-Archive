@@ -1,12 +1,16 @@
 const DATA_URL = new URL("../data/courses.json", import.meta.url);
 const APP_NAME = "Soli's Archive";
-const ASSET_VERSION = "20260518-search-highlight";
+const ASSET_VERSION = "20260523-ai-order";
 const SIDEBAR_WIDTH_KEY = "solisArchiveSidebarWidth";
 const TREE_STATE_KEY = "solisArchiveCollapsedTreeNodes.v2";
+const SIDEBAR_VISIBILITY_KEY = "solisArchiveSidebarVisible";
+const DOCUMENT_SEARCH_VISIBILITY_KEY = "solisArchiveDocumentSearchVisible";
+const PAGE_VIEWFINDER_VISIBILITY_KEY = "solisArchivePageViewfinderVisible";
 const DEFAULT_COLLAPSED_TREE_NODE_KEYS = ["semester:y1-s1", "semester:y1-s2"];
 const DEFAULT_SIDEBAR_WIDTH = 360;
 const MIN_SIDEBAR_WIDTH = 250;
 const MAX_SIDEBAR_WIDTH = 620;
+const MAX_GLOBAL_SEARCH_RESULTS = 60;
 const COURSE_EMOJIS = {
   "creative-communication": "💬",
   "cau-seminar-1": "🎓",
@@ -62,23 +66,32 @@ const COURSE_EMOJIS = {
 };
 
 const treeRoot = document.querySelector("#archive-tree");
+const appShell = document.querySelector(".app-shell");
 const contentView = document.querySelector("#content-view");
 const pageTitle = document.querySelector("#page-title");
 const currentPath = document.querySelector("#current-path");
 const summaryStrip = document.querySelector("#summary-strip");
 const searchInput = document.querySelector("#archive-search");
+const globalSearchInput = document.querySelector("#global-archive-search");
 const searchResults = document.querySelector("#search-results");
 const sidebarResizer = document.querySelector("#sidebar-resizer");
+const sidebarVisibilityToggle = document.querySelector("#sidebar-visibility-toggle");
 const textLayerObservers = [];
+const embeddedCourseId = document.body?.dataset.courseId || null;
+const searchPageMode = document.body?.dataset.searchMode || null;
 
 let archive = null;
 let selectedSemesterId = null;
 let selectedCourseId = null;
 let initialDocumentSearch = null;
+let initialDocumentPage = null;
 let documentPages = [];
 let documentMatches = [];
 let documentMatchIndex = -1;
+let documentPageObserver = null;
 let collapsedTreeNodes = new Set();
+let globalSearchIndexPromise = null;
+let globalSearchIndex = [];
 
 init();
 
@@ -92,9 +105,10 @@ async function init() {
 
     archive = await response.json();
     const queryParams = new URLSearchParams(window.location.search);
-    selectedCourseId = queryParams.get("course");
+    selectedCourseId = queryParams.get("course") || embeddedCourseId;
     selectedSemesterId = queryParams.get("semester");
     initialDocumentSearch = queryParams.get("docSearch");
+    initialDocumentPage = Number(queryParams.get("page")) || null;
     collapsedTreeNodes = loadCollapsedTreeState();
 
     bindEvents();
@@ -111,6 +125,8 @@ async function init() {
 
 function bindEvents() {
   setupSidebarResizer();
+  setupSidebarVisibility();
+  setupSearchForms();
 
   document.querySelector(".brand-mark")?.addEventListener("click", (event) => {
     event.preventDefault();
@@ -140,21 +156,18 @@ function bindEvents() {
     }
   });
 
-  searchResults.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-course-id]");
-
-    if (button) {
-      selectCourse(button.dataset.courseId);
-      searchInput.value = "";
-      renderSearchResults("");
-    }
-  });
-
-  searchInput.addEventListener("input", () => {
-    renderSearchResults(searchInput.value);
-  });
-
   contentView.addEventListener("click", (event) => {
+    const globalResultButton = event.target.closest("button[data-global-course-id]");
+
+    if (globalResultButton) {
+      selectCourse(
+        globalResultButton.dataset.globalCourseId,
+        globalResultButton.dataset.query || "",
+        Number(globalResultButton.dataset.pageNumber) || null
+      );
+      return;
+    }
+
     const semesterButton = event.target.closest("button[data-semester-id]");
 
     if (semesterButton) {
@@ -166,6 +179,20 @@ function bindEvents() {
 
     if (button) {
       selectCourse(button.dataset.courseId);
+      return;
+    }
+
+    const pageButton = event.target.closest("button[data-doc-page]");
+
+    if (pageButton) {
+      scrollDocumentPageIntoView(Number(pageButton.dataset.docPage));
+      return;
+    }
+
+    const viewToggleButton = event.target.closest("button[data-doc-view-toggle]");
+
+    if (viewToggleButton) {
+      toggleDocumentViewPanel(viewToggleButton.dataset.docViewToggle);
       return;
     }
 
@@ -215,6 +242,16 @@ function render() {
   expandSelectedTreePath(false);
   renderSummary();
   renderTree();
+
+  if (searchPageMode === "course") {
+    renderCourseSearchPage(getCurrentSearchQuery());
+    return;
+  }
+
+  if (searchPageMode === "global") {
+    renderGlobalSearchPage(getCurrentSearchQuery());
+    return;
+  }
 
   const selectedCourse = findCourse(selectedCourseId);
 
@@ -557,6 +594,67 @@ function setupSidebarResizer() {
   });
 }
 
+function setupSidebarVisibility() {
+  if (!sidebarVisibilityToggle || !appShell) {
+    return;
+  }
+
+  const savedValue = localStorage.getItem(SIDEBAR_VISIBILITY_KEY);
+  setSidebarVisible(savedValue !== "hidden", false);
+
+  sidebarVisibilityToggle.addEventListener("click", () => {
+    setSidebarVisible(appShell.classList.contains("is-sidebar-hidden"));
+  });
+}
+
+function setupSearchForms() {
+  document.querySelectorAll("[data-search-form]").forEach((form) => {
+    const input = form.querySelector('input[name="q"]');
+
+    if (searchPageMode === form.dataset.searchForm && input) {
+      input.value = getCurrentSearchQuery();
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      navigateToSearchPage(form, input?.value || "");
+    });
+  });
+}
+
+function navigateToSearchPage(form, rawQuery) {
+  const url = new URL(form.getAttribute("action") || "./course-search.html", window.location.href);
+  const query = rawQuery.trim();
+
+  if (query) {
+    url.searchParams.set("q", query);
+  } else {
+    url.searchParams.delete("q");
+  }
+
+  window.location.assign(url.href);
+}
+
+function getCurrentSearchQuery() {
+  return new URLSearchParams(window.location.search).get("q") || "";
+}
+
+function setSidebarVisible(isVisible, persist = true) {
+  if (!sidebarVisibilityToggle || !appShell) {
+    return;
+  }
+
+  appShell.classList.toggle("is-sidebar-hidden", !isVisible);
+  sidebarVisibilityToggle.setAttribute("aria-expanded", String(isVisible));
+  sidebarVisibilityToggle.setAttribute("aria-label", isVisible ? "트리 숨기기" : "트리 펼치기");
+  sidebarVisibilityToggle.title = isVisible ? "트리 숨기기" : "트리 펼치기";
+  sidebarVisibilityToggle.querySelector("span").textContent = isVisible ? "<" : ">";
+
+  if (persist) {
+    localStorage.setItem(SIDEBAR_VISIBILITY_KEY, isVisible ? "visible" : "hidden");
+  }
+}
+
 function getCurrentSidebarWidth() {
   return Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--sidebar-width")) ||
     DEFAULT_SIDEBAR_WIDTH;
@@ -645,8 +743,92 @@ function getCourseDisplayTitle(course) {
   return `${getCourseEmoji(course)} ${course.title}`;
 }
 
+function isEmbeddedCoursePage() {
+  return Boolean(embeddedCourseId);
+}
+
+function getAppRootPrefix() {
+  return document.body?.dataset.rootPrefix || (isEmbeddedCoursePage() ? "../../../../" : "./");
+}
+
+function getRootHref(params = {}) {
+  const rootUrl = new URL(`${getAppRootPrefix()}index.html`, window.location.href);
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) {
+      rootUrl.searchParams.set(key, value);
+    }
+  });
+
+  return rootUrl.href;
+}
+
+function resolveArchiveUrl(path) {
+  const value = String(path || "");
+
+  if (/^(?:[a-z]+:|\/)/i.test(value)) {
+    return value;
+  }
+
+  return `${getAppRootPrefix()}${value}`;
+}
+
+function getCoursePageHref(course, documentSearchQuery = null, pageNumber = null) {
+  const url = new URL(encodeURI(resolveArchiveUrl(course.folderPath)), window.location.href);
+
+  if (documentSearchQuery) {
+    url.searchParams.set("docSearch", documentSearchQuery);
+  }
+
+  if (pageNumber) {
+    url.searchParams.set("page", String(pageNumber));
+  }
+
+  return url.href;
+}
+
+function getAdjacentCourses(course) {
+  const courses = getAllCourses();
+  const index = courses.findIndex((entry) => entry.id === course.id);
+
+  return {
+    previous: index > 0 ? courses[index - 1] : null,
+    next: index >= 0 && index < courses.length - 1 ? courses[index + 1] : null
+  };
+}
+
+function renderCoursePageNavigation(course) {
+  const { previous, next } = getAdjacentCourses(course);
+
+  return `
+    <nav class="course-page-nav" aria-label="과목 웹페이지 이동">
+      ${renderCoursePageNavItem("이전 웹페이지", previous)}
+      ${renderCoursePageNavItem("다음 웹페이지", next)}
+    </nav>
+  `;
+}
+
+function renderCoursePageNavItem(label, course) {
+  if (!course) {
+    return `<span class="course-page-nav-item is-disabled">${escapeHtml(label)}</span>`;
+  }
+
+  return `
+    <a class="course-page-nav-item" href="${escapeHtml(getCoursePageHref(course))}">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(getCourseDisplayTitle(course))}</strong>
+    </a>
+  `;
+}
+
 function renderSemester(semester) {
   resetDocumentState();
+
+  if (isEmbeddedCoursePage()) {
+    window.location.assign(getRootHref({ semester: semester.id }));
+    return;
+  }
+
   selectedCourseId = null;
   selectedSemesterId = semester.id;
   syncQuery({ semester: semester.id });
@@ -718,7 +900,9 @@ async function renderCourse(course) {
   resetDocumentState();
   selectedCourseId = course.id;
   selectedSemesterId = course.semesterId;
-  syncQuery({ course: course.id });
+  syncQuery(isEmbeddedCoursePage()
+    ? { docSearch: initialDocumentSearch, page: initialDocumentPage }
+    : { course: course.id, docSearch: initialDocumentSearch, page: initialDocumentPage });
   renderTree();
 
   const courseDisplayTitle = getCourseDisplayTitle(course);
@@ -733,7 +917,10 @@ async function renderCourse(course) {
         <div>
           <p class="section-label">${escapeHtml(course.semesterLabel)} · ${escapeHtml(course.schoolTerm)}</p>
         </div>
-        ${renderDocumentBadge(course.documentStatus)}
+        <div class="course-detail-actions">
+          ${renderDocumentBadge(course.documentStatus)}
+          ${renderCoursePageNavigation(course)}
+        </div>
       </header>
 
       <div class="metadata-grid">
@@ -797,7 +984,7 @@ async function renderDocumentBody(course) {
     body.innerHTML = `<div class="loading-panel">HTML 변환 문서를 불러오는 중입니다.</div>`;
 
     try {
-      const manifestUrl = `${course.html.manifestPath}?v=${ASSET_VERSION}`;
+      const manifestUrl = `${resolveArchiveUrl(course.html.manifestPath)}?v=${ASSET_VERSION}`;
       const response = await fetch(manifestUrl, { cache: "no-store" });
 
       if (!response.ok) {
@@ -809,6 +996,26 @@ async function renderDocumentBody(course) {
         <div class="converted-note">
           PDF 원본 렌더링 위에 검색/선택용 텍스트 레이어를 겹쳐 표시합니다.
           원본 배치를 유지하면서 브라우저 검색과 문서 내부 검색을 사용할 수 있습니다.
+        </div>
+        <div class="document-view-controls" aria-label="문서 보기 옵션">
+          <button
+            type="button"
+            data-doc-view-toggle="viewfinder"
+            aria-pressed="true"
+            aria-label="썸네일 뷰파인더 끄기"
+            title="썸네일 뷰파인더 끄기"
+          >
+            <span aria-hidden="true">뷰파인더</span>
+          </button>
+          <button
+            type="button"
+            data-doc-view-toggle="search"
+            aria-pressed="true"
+            aria-label="문서 검색 플로팅 끄기"
+            title="문서 검색 플로팅 끄기"
+          >
+            <span aria-hidden="true">⌕</span>
+          </button>
         </div>
         <section class="document-search" aria-label="문서 내부 검색">
           <label for="document-search-input">
@@ -822,8 +1029,13 @@ async function renderDocumentBody(course) {
           </div>
           <p id="document-search-status">검색어를 입력하면 페이지별 결과가 표시됩니다.</p>
         </section>
-        <div class="html-pages">
-          ${manifest.pages.map((page, index) => renderHtmlPage(course, page, index, manifest.pageCount)).join("")}
+        <div class="document-viewer">
+          <aside class="page-viewfinder" aria-label="페이지 미리보기">
+            ${manifest.pages.map((page, index) => renderPageThumbnail(course, page, index, manifest.pageCount)).join("")}
+          </aside>
+          <div class="html-pages">
+            ${manifest.pages.map((page, index) => renderHtmlPage(course, page, index, manifest.pageCount)).join("")}
+          </div>
         </div>
       `;
       documentPages = manifest.pages.map((page) => ({
@@ -836,6 +1048,8 @@ async function renderDocumentBody(course) {
         highlightLayer: document.querySelector(`.html-page[data-page-number="${page.pageNumber}"] .html-page-highlight-layer`)
       }));
       setupTextLayers();
+      setupPageViewfinder();
+      applyDocumentViewPreferences();
       updateDocumentSearchUi();
       applyInitialDocumentSearch();
     } catch (error) {
@@ -850,7 +1064,7 @@ async function renderDocumentBody(course) {
 }
 
 function renderHtmlPage(course, page, index, pageCount) {
-  const src = `${course.html.assetBase}/${page.image}?v=${ASSET_VERSION}`;
+  const src = `${resolveArchiveUrl(`${course.html.assetBase}/${page.image}`)}?v=${ASSET_VERSION}`;
 
   return `
     <figure class="html-page" data-page-number="${page.pageNumber}">
@@ -874,6 +1088,23 @@ function renderHtmlPage(course, page, index, pageCount) {
       <figcaption>${index + 1} / ${pageCount} 페이지</figcaption>
       <div class="html-page-snippets" hidden></div>
     </figure>
+  `;
+}
+
+function renderPageThumbnail(course, page, index, pageCount) {
+  const src = `${resolveArchiveUrl(`${course.html.assetBase}/${page.image}`)}?v=${ASSET_VERSION}`;
+
+  return `
+    <button
+      class="page-thumbnail${index === 0 ? " is-active" : ""}"
+      type="button"
+      data-doc-page="${page.pageNumber}"
+      aria-label="${escapeHtml(`${index + 1} / ${pageCount} 페이지로 이동`)}"
+      aria-current="${index === 0 ? "page" : "false"}"
+    >
+      <img src="${escapeHtml(src)}" alt="" loading="${index < 4 ? "eager" : "lazy"}">
+      <span>${index + 1}</span>
+    </button>
   `;
 }
 
@@ -1036,6 +1267,127 @@ function setupTextLayers() {
   });
 }
 
+function setupPageViewfinder() {
+  disconnectDocumentPageObserver();
+
+  const firstPage = documentPages[0];
+
+  if (firstPage) {
+    setActivePageThumbnail(firstPage.pageNumber);
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    return;
+  }
+
+  documentPageObserver = new IntersectionObserver((entries) => {
+    const visibleEntries = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((left, right) => right.intersectionRatio - left.intersectionRatio);
+
+    if (visibleEntries.length === 0) {
+      return;
+    }
+
+    setActivePageThumbnail(Number(visibleEntries[0].target.dataset.pageNumber));
+  }, {
+    root: null,
+    rootMargin: "-18% 0px -56% 0px",
+    threshold: [0.08, 0.2, 0.45, 0.7]
+  });
+
+  documentPages.forEach((page) => {
+    if (page.element) {
+      documentPageObserver.observe(page.element);
+    }
+  });
+}
+
+function applyDocumentViewPreferences() {
+  setDocumentSearchVisible(localStorage.getItem(DOCUMENT_SEARCH_VISIBILITY_KEY) !== "hidden", false);
+  setPageViewfinderVisible(localStorage.getItem(PAGE_VIEWFINDER_VISIBILITY_KEY) !== "hidden", false);
+}
+
+function toggleDocumentViewPanel(panel) {
+  if (panel === "search") {
+    const isCurrentlyVisible = !document.querySelector("#document-body")?.classList.contains("is-document-search-hidden");
+    setDocumentSearchVisible(!isCurrentlyVisible);
+  }
+
+  if (panel === "viewfinder") {
+    const isCurrentlyVisible = !document.querySelector("#document-body")?.classList.contains("is-viewfinder-hidden");
+    setPageViewfinderVisible(!isCurrentlyVisible);
+  }
+}
+
+function setDocumentSearchVisible(isVisible, persist = true) {
+  const body = document.querySelector("#document-body");
+  const button = document.querySelector('[data-doc-view-toggle="search"]');
+
+  if (!body || !button) {
+    return;
+  }
+
+  body.classList.toggle("is-document-search-hidden", !isVisible);
+  button.classList.toggle("is-off", !isVisible);
+  button.setAttribute("aria-pressed", String(isVisible));
+  button.setAttribute("aria-label", isVisible ? "문서 검색 플로팅 끄기" : "문서 검색 플로팅 켜기");
+  button.title = isVisible ? "문서 검색 플로팅 끄기" : "문서 검색 플로팅 켜기";
+
+  if (persist) {
+    localStorage.setItem(DOCUMENT_SEARCH_VISIBILITY_KEY, isVisible ? "visible" : "hidden");
+  }
+}
+
+function setPageViewfinderVisible(isVisible, persist = true) {
+  const body = document.querySelector("#document-body");
+  const button = document.querySelector('[data-doc-view-toggle="viewfinder"]');
+
+  if (!body || !button) {
+    return;
+  }
+
+  body.classList.toggle("is-viewfinder-hidden", !isVisible);
+  button.classList.toggle("is-off", !isVisible);
+  button.setAttribute("aria-pressed", String(isVisible));
+  button.setAttribute("aria-label", isVisible ? "썸네일 뷰파인더 끄기" : "썸네일 뷰파인더 켜기");
+  button.title = isVisible ? "썸네일 뷰파인더 끄기" : "썸네일 뷰파인더 켜기";
+
+  if (persist) {
+    localStorage.setItem(PAGE_VIEWFINDER_VISIBILITY_KEY, isVisible ? "visible" : "hidden");
+  }
+}
+
+function setActivePageThumbnail(pageNumber) {
+  document.querySelectorAll(".page-thumbnail").forEach((button) => {
+    const active = Number(button.dataset.docPage) === pageNumber;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-current", active ? "page" : "false");
+
+    if (active) {
+      button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+    }
+  });
+}
+
+function scrollDocumentPageIntoView(pageNumber) {
+  const page = documentPages.find((entry) => entry.pageNumber === pageNumber);
+
+  if (!page?.element) {
+    return;
+  }
+
+  page.element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+  setActivePageThumbnail(pageNumber);
+}
+
+function disconnectDocumentPageObserver() {
+  if (documentPageObserver) {
+    documentPageObserver.disconnect();
+    documentPageObserver = null;
+  }
+}
+
 function disconnectTextLayerObservers() {
   while (textLayerObservers.length > 0) {
     textLayerObservers.pop().disconnect();
@@ -1089,13 +1441,43 @@ function handleDocumentSearch(rawQuery) {
 function applyInitialDocumentSearch() {
   const input = document.querySelector("#document-search-input");
 
-  if (!initialDocumentSearch || !input) {
+  if (!input) {
+    if (initialDocumentPage) {
+      scrollDocumentPageIntoView(initialDocumentPage);
+      initialDocumentPage = null;
+    }
+
     return;
   }
 
-  input.value = initialDocumentSearch;
-  handleDocumentSearch(initialDocumentSearch);
+  if (initialDocumentSearch) {
+    input.value = initialDocumentSearch;
+    handleDocumentSearch(initialDocumentSearch);
+  }
+
+  if (initialDocumentPage) {
+    const requestedPage = initialDocumentPage;
+    const pageMatchIndex = documentMatches.findIndex((match) => match.pageNumber === requestedPage);
+
+    if (pageMatchIndex >= 0) {
+      documentMatchIndex = pageMatchIndex;
+      revealDocumentMatch(documentMatchIndex);
+      updateDocumentSearchUi();
+    } else {
+      scrollDocumentPageIntoView(requestedPage);
+    }
+
+    window.setTimeout(() => {
+      if (pageMatchIndex >= 0) {
+        revealDocumentMatch(pageMatchIndex);
+      } else {
+        scrollDocumentPageIntoView(requestedPage);
+      }
+    }, 900);
+  }
+
   initialDocumentSearch = null;
+  initialDocumentPage = null;
 }
 
 function renderDocumentSearchSnippets(rawQuery) {
@@ -1168,12 +1550,21 @@ function revealDocumentMatch(index) {
   }
 
   page.element.classList.add("is-active-match");
+  setActivePageThumbnail(page.pageNumber);
   updateActiveDocumentHighlight();
 
   const activeHighlight = page.element.querySelector(
     `.html-search-highlight[data-match-index="${index}"]`
   );
-  (activeHighlight || page.element).scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+  const scrollTarget = activeHighlight || page.element;
+  const scrollToMatch = (behavior = "smooth") => {
+    scrollTarget.scrollIntoView({ behavior, block: "center", inline: "nearest" });
+    setActivePageThumbnail(page.pageNumber);
+  };
+
+  scrollToMatch();
+  window.setTimeout(() => scrollToMatch("auto"), 300);
+  window.setTimeout(() => scrollToMatch("auto"), 900);
 }
 
 function clearDocumentSearch() {
@@ -1236,6 +1627,7 @@ function updateDocumentSearchUi() {
 }
 
 function resetDocumentState() {
+  disconnectDocumentPageObserver();
   disconnectTextLayerObservers();
   documentPages = [];
   documentMatches = [];
@@ -1260,31 +1652,75 @@ function selectSemester(id) {
 }
 
 function selectHome() {
-  selectedSemesterId = null;
-  selectedCourseId = null;
-  initialDocumentSearch = null;
-  searchInput.value = "";
-  renderSearchResults("");
-  render();
-}
-
-function selectCourse(id) {
-  selectedCourseId = id;
-  selectedSemesterId = findCourse(id)?.semesterId ?? selectedSemesterId;
-  expandSemesterPath(selectedSemesterId);
-  render();
-}
-
-function renderSearchResults(rawQuery) {
-  const query = rawQuery.trim().toLowerCase();
-
-  if (!query) {
-    searchResults.hidden = true;
-    searchResults.innerHTML = "";
+  if (isEmbeddedCoursePage()) {
+    window.location.assign(getRootHref());
     return;
   }
 
-  const matches = getAllCourses().filter((course) => {
+  selectedSemesterId = null;
+  selectedCourseId = null;
+  initialDocumentSearch = null;
+  initialDocumentPage = null;
+  searchInput.value = "";
+  if (globalSearchInput) {
+    globalSearchInput.value = "";
+  }
+  render();
+}
+
+function selectCourse(id, documentSearchQuery = null, pageNumber = null) {
+  const course = findCourse(id);
+
+  if (!course) {
+    return;
+  }
+
+  window.location.assign(getCoursePageHref(course, documentSearchQuery, pageNumber));
+}
+
+function renderCourseSearchPage(rawQuery) {
+  resetDocumentState();
+  selectedCourseId = null;
+  selectedSemesterId = null;
+
+  if (searchResults) {
+    searchResults.hidden = true;
+    searchResults.innerHTML = "";
+  }
+
+  currentPath.textContent = `${APP_NAME} / Search / Course`;
+  pageTitle.textContent = "과목 검색";
+  document.title = `과목 검색 - ${APP_NAME}`;
+
+  const matches = getCourseSearchMatches(rawQuery);
+  contentView.innerHTML = `
+    <section class="search-page" aria-label="과목 검색 결과">
+      <div class="search-page-head">
+        <div>
+          <p class="section-label">Course Search</p>
+          <h2>${rawQuery.trim() ? `"${escapeHtml(rawQuery.trim())}" 검색 결과` : "과목 검색"}</h2>
+        </div>
+        <span>${rawQuery.trim() ? `${matches.length}개 결과` : "검색어 필요"}</span>
+      </div>
+      ${rawQuery.trim() ? `
+        <div class="result-list">
+          ${matches.map(renderCourseSearchResult).join("") || `<p class="no-results">일치하는 과목이 없습니다.</p>`}
+        </div>
+      ` : `
+        <p class="search-page-empty">왼쪽의 과목 검색창에 검색어를 입력하고 돋보기 버튼을 누르거나 Enter를 누르세요.</p>
+      `}
+    </section>
+  `;
+}
+
+function getCourseSearchMatches(rawQuery) {
+  const query = rawQuery.trim().toLowerCase();
+
+  if (!query) {
+    return [];
+  }
+
+  return getAllCourses().filter((course) => {
     const haystack = [
       course.title,
       course.code,
@@ -1295,21 +1731,227 @@ function renderSearchResults(rawQuery) {
 
     return haystack.includes(query);
   });
+}
 
-  searchResults.hidden = false;
-  searchResults.innerHTML = `
-    <div class="search-results-head">
-      <strong>검색 결과 ${matches.length}개</strong>
-      <span>${escapeHtml(rawQuery)}</span>
-    </div>
-    <div class="result-list">
-      ${matches.map((course) => `
-        <button type="button" data-course-id="${course.id}">
-          <strong>${escapeHtml(getCourseDisplayTitle(course))}</strong>
-          <span>${escapeHtml(course.semesterLabel)} · ${escapeHtml(course.category || "-")} · ${escapeHtml(course.code || "-")}</span>
+function renderCourseSearchResult(course) {
+  return `
+    <button type="button" data-course-id="${course.id}">
+      <strong>${escapeHtml(getCourseDisplayTitle(course))}</strong>
+      <span>${escapeHtml(course.semesterLabel)} · ${escapeHtml(course.category || "-")} · ${escapeHtml(course.code || "-")}</span>
+    </button>
+  `;
+}
+
+async function renderGlobalSearchPage(rawQuery) {
+  resetDocumentState();
+  selectedCourseId = null;
+  selectedSemesterId = null;
+
+  if (searchResults) {
+    searchResults.hidden = true;
+    searchResults.innerHTML = "";
+  }
+
+  currentPath.textContent = `${APP_NAME} / Search / Global`;
+  pageTitle.textContent = "통합검색";
+  document.title = `통합검색 - ${APP_NAME}`;
+
+  const query = normalizeText(rawQuery);
+
+  if (!query) {
+    contentView.innerHTML = `
+      <section class="search-page" aria-label="통합검색 결과">
+        <div class="search-page-head">
+          <div>
+            <p class="section-label">Global Search</p>
+            <h2>통합검색</h2>
+          </div>
+          <span>검색어 필요</span>
+        </div>
+        <p class="search-page-empty">왼쪽의 통합검색창에 검색어를 입력하고 돋보기 버튼을 누르거나 Enter를 누르세요.</p>
+      </section>
+    `;
+    return;
+  }
+
+  contentView.innerHTML = `
+    <section class="search-page" aria-label="통합검색 결과">
+      <div class="search-page-head">
+        <div>
+          <p class="section-label">Global Search</p>
+          <h2>"${escapeHtml(rawQuery.trim())}" 검색 결과</h2>
+        </div>
+        <span>검색 중</span>
+      </div>
+      <div class="search-page-loading">모든 과목 문서를 검색할 수 있도록 불러오는 중입니다.</div>
+    </section>
+  `;
+
+  try {
+    const index = await getGlobalSearchIndex();
+
+    const matches = [];
+    let totalOccurrenceCount = 0;
+
+    index.forEach((entry) => {
+      let fromIndex = 0;
+      let firstFoundAt = -1;
+      let occurrenceCount = 0;
+
+      while (fromIndex < entry.searchText.length) {
+        const foundAt = entry.searchText.indexOf(query, fromIndex);
+
+        if (foundAt === -1) {
+          break;
+        }
+
+        if (firstFoundAt === -1) {
+          firstFoundAt = foundAt;
+        }
+
+        occurrenceCount += 1;
+        fromIndex = foundAt + Math.max(1, query.length);
+      }
+
+      if (occurrenceCount > 0) {
+        totalOccurrenceCount += occurrenceCount;
+
+        if (matches.length < MAX_GLOBAL_SEARCH_RESULTS) {
+          matches.push({
+            ...entry,
+            start: firstFoundAt,
+            end: firstFoundAt + query.length,
+            occurrenceCount,
+            snippet: buildGlobalSearchSnippet(entry.text, rawQuery)
+          });
+        }
+      }
+    });
+
+    contentView.innerHTML = renderGlobalSearchResultsHtml(rawQuery, matches, totalOccurrenceCount);
+  } catch (error) {
+    contentView.innerHTML = `
+      <section class="search-page" aria-label="통합검색 오류">
+        <div class="search-page-head">
+          <div>
+            <p class="section-label">Global Search</p>
+            <h2>통합검색을 사용할 수 없습니다.</h2>
+          </div>
+          <span>${escapeHtml(rawQuery)}</span>
+        </div>
+        <p class="no-results">${escapeHtml(error.message)}</p>
+      </section>
+    `;
+  }
+}
+
+async function getGlobalSearchIndex() {
+  if (!globalSearchIndexPromise) {
+    globalSearchIndexPromise = buildGlobalSearchIndex();
+  }
+
+  globalSearchIndex = await globalSearchIndexPromise;
+  return globalSearchIndex;
+}
+
+async function buildGlobalSearchIndex() {
+  const convertedCourses = getAllCourses().filter((course) => course.html?.type === "imageManifest");
+  const manifests = await Promise.allSettled(
+    convertedCourses.map(async (course) => {
+      const response = await fetch(`${resolveArchiveUrl(course.html.manifestPath)}?v=${ASSET_VERSION}`, { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error(`${course.title} manifest를 불러오지 못했습니다.`);
+      }
+
+      return {
+        course,
+        manifest: await response.json()
+      };
+    })
+  );
+
+  return manifests.flatMap((result) => {
+    if (result.status !== "fulfilled") {
+      return [];
+    }
+
+    const { course, manifest } = result.value;
+
+    return (manifest.pages || [])
+      .map((page, index) => {
+        const text = compactText(page.text || "");
+
+        return {
+          course,
+          pageNumber: page.pageNumber,
+          pageIndex: index + 1,
+          text,
+          searchText: normalizeText(text)
+        };
+      })
+      .filter((entry) => entry.searchText);
+  });
+}
+
+function renderGlobalSearchResultsHtml(rawQuery, matches, totalOccurrenceCount = matches.length) {
+  return `
+    <section class="search-page" aria-label="통합검색 결과">
+      <div class="search-page-head">
+        <div>
+          <p class="section-label">Global Search</p>
+          <h2>"${escapeHtml(rawQuery.trim())}" 검색 결과</h2>
+        </div>
+        <span>${matches.length}개 페이지 · ${totalOccurrenceCount}회 발견</span>
+      </div>
+    <div class="result-list global-result-list">
+      ${matches.map((match) => `
+        <button
+          type="button"
+          data-global-course-id="${escapeHtml(match.course.id)}"
+          data-page-number="${match.pageNumber}"
+          data-query="${escapeHtml(rawQuery)}"
+        >
+          <span>
+            <strong>${escapeHtml(getCourseDisplayTitle(match.course))}</strong>
+            <small>${escapeHtml(match.course.semesterLabel)} · 문서 ${match.pageNumber}페이지로 이동 · ${match.occurrenceCount}회 발견</small>
+            <em>${renderGlobalSearchSnippet(match.snippet, rawQuery)}</em>
+          </span>
         </button>
-      `).join("") || `<p class="no-results">일치하는 과목이 없습니다.</p>`}
+      `).join("") || `<p class="no-results">모든 문서에서 일치하는 결과가 없습니다.</p>`}
     </div>
+    </section>
+  `;
+}
+
+function buildGlobalSearchSnippet(pageText, rawQuery) {
+  const text = compactText(pageText);
+  const lowerText = text.toLowerCase();
+  const lowerQuery = compactText(rawQuery).toLowerCase();
+  const foundAt = lowerQuery ? lowerText.indexOf(lowerQuery) : -1;
+  const start = Math.max(0, (foundAt === -1 ? 0 : foundAt) - 48);
+  const end = Math.min(text.length, (foundAt === -1 ? 140 : foundAt + lowerQuery.length + 72));
+
+  return `${start > 0 ? "... " : ""}${text.slice(start, end)}${end < text.length ? " ..." : ""}`;
+}
+
+function renderGlobalSearchSnippet(snippet, rawQuery) {
+  const query = compactText(rawQuery);
+
+  if (!query) {
+    return escapeHtml(snippet);
+  }
+
+  const index = snippet.toLowerCase().indexOf(query.toLowerCase());
+
+  if (index === -1) {
+    return escapeHtml(snippet);
+  }
+
+  return `
+    ${escapeHtml(snippet.slice(0, index))}
+    <mark>${escapeHtml(snippet.slice(index, index + query.length))}</mark>
+    ${escapeHtml(snippet.slice(index + query.length))}
   `;
 }
 

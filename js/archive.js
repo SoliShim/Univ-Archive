@@ -2,6 +2,8 @@ const DATA_URL = new URL("../data/courses.json", import.meta.url);
 const APP_NAME = "Soli's Archive";
 const ASSET_VERSION = "20260518-search-highlight";
 const SIDEBAR_WIDTH_KEY = "solisArchiveSidebarWidth";
+const TREE_STATE_KEY = "solisArchiveCollapsedTreeNodes.v2";
+const DEFAULT_COLLAPSED_TREE_NODE_KEYS = ["semester:y1-s1", "semester:y1-s2"];
 const DEFAULT_SIDEBAR_WIDTH = 360;
 const MIN_SIDEBAR_WIDTH = 250;
 const MAX_SIDEBAR_WIDTH = 620;
@@ -76,6 +78,7 @@ let initialDocumentSearch = null;
 let documentPages = [];
 let documentMatches = [];
 let documentMatchIndex = -1;
+let collapsedTreeNodes = new Set();
 
 init();
 
@@ -92,6 +95,7 @@ async function init() {
     selectedCourseId = queryParams.get("course");
     selectedSemesterId = queryParams.get("semester");
     initialDocumentSearch = queryParams.get("docSearch");
+    collapsedTreeNodes = loadCollapsedTreeState();
 
     bindEvents();
     render();
@@ -114,6 +118,13 @@ function bindEvents() {
   });
 
   treeRoot.addEventListener("click", (event) => {
+    const toggleButton = event.target.closest("button[data-tree-toggle]");
+
+    if (toggleButton) {
+      toggleTreeNode(toggleButton.dataset.nodeType, toggleButton.dataset.id);
+      return;
+    }
+
     const button = event.target.closest("button[data-kind]");
 
     if (!button) {
@@ -201,6 +212,7 @@ function bindEvents() {
 
 function render() {
   decorateCourses();
+  expandSelectedTreePath(false);
   renderSummary();
   renderTree();
 
@@ -263,37 +275,68 @@ function renderTree() {
   const groups = groupSemestersByYear();
 
   treeRoot.innerHTML = groups
-    .map(([yearGroup, semesters]) => `
-      <details class="tree-group" open>
-        <summary>
+    .map(([yearGroup, semesters]) => {
+      const groupOpen = isTreeNodeOpen("year", yearGroup);
+      const branchId = getTreePanelId("year", yearGroup);
+      const toggleLabel = `${yearGroup} ${groupOpen ? "접기" : "펼치기"}`;
+
+      return `
+      <section class="tree-group" aria-label="${escapeHtml(yearGroup)}">
+        <button
+          class="tree-group-toggle"
+          type="button"
+          data-tree-toggle="true"
+          data-node-type="year"
+          data-id="${escapeHtml(yearGroup)}"
+          aria-expanded="${String(groupOpen)}"
+          aria-controls="${escapeHtml(branchId)}"
+          aria-label="${escapeHtml(toggleLabel)}"
+        >
+          <span class="tree-chevron" aria-hidden="true"></span>
           <span class="folder-icon" aria-hidden="true"></span>
           <span>${escapeHtml(yearGroup)}</span>
-        </summary>
-        <div class="tree-branch">
+        </button>
+        <div id="${escapeHtml(branchId)}" class="tree-branch" ${groupOpen ? "" : "hidden"}>
           ${semesters.map(renderSemesterNode).join("")}
         </div>
-      </details>
-    `)
+      </section>
+    `;
+    })
     .join("");
 }
 
 function renderSemesterNode(semester) {
   const active = selectedSemesterId === semester.id && !selectedCourseId ? " is-active" : "";
   const status = semester.status === "current" ? `<span class="node-state">수강중</span>` : "";
+  const semesterOpen = isTreeNodeOpen("semester", semester.id);
+  const leavesId = getTreePanelId("semester", semester.id);
+  const toggleLabel = `${semester.label} ${semesterOpen ? "접기" : "펼치기"}`;
 
   return `
-    <details class="tree-semester" open>
-      <summary>
+    <section class="tree-semester" aria-label="${escapeHtml(semester.label)}">
+      <div class="tree-row">
+        <button
+          class="tree-toggle"
+          type="button"
+          data-tree-toggle="true"
+          data-node-type="semester"
+          data-id="${escapeHtml(semester.id)}"
+          aria-expanded="${String(semesterOpen)}"
+          aria-controls="${escapeHtml(leavesId)}"
+          aria-label="${escapeHtml(toggleLabel)}"
+        >
+          <span class="tree-chevron" aria-hidden="true"></span>
+        </button>
         <button class="tree-node semester-node${active}" type="button" data-kind="semester" data-id="${semester.id}">
           <span class="folder-icon" aria-hidden="true"></span>
           <span>${escapeHtml(semester.label)}</span>
           ${status}
         </button>
-      </summary>
-      <div class="tree-leaves">
+      </div>
+      <div id="${escapeHtml(leavesId)}" class="tree-leaves" ${semesterOpen ? "" : "hidden"}>
         ${semester.courses.map(renderCourseNode).join("")}
       </div>
-    </details>
+    </section>
   `;
 }
 
@@ -307,6 +350,85 @@ function renderCourseNode(course) {
       <span>${escapeHtml(course.title)}</span>
     </button>
   `;
+}
+
+function getTreeNodeKey(type, id) {
+  return `${type}:${id}`;
+}
+
+function getTreePanelId(type, id) {
+  return `tree-panel-${type}-${toFolderSlug(id)}`;
+}
+
+function isTreeNodeOpen(type, id) {
+  return !collapsedTreeNodes.has(getTreeNodeKey(type, id));
+}
+
+function toggleTreeNode(type, id) {
+  const key = getTreeNodeKey(type, id);
+
+  if (collapsedTreeNodes.has(key)) {
+    collapsedTreeNodes.delete(key);
+  } else {
+    collapsedTreeNodes.add(key);
+  }
+
+  saveCollapsedTreeState();
+  renderTree();
+}
+
+function loadCollapsedTreeState() {
+  try {
+    const savedRawState = localStorage.getItem(TREE_STATE_KEY);
+
+    if (!savedRawState) {
+      return new Set(DEFAULT_COLLAPSED_TREE_NODE_KEYS);
+    }
+
+    const savedState = JSON.parse(savedRawState);
+    return new Set(Array.isArray(savedState) ? savedState : []);
+  } catch {
+    return new Set(DEFAULT_COLLAPSED_TREE_NODE_KEYS);
+  }
+}
+
+function saveCollapsedTreeState() {
+  localStorage.setItem(TREE_STATE_KEY, JSON.stringify([...collapsedTreeNodes]));
+}
+
+function expandTreeNode(type, id, persist = true) {
+  collapsedTreeNodes.delete(getTreeNodeKey(type, id));
+
+  if (persist) {
+    saveCollapsedTreeState();
+  }
+}
+
+function expandSemesterPath(semesterId, persist = true) {
+  const semester = findSemester(semesterId);
+
+  if (!semester) {
+    return;
+  }
+
+  expandTreeNode("year", semester.yearGroup, false);
+  expandTreeNode("semester", semester.id, false);
+
+  if (persist) {
+    saveCollapsedTreeState();
+  }
+}
+
+function expandSelectedTreePath(persist = true) {
+  if (selectedCourseId) {
+    const course = findCourse(selectedCourseId);
+    expandSemesterPath(course?.semesterId, persist);
+    return;
+  }
+
+  if (selectedSemesterId) {
+    expandSemesterPath(selectedSemesterId, persist);
+  }
 }
 
 function renderHome() {
@@ -1133,6 +1255,7 @@ function renderDocumentBadge(status) {
 function selectSemester(id) {
   selectedSemesterId = id;
   selectedCourseId = null;
+  expandSemesterPath(id);
   render();
 }
 
@@ -1148,6 +1271,7 @@ function selectHome() {
 function selectCourse(id) {
   selectedCourseId = id;
   selectedSemesterId = findCourse(id)?.semesterId ?? selectedSemesterId;
+  expandSemesterPath(selectedSemesterId);
   render();
 }
 

@@ -176,25 +176,77 @@ body.is-resizing-sidebar {
   gap: 4px;
 }
 
-.tree-group summary,
-.tree-semester summary {
-  list-style: none;
-}
-
-.tree-group summary::-webkit-details-marker,
-.tree-semester summary::-webkit-details-marker {
-  display: none;
-}
-
-.tree-group > summary {
+.tree-group-toggle {
   display: flex;
   align-items: center;
   gap: 9px;
+  width: 100%;
+  min-height: 30px;
   padding: 4px 2px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
   color: var(--text);
   font-size: 0.9rem;
   font-weight: 850;
+  text-align: left;
   cursor: pointer;
+}
+
+.tree-group-toggle:hover,
+.tree-group-toggle:focus-visible {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  outline: none;
+}
+
+.tree-group-toggle span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tree-row {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  align-items: center;
+  gap: 2px;
+}
+
+.tree-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tree-toggle:hover,
+.tree-toggle:focus-visible {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  outline: none;
+}
+
+.tree-chevron {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 1.7px solid currentColor;
+  border-bottom: 1.7px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.16s ease;
+}
+
+.tree-toggle[aria-expanded="true"] .tree-chevron,
+.tree-group-toggle[aria-expanded="true"] .tree-chevron {
+  transform: rotate(45deg);
 }
 
 .tree-branch,
@@ -204,6 +256,11 @@ body.is-resizing-sidebar {
   margin-left: 12px;
   padding-left: 10px;
   border-left: 1px solid var(--line);
+}
+
+.tree-branch[hidden],
+.tree-leaves[hidden] {
+  display: none !important;
 }
 
 .tree-node {

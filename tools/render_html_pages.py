@@ -276,12 +276,10 @@ def normalize_korean_ocr_spacing(value: str) -> str:
 def render_standalone_html(manifest: dict) -> str:
   title = html_escape(manifest["title"])
   pages = "\n".join(
-    f"""
-    <figure class="page">
+    f"""    <figure class="page">
       <img src="./{html_escape(page['image'])}" alt="{title} {page['pageNumber']}페이지">
       <figcaption>{page['pageNumber']} / {manifest['pageCount']} 페이지</figcaption>
-    </figure>
-    """
+    </figure>"""
     for page in manifest["pages"]
   )
 

@@ -2,7 +2,7 @@
 
 대학에서 수강한 과목과 학습 문서를 학년/학기 폴더 트리로 정리하는 정적 웹 아카이브입니다.
 
-현재 구조는 `PDF 보기` 중심이 아니라, 각 과목마다 HTML 문서 저장 슬롯을 두고 PDF 또는 필기 자료를 HTML 형식으로 옮겨 보관하는 방향으로 재구성되어 있습니다. 3학년 1학기 과목 중 PDF가 연결된 문서는 OCR 기반 검색/선택용 텍스트 레이어를 포함한 HTML 문서 패키지로 생성되어 있습니다.
+현재 구조는 `PDF 보기` 중심이 아니라, 각 과목마다 HTML 문서 저장 슬롯을 두고 PDF 또는 필기 자료를 HTML 형식으로 옮겨 보관하는 방향으로 재구성되어 있습니다. PDF가 연결된 문서는 OCR 기반 검색/선택용 텍스트 레이어를 포함한 HTML 문서 패키지로 생성되어 있습니다.
 
 프로젝트 구조와 작업 흐름은 `project-guide/index.html`에서도 확인할 수 있습니다.
 
@@ -24,7 +24,7 @@
 - `js/archive.js`: 트리 탐색, 검색, 과목 상세 렌더링
 - `styles.css`: 전체 UI 스타일
 - `assets/html/<학기>/<과목명>/<course-id>/`: PDF 원본 렌더링 이미지, OCR 텍스트 JSON, manifest, standalone HTML
-- `assets/pdfs/<학기>/<과목명>/`: PDF 원본 보관 위치
+- `assets/pdfs/<학기>/` 또는 `assets/pdfs/<학기>/<과목명>/`: PDF 원본 보관 위치
 - `tools/render_html_pages.py`: PDF를 원본 렌더링 이미지와 OCR 텍스트 레이어로 변환하는 도구
 - `requirements.txt`: 변환 스크립트용 Python 의존성
 

@@ -10,7 +10,7 @@ COURSES_FILE = ROOT / "data" / "courses.json"
 INDEX_FILE = ROOT / "index.html"
 ARCHIVE_ROOT = ROOT / "archive"
 ROOT_PREFIX = "../../../../"
-ASSET_VERSION = "20260523-ai-order"
+ASSET_VERSION = "20260710-final-pdfs"
 
 
 def to_folder_slug(value: object) -> str:

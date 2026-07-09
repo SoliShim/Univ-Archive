@@ -1,0 +1,2345 @@
+{
+  "pageNumber": 68,
+  "sourcePdf": "assets/pdfs/3학년 2학기/운영체제 보안 기말고사 총정리.pdf",
+  "sourcePageNumber": 31,
+  "width": 595.0,
+  "height": 842.0,
+  "text": "vaddr.c int initialized_global[1024] = {1}; // Data area int uninitialized_global[1024]; // BSS area === xv6 virtual address space === int code main : 0x4005d0 main(int argc, char *argv[]) { data initialized_global : 0x601040 int local1; data uninitialized_global : 0x602040 int local2; stack locall : Ox7ffd5b3a1a0c int *heap1 = malloc(sizeof(int)); stack local2 : Ox7ffd5b3a1a08 int *heap2 = malloc(sizeof(int)); heap heap1 : 0x602050 . . heap heap2 : 0x602060 printf(\"=== xv6 virtual address space ===\\n\"); printf(\"code main : %p\\n\", main); printf(\"data initialized_global : %p\\n\", initialized_global); printf(\"data uninitialized_global : %p\\n\",uninitialized_global); printf(\"stack local1 : %p\\n\", &local1); printf(\"stack local2 : %p\\n\", &local2); printf(\"heap heap1 : %p\\n\", heap1); printf(\"heap heap2 : %p\\n\", heap2); return Q; malloc. ERR int size = 16; // 크기바꿔보기! printf(\"=== heap allocation and reuse experiment ===\\n\"); printf(\"malloc size = %d bytes\\n\", size); char *a = malloc(size); char *b = malloc(size); char *c = malloc(size); printf(\"\\n[Step 1] malloc three blocks\\n\"); === heap allocation and reuse experiment === printf(\"a = @x%lx\\n\", (uint64)a); malloc size = 16 bytes printf(\"b = Ox%lx\\n\", (uint64)b) ; printf(\"c = (uint64)c); [Step 1] malloc three blocks printf(\"\\n[Step 2] add more malloc\\n\"); a = 0x1000 b = 0x1010 char *d = malloc(size); 0x1020 c = 01 char *e = malloc(size); printf(\"d = @x%Lx\\n\", (uint64)d); printf(\"e = Ox%lx\\n\", (uint64)e); [Step 2] add more malloc d = 0x1030 printf(\"\\n[Step 3] free and malloc again\\n\"); e = 0x1040 free(a); [Step 3] free and malloc again printf(\"a = @x%lx\\n\", (uint64)a); a = 0x1000 a = malloc(size); a = 0x1000 printf(\"a = O@x%lx\\n\", (uint64)a); // free and malloc again exit(Q);",
+  "spans": [
+    {
+      "text": "vaddr.c",
+      "x": 28.286,
+      "y": 29.714,
+      "width": 32.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 90.742
+    },
+    {
+      "text": "int",
+      "x": 28.857,
+      "y": 57.143,
+      "width": 13.714,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 92.451
+    },
+    {
+      "text": "initialized_global[1024]",
+      "x": 49.143,
+      "y": 57.143,
+      "width": 117.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.368
+    },
+    {
+      "text": "=",
+      "x": 173.714,
+      "y": 60.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 96.857
+    },
+    {
+      "text": "{1};",
+      "x": 184.0,
+      "y": 57.429,
+      "width": 17.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 63.536
+    },
+    {
+      "text": "//",
+      "x": 218.857,
+      "y": 57.429,
+      "width": 8.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 63.536
+    },
+    {
+      "text": "Data",
+      "x": 234.0,
+      "y": 58.0,
+      "width": 18.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 95.291
+    },
+    {
+      "text": "area",
+      "x": 258.857,
+      "y": 59.429,
+      "width": 18.857,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 95.291
+    },
+    {
+      "text": "int",
+      "x": 28.857,
+      "y": 69.143,
+      "width": 13.714,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.028
+    },
+    {
+      "text": "uninitialized_global[1024];",
+      "x": 49.143,
+      "y": 69.143,
+      "width": 132.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 76.976
+    },
+    {
+      "text": "//",
+      "x": 218.857,
+      "y": 69.429,
+      "width": 8.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 93.045
+    },
+    {
+      "text": "BSS",
+      "x": 234.0,
+      "y": 69.714,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.749
+    },
+    {
+      "text": "area",
+      "x": 253.714,
+      "y": 71.429,
+      "width": 18.857,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 96.936
+    },
+    {
+      "text": "===",
+      "x": 344.286,
+      "y": 83.714,
+      "width": 19.143,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 91.618
+    },
+    {
+      "text": "xv6",
+      "x": 369.714,
+      "y": 81.714,
+      "width": 14.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.678
+    },
+    {
+      "text": "virtual",
+      "x": 389.429,
+      "y": 81.429,
+      "width": 26.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.375
+    },
+    {
+      "text": "address",
+      "x": 422.571,
+      "y": 81.429,
+      "width": 34.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.375
+    },
+    {
+      "text": "space",
+      "x": 462.286,
+      "y": 83.429,
+      "width": 24.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.62
+    },
+    {
+      "text": "===",
+      "x": 493.714,
+      "y": 83.714,
+      "width": 18.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 96.338
+    },
+    {
+      "text": "int",
+      "x": 28.857,
+      "y": 94.0,
+      "width": 13.714,
+      "height": 12.571,
+      "fontSize": 12.571,
+      "confidence": 55.797
+    },
+    {
+      "text": "code",
+      "x": 343.714,
+      "y": 97.429,
+      "width": 21.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.392
+    },
+    {
+      "text": "main",
+      "x": 371.143,
+      "y": 97.429,
+      "width": 20.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.694
+    },
+    {
+      "text": ":",
+      "x": 468.286,
+      "y": 99.714,
+      "width": 0.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 91.989
+    },
+    {
+      "text": "0x4005d0",
+      "x": 475.429,
+      "y": 97.429,
+      "width": 42.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 90.912
+    },
+    {
+      "text": "main(int",
+      "x": 28.571,
+      "y": 105.143,
+      "width": 39.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.011
+    },
+    {
+      "text": "argc,",
+      "x": 73.714,
+      "y": 107.429,
+      "width": 22.857,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 95.828
+    },
+    {
+      "text": "char",
+      "x": 104.0,
+      "y": 105.714,
+      "width": 18.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.82
+    },
+    {
+      "text": "*argv[])",
+      "x": 128.857,
+      "y": 105.143,
+      "width": 38.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 87.406
+    },
+    {
+      "text": "{",
+      "x": 28.857,
+      "y": 117.429,
+      "width": 3.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 89.34
+    },
+    {
+      "text": "data",
+      "x": 343.714,
+      "y": 113.429,
+      "width": 18.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.154
+    },
+    {
+      "text": "initialized_global",
+      "x": 369.143,
+      "y": 113.429,
+      "width": 73.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.037
+    },
+    {
+      "text": ":",
+      "x": 449.143,
+      "y": 115.714,
+      "width": 0.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.037
+    },
+    {
+      "text": "0x601040",
+      "x": 456.286,
+      "y": 113.714,
+      "width": 42.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.31
+    },
+    {
+      "text": "int",
+      "x": 38.857,
+      "y": 129.143,
+      "width": 14.0,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 92.597
+    },
+    {
+      "text": "local1;",
+      "x": 59.143,
+      "y": 129.714,
+      "width": 32.286,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 81.082
+    },
+    {
+      "text": "data",
+      "x": 343.714,
+      "y": 129.429,
+      "width": 18.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 87.674
+    },
+    {
+      "text": "uninitialized_global",
+      "x": 369.143,
+      "y": 129.429,
+      "width": 85.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.674
+    },
+    {
+      "text": ":",
+      "x": 460.857,
+      "y": 131.714,
+      "width": 0.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.403
+    },
+    {
+      "text": "0x602040",
+      "x": 467.714,
+      "y": 129.714,
+      "width": 42.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.403
+    },
+    {
+      "text": "int",
+      "x": 38.857,
+      "y": 142.0,
+      "width": 14.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 91.511
+    },
+    {
+      "text": "local2;",
+      "x": 59.143,
+      "y": 141.714,
+      "width": 32.286,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 74.88
+    },
+    {
+      "text": "stack",
+      "x": 343.714,
+      "y": 145.429,
+      "width": 22.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.284
+    },
+    {
+      "text": "locall",
+      "x": 371.714,
+      "y": 145.429,
+      "width": 25.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 90.019
+    },
+    {
+      "text": ":",
+      "x": 403.143,
+      "y": 147.714,
+      "width": 0.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 89.511
+    },
+    {
+      "text": "Ox7ffd5b3a1a0c",
+      "x": 410.286,
+      "y": 145.429,
+      "width": 70.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 79.088
+    },
+    {
+      "text": "int",
+      "x": 38.857,
+      "y": 165.143,
+      "width": 14.0,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 92.496
+    },
+    {
+      "text": "*heap1",
+      "x": 58.857,
+      "y": 165.714,
+      "width": 29.143,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 58.296
+    },
+    {
+      "text": "=",
+      "x": 93.714,
+      "y": 168.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.225
+    },
+    {
+      "text": "malloc(sizeof(int));",
+      "x": 103.429,
+      "y": 165.143,
+      "width": 98.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.932
+    },
+    {
+      "text": "stack",
+      "x": 343.714,
+      "y": 161.429,
+      "width": 22.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.287
+    },
+    {
+      "text": "local2",
+      "x": 371.714,
+      "y": 161.429,
+      "width": 25.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.017
+    },
+    {
+      "text": ":",
+      "x": 403.143,
+      "y": 163.714,
+      "width": 0.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.985
+    },
+    {
+      "text": "Ox7ffd5b3a1a08",
+      "x": 410.286,
+      "y": 161.429,
+      "width": 70.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 45.927
+    },
+    {
+      "text": "int",
+      "x": 38.857,
+      "y": 177.143,
+      "width": 14.0,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.138
+    },
+    {
+      "text": "*heap2",
+      "x": 58.857,
+      "y": 177.714,
+      "width": 28.857,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 90.975
+    },
+    {
+      "text": "=",
+      "x": 93.714,
+      "y": 180.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.285
+    },
+    {
+      "text": "malloc(sizeof(int));",
+      "x": 103.429,
+      "y": 177.143,
+      "width": 98.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 85.921
+    },
+    {
+      "text": "heap",
+      "x": 344.0,
+      "y": 177.429,
+      "width": 21.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.956
+    },
+    {
+      "text": "heap1",
+      "x": 371.429,
+      "y": 177.429,
+      "width": 26.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.037
+    },
+    {
+      "text": ":",
+      "x": 404.286,
+      "y": 179.714,
+      "width": 0.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 89.101
+    },
+    {
+      "text": "0x602050",
+      "x": 411.143,
+      "y": 177.714,
+      "width": 42.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 89.101
+    },
+    {
+      "text": ".",
+      "x": 50.286,
+      "y": 201.143,
+      "width": 1.429,
+      "height": 1.429,
+      "fontSize": 1.429,
+      "confidence": 42.235
+    },
+    {
+      "text": ".",
+      "x": 125.143,
+      "y": 201.143,
+      "width": 1.429,
+      "height": 1.429,
+      "fontSize": 1.429,
+      "confidence": 32.861
+    },
+    {
+      "text": "heap",
+      "x": 344.0,
+      "y": 193.429,
+      "width": 21.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.02
+    },
+    {
+      "text": "heap2",
+      "x": 371.429,
+      "y": 193.429,
+      "width": 26.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.945
+    },
+    {
+      "text": ":",
+      "x": 404.286,
+      "y": 195.714,
+      "width": 0.857,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.754
+    },
+    {
+      "text": "0x602060",
+      "x": 411.143,
+      "y": 193.714,
+      "width": 42.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.568
+    },
+    {
+      "text": "printf(\"===",
+      "x": 38.857,
+      "y": 201.143,
+      "width": 54.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 86.7
+    },
+    {
+      "text": "xv6",
+      "x": 98.857,
+      "y": 201.714,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 91.183
+    },
+    {
+      "text": "virtual",
+      "x": 118.571,
+      "y": 201.714,
+      "width": 34.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.459
+    },
+    {
+      "text": "address",
+      "x": 158.857,
+      "y": 201.714,
+      "width": 33.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.459
+    },
+    {
+      "text": "space",
+      "x": 199.143,
+      "y": 203.429,
+      "width": 23.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.3
+    },
+    {
+      "text": "===\\n\");",
+      "x": 228.857,
+      "y": 201.143,
+      "width": 37.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.922
+    },
+    {
+      "text": "printf(\"code",
+      "x": 38.857,
+      "y": 225.143,
+      "width": 59.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 84.124
+    },
+    {
+      "text": "main",
+      "x": 103.429,
+      "y": 225.143,
+      "width": 19.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.518
+    },
+    {
+      "text": ":",
+      "x": 200.286,
+      "y": 227.714,
+      "width": 1.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 89.377
+    },
+    {
+      "text": "%p\\n\",",
+      "x": 208.286,
+      "y": 225.429,
+      "width": 28.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 88.158
+    },
+    {
+      "text": "main);",
+      "x": 243.714,
+      "y": 225.143,
+      "width": 27.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.625
+    },
+    {
+      "text": "printf(\"data",
+      "x": 38.857,
+      "y": 237.143,
+      "width": 58.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 84.956
+    },
+    {
+      "text": "initialized_global",
+      "x": 104.0,
+      "y": 237.143,
+      "width": 88.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.855
+    },
+    {
+      "text": ":",
+      "x": 200.286,
+      "y": 239.714,
+      "width": 1.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.274
+    },
+    {
+      "text": "%p\\n\",",
+      "x": 208.286,
+      "y": 237.429,
+      "width": 28.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.855
+    },
+    {
+      "text": "initialized_global);",
+      "x": 244.0,
+      "y": 237.143,
+      "width": 97.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.895
+    },
+    {
+      "text": "printf(\"data",
+      "x": 38.857,
+      "y": 249.143,
+      "width": 58.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 86.043
+    },
+    {
+      "text": "uninitialized_global",
+      "x": 104.0,
+      "y": 249.143,
+      "width": 98.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.284
+    },
+    {
+      "text": ":",
+      "x": 210.0,
+      "y": 251.714,
+      "width": 1.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 89.481
+    },
+    {
+      "text": "%p\\n\",uninitialized_global);",
+      "x": 218.286,
+      "y": 249.143,
+      "width": 138.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 88.486
+    },
+    {
+      "text": "printf(\"stack",
+      "x": 38.857,
+      "y": 261.143,
+      "width": 64.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 83.529
+    },
+    {
+      "text": "local1",
+      "x": 109.429,
+      "y": 261.714,
+      "width": 28.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 33.682
+    },
+    {
+      "text": ":",
+      "x": 145.143,
+      "y": 263.714,
+      "width": 1.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 91.337
+    },
+    {
+      "text": "%p\\n\",",
+      "x": 153.429,
+      "y": 261.429,
+      "width": 28.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.337
+    },
+    {
+      "text": "&local1);",
+      "x": 188.286,
+      "y": 261.143,
+      "width": 43.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 88.35
+    },
+    {
+      "text": "printf(\"stack",
+      "x": 38.857,
+      "y": 273.143,
+      "width": 64.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 84.529
+    },
+    {
+      "text": "local2",
+      "x": 109.429,
+      "y": 273.714,
+      "width": 28.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 90.418
+    },
+    {
+      "text": ":",
+      "x": 145.143,
+      "y": 275.714,
+      "width": 1.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 91.742
+    },
+    {
+      "text": "%p\\n\",",
+      "x": 153.429,
+      "y": 273.429,
+      "width": 28.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.957
+    },
+    {
+      "text": "&local2);",
+      "x": 188.286,
+      "y": 273.143,
+      "width": 43.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 84.181
+    },
+    {
+      "text": "printf(\"heap",
+      "x": 38.857,
+      "y": 285.143,
+      "width": 59.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 83.058
+    },
+    {
+      "text": "heap1",
+      "x": 104.0,
+      "y": 285.714,
+      "width": 24.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 79.171
+    },
+    {
+      "text": ":",
+      "x": 135.143,
+      "y": 287.714,
+      "width": 1.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 88.161
+    },
+    {
+      "text": "%p\\n\",",
+      "x": 143.429,
+      "y": 285.429,
+      "width": 28.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 88.161
+    },
+    {
+      "text": "heap1);",
+      "x": 178.857,
+      "y": 285.143,
+      "width": 32.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.354
+    },
+    {
+      "text": "printf(\"heap",
+      "x": 38.857,
+      "y": 297.143,
+      "width": 59.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 84.026
+    },
+    {
+      "text": "heap2",
+      "x": 104.0,
+      "y": 297.714,
+      "width": 24.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 90.842
+    },
+    {
+      "text": ":",
+      "x": 135.143,
+      "y": 299.714,
+      "width": 1.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.107
+    },
+    {
+      "text": "%p\\n\",",
+      "x": 143.429,
+      "y": 297.429,
+      "width": 28.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.794
+    },
+    {
+      "text": "heap2);",
+      "x": 178.857,
+      "y": 297.143,
+      "width": 32.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.59
+    },
+    {
+      "text": "return",
+      "x": 39.429,
+      "y": 322.0,
+      "width": 28.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.084
+    },
+    {
+      "text": "Q;",
+      "x": 73.714,
+      "y": 321.714,
+      "width": 8.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 88.767
+    },
+    {
+      "text": "malloc.",
+      "x": 28.571,
+      "y": 365.714,
+      "width": 39.429,
+      "height": 11.143,
+      "fontSize": 11.143,
+      "confidence": 35.342
+    },
+    {
+      "text": "ERR",
+      "x": 68.571,
+      "y": 365.714,
+      "width": 494.286,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 37.497
+    },
+    {
+      "text": "int",
+      "x": 34.0,
+      "y": 393.143,
+      "width": 13.714,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.835
+    },
+    {
+      "text": "size",
+      "x": 54.0,
+      "y": 393.143,
+      "width": 18.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.75
+    },
+    {
+      "text": "=",
+      "x": 78.857,
+      "y": 396.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 95.353
+    },
+    {
+      "text": "16;",
+      "x": 89.143,
+      "y": 393.714,
+      "width": 12.286,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.783
+    },
+    {
+      "text": "//",
+      "x": 124.0,
+      "y": 393.429,
+      "width": 8.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 92.245
+    },
+    {
+      "text": "크",
+      "x": 134.857,
+      "y": 394.0,
+      "width": 7.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.896
+    },
+    {
+      "text": "기",
+      "x": 145.143,
+      "y": 393.143,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.302
+    },
+    {
+      "text": "바",
+      "x": 159.429,
+      "y": 393.143,
+      "width": 8.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.679
+    },
+    {
+      "text": "꿔",
+      "x": 170.0,
+      "y": 393.143,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.28
+    },
+    {
+      "text": "보",
+      "x": 180.571,
+      "y": 393.714,
+      "width": 6.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.002
+    },
+    {
+      "text": "기!",
+      "x": 189.143,
+      "y": 393.143,
+      "width": 12.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 95.745
+    },
+    {
+      "text": "printf(\"===",
+      "x": 38.857,
+      "y": 417.143,
+      "width": 54.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 83.64
+    },
+    {
+      "text": "heap",
+      "x": 98.857,
+      "y": 417.714,
+      "width": 18.857,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.688
+    },
+    {
+      "text": "allocation",
+      "x": 124.0,
+      "y": 417.143,
+      "width": 48.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.558
+    },
+    {
+      "text": "and",
+      "x": 178.857,
+      "y": 417.714,
+      "width": 13.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.761
+    },
+    {
+      "text": "reuse",
+      "x": 199.429,
+      "y": 419.429,
+      "width": 23.429,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 96.478
+    },
+    {
+      "text": "experiment",
+      "x": 228.857,
+      "y": 417.143,
+      "width": 48.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.295
+    },
+    {
+      "text": "===\\n\");",
+      "x": 283.714,
+      "y": 417.143,
+      "width": 38.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.274
+    },
+    {
+      "text": "printf(\"malloc",
+      "x": 38.857,
+      "y": 429.143,
+      "width": 68.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 80.442
+    },
+    {
+      "text": "size",
+      "x": 114.0,
+      "y": 429.143,
+      "width": 18.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.156
+    },
+    {
+      "text": "=",
+      "x": 138.857,
+      "y": 432.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.227
+    },
+    {
+      "text": "%d",
+      "x": 148.286,
+      "y": 429.714,
+      "width": 9.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.091
+    },
+    {
+      "text": "bytes\\n\",",
+      "x": 164.0,
+      "y": 429.429,
+      "width": 42.571,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 91.834
+    },
+    {
+      "text": "size);",
+      "x": 214.0,
+      "y": 429.143,
+      "width": 27.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.573
+    },
+    {
+      "text": "char",
+      "x": 38.857,
+      "y": 453.714,
+      "width": 19.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.999
+    },
+    {
+      "text": "*a",
+      "x": 64.0,
+      "y": 455.429,
+      "width": 8.571,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 91.605
+    },
+    {
+      "text": "=",
+      "x": 78.857,
+      "y": 456.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 92.856
+    },
+    {
+      "text": "malloc(size);",
+      "x": 88.571,
+      "y": 453.143,
+      "width": 62.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 88.461
+    },
+    {
+      "text": "char",
+      "x": 38.857,
+      "y": 465.714,
+      "width": 19.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 89.611
+    },
+    {
+      "text": "*b",
+      "x": 64.0,
+      "y": 465.714,
+      "width": 8.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 89.611
+    },
+    {
+      "text": "=",
+      "x": 78.857,
+      "y": 468.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 92.533
+    },
+    {
+      "text": "malloc(size);",
+      "x": 88.571,
+      "y": 465.143,
+      "width": 62.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.879
+    },
+    {
+      "text": "char",
+      "x": 38.857,
+      "y": 477.714,
+      "width": 19.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 89.087
+    },
+    {
+      "text": "*c",
+      "x": 64.0,
+      "y": 479.429,
+      "width": 8.571,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 89.087
+    },
+    {
+      "text": "=",
+      "x": 78.857,
+      "y": 480.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 92.328
+    },
+    {
+      "text": "malloc(size);",
+      "x": 88.571,
+      "y": 477.143,
+      "width": 62.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.125
+    },
+    {
+      "text": "printf(\"\\n[Step",
+      "x": 38.857,
+      "y": 501.143,
+      "width": 74.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 89.801
+    },
+    {
+      "text": "1]",
+      "x": 119.143,
+      "y": 501.429,
+      "width": 8.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.372
+    },
+    {
+      "text": "malloc",
+      "x": 133.429,
+      "y": 501.714,
+      "width": 29.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.915
+    },
+    {
+      "text": "three",
+      "x": 169.143,
+      "y": 501.714,
+      "width": 23.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.188
+    },
+    {
+      "text": "blocks\\n\");",
+      "x": 199.143,
+      "y": 501.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.757
+    },
+    {
+      "text": "===",
+      "x": 332.857,
+      "y": 502.0,
+      "width": 19.143,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 94.995
+    },
+    {
+      "text": "heap",
+      "x": 358.857,
+      "y": 497.143,
+      "width": 20.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.149
+    },
+    {
+      "text": "allocation",
+      "x": 385.714,
+      "y": 497.143,
+      "width": 42.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.687
+    },
+    {
+      "text": "and",
+      "x": 434.571,
+      "y": 497.143,
+      "width": 15.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.73
+    },
+    {
+      "text": "reuse",
+      "x": 456.857,
+      "y": 499.143,
+      "width": 23.143,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.741
+    },
+    {
+      "text": "experiment",
+      "x": 486.0,
+      "y": 498.286,
+      "width": 50.0,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 96.289
+    },
+    {
+      "text": "===",
+      "x": 542.286,
+      "y": 502.0,
+      "width": 18.857,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 96.014
+    },
+    {
+      "text": "printf(\"a",
+      "x": 38.857,
+      "y": 513.143,
+      "width": 44.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 87.648
+    },
+    {
+      "text": "=",
+      "x": 88.571,
+      "y": 518.286,
+      "width": 4.286,
+      "height": 0.857,
+      "fontSize": 1,
+      "confidence": 93.255
+    },
+    {
+      "text": "@x%lx\\n\",",
+      "x": 98.571,
+      "y": 513.429,
+      "width": 43.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 56.233
+    },
+    {
+      "text": "(uint64)a);",
+      "x": 149.429,
+      "y": 513.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 85.823
+    },
+    {
+      "text": "malloc",
+      "x": 332.571,
+      "y": 513.143,
+      "width": 28.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.475
+    },
+    {
+      "text": "size",
+      "x": 366.857,
+      "y": 513.143,
+      "width": 16.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.179
+    },
+    {
+      "text": "=",
+      "x": 389.429,
+      "y": 515.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 95.808
+    },
+    {
+      "text": "16",
+      "x": 401.143,
+      "y": 513.429,
+      "width": 9.714,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 95.808
+    },
+    {
+      "text": "bytes",
+      "x": 417.143,
+      "y": 513.143,
+      "width": 22.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.214
+    },
+    {
+      "text": "printf(\"b",
+      "x": 38.857,
+      "y": 525.143,
+      "width": 44.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 85.341
+    },
+    {
+      "text": "=",
+      "x": 88.571,
+      "y": 528.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.268
+    },
+    {
+      "text": "Ox%lx\\n\",",
+      "x": 98.571,
+      "y": 525.429,
+      "width": 43.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 28.096
+    },
+    {
+      "text": "(uint64)b)",
+      "x": 149.429,
+      "y": 525.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 43.918
+    },
+    {
+      "text": ";",
+      "x": 198.571,
+      "y": 524.0,
+      "width": 4.0,
+      "height": 11.429,
+      "fontSize": 11.429,
+      "confidence": 43.918
+    },
+    {
+      "text": "printf(\"c",
+      "x": 38.857,
+      "y": 537.143,
+      "width": 44.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 88.631
+    },
+    {
+      "text": "=",
+      "x": 88.571,
+      "y": 540.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.262
+    },
+    {
+      "text": "(uint64)c);",
+      "x": 149.429,
+      "y": 537.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 89.932
+    },
+    {
+      "text": "[Step",
+      "x": 332.571,
+      "y": 545.143,
+      "width": 22.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.272
+    },
+    {
+      "text": "1]",
+      "x": 361.143,
+      "y": 545.429,
+      "width": 4.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.551
+    },
+    {
+      "text": "malloc",
+      "x": 374.571,
+      "y": 545.143,
+      "width": 28.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.705
+    },
+    {
+      "text": "three",
+      "x": 408.571,
+      "y": 545.143,
+      "width": 22.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.358
+    },
+    {
+      "text": "blocks",
+      "x": 437.714,
+      "y": 545.143,
+      "width": 27.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.359
+    },
+    {
+      "text": "printf(\"\\n[Step",
+      "x": 38.857,
+      "y": 561.143,
+      "width": 74.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 86.494
+    },
+    {
+      "text": "2]",
+      "x": 118.857,
+      "y": 561.429,
+      "width": 8.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.215
+    },
+    {
+      "text": "add",
+      "x": 133.714,
+      "y": 561.714,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.55
+    },
+    {
+      "text": "more",
+      "x": 153.714,
+      "y": 563.429,
+      "width": 19.143,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 93.148
+    },
+    {
+      "text": "malloc\\n\");",
+      "x": 178.571,
+      "y": 561.143,
+      "width": 53.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.136
+    },
+    {
+      "text": "a",
+      "x": 332.286,
+      "y": 563.143,
+      "width": 4.0,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.434
+    },
+    {
+      "text": "=",
+      "x": 343.143,
+      "y": 563.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 90.241
+    },
+    {
+      "text": "0x1000",
+      "x": 354.571,
+      "y": 561.429,
+      "width": 31.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.241
+    },
+    {
+      "text": "b",
+      "x": 332.571,
+      "y": 577.143,
+      "width": 4.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.082
+    },
+    {
+      "text": "=",
+      "x": 344.0,
+      "y": 579.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 90.15
+    },
+    {
+      "text": "0x1010",
+      "x": 355.429,
+      "y": 577.429,
+      "width": 31.143,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 88.789
+    },
+    {
+      "text": "char",
+      "x": 38.857,
+      "y": 585.714,
+      "width": 19.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.825
+    },
+    {
+      "text": "*d",
+      "x": 64.0,
+      "y": 585.714,
+      "width": 8.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 86.323
+    },
+    {
+      "text": "=",
+      "x": 78.857,
+      "y": 588.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.083
+    },
+    {
+      "text": "malloc(size);",
+      "x": 88.571,
+      "y": 585.143,
+      "width": 62.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.112
+    },
+    {
+      "text": "0x1020",
+      "x": 354.0,
+      "y": 593.429,
+      "width": 31.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 75.101
+    },
+    {
+      "text": "c",
+      "x": 332.286,
+      "y": 595.143,
+      "width": 4.0,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 90.659
+    },
+    {
+      "text": "=",
+      "x": 342.571,
+      "y": 595.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.203
+    },
+    {
+      "text": "01",
+      "x": 359.429,
+      "y": 595.429,
+      "width": 9.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 52.504
+    },
+    {
+      "text": "char",
+      "x": 38.857,
+      "y": 597.714,
+      "width": 19.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 89.914
+    },
+    {
+      "text": "*e",
+      "x": 64.0,
+      "y": 599.429,
+      "width": 8.857,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 89.914
+    },
+    {
+      "text": "=",
+      "x": 78.857,
+      "y": 600.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 92.747
+    },
+    {
+      "text": "malloc(size);",
+      "x": 88.571,
+      "y": 597.143,
+      "width": 62.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.235
+    },
+    {
+      "text": "printf(\"d",
+      "x": 38.857,
+      "y": 609.143,
+      "width": 44.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.005
+    },
+    {
+      "text": "=",
+      "x": 88.571,
+      "y": 612.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 92.72
+    },
+    {
+      "text": "@x%Lx\\n\",",
+      "x": 98.571,
+      "y": 609.429,
+      "width": 43.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 32.041
+    },
+    {
+      "text": "(uint64)d);",
+      "x": 149.429,
+      "y": 609.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 81.113
+    },
+    {
+      "text": "printf(\"e",
+      "x": 38.857,
+      "y": 621.143,
+      "width": 44.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 89.062
+    },
+    {
+      "text": "=",
+      "x": 88.571,
+      "y": 624.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.256
+    },
+    {
+      "text": "Ox%lx\\n\",",
+      "x": 98.571,
+      "y": 621.429,
+      "width": 43.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 45.872
+    },
+    {
+      "text": "(uint64)e);",
+      "x": 149.429,
+      "y": 621.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 82.154
+    },
+    {
+      "text": "[Step",
+      "x": 332.571,
+      "y": 625.143,
+      "width": 22.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.552
+    },
+    {
+      "text": "2]",
+      "x": 360.857,
+      "y": 625.429,
+      "width": 4.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.723
+    },
+    {
+      "text": "add",
+      "x": 374.286,
+      "y": 625.143,
+      "width": 16.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.889
+    },
+    {
+      "text": "more",
+      "x": 396.857,
+      "y": 627.143,
+      "width": 22.571,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.383
+    },
+    {
+      "text": "malloc",
+      "x": 425.429,
+      "y": 625.143,
+      "width": 28.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.716
+    },
+    {
+      "text": "d",
+      "x": 332.286,
+      "y": 641.143,
+      "width": 4.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.754
+    },
+    {
+      "text": "=",
+      "x": 344.0,
+      "y": 643.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 92.369
+    },
+    {
+      "text": "0x1030",
+      "x": 355.429,
+      "y": 641.429,
+      "width": 31.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.369
+    },
+    {
+      "text": "printf(\"\\n[Step",
+      "x": 38.857,
+      "y": 657.143,
+      "width": 74.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 80.018
+    },
+    {
+      "text": "3]",
+      "x": 118.857,
+      "y": 657.429,
+      "width": 8.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.789
+    },
+    {
+      "text": "free",
+      "x": 134.0,
+      "y": 657.714,
+      "width": 18.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.061
+    },
+    {
+      "text": "and",
+      "x": 158.857,
+      "y": 657.714,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.061
+    },
+    {
+      "text": "malloc",
+      "x": 178.571,
+      "y": 657.714,
+      "width": 29.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.288
+    },
+    {
+      "text": "again\\n\");",
+      "x": 214.0,
+      "y": 657.143,
+      "width": 47.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.871
+    },
+    {
+      "text": "e",
+      "x": 332.286,
+      "y": 659.143,
+      "width": 4.571,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 91.371
+    },
+    {
+      "text": "=",
+      "x": 343.429,
+      "y": 659.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 92.637
+    },
+    {
+      "text": "0x1040",
+      "x": 354.857,
+      "y": 657.429,
+      "width": 31.143,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 88.779
+    },
+    {
+      "text": "free(a);",
+      "x": 38.857,
+      "y": 693.143,
+      "width": 37.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 89.625
+    },
+    {
+      "text": "[Step",
+      "x": 332.571,
+      "y": 689.143,
+      "width": 22.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.974
+    },
+    {
+      "text": "3]",
+      "x": 360.571,
+      "y": 689.429,
+      "width": 4.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.856
+    },
+    {
+      "text": "free",
+      "x": 374.0,
+      "y": 689.143,
+      "width": 16.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.595
+    },
+    {
+      "text": "and",
+      "x": 396.571,
+      "y": 689.143,
+      "width": 15.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.824
+    },
+    {
+      "text": "malloc",
+      "x": 418.857,
+      "y": 689.143,
+      "width": 28.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.324
+    },
+    {
+      "text": "again",
+      "x": 453.429,
+      "y": 689.143,
+      "width": 23.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.208
+    },
+    {
+      "text": "printf(\"a",
+      "x": 38.857,
+      "y": 705.143,
+      "width": 44.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 87.648
+    },
+    {
+      "text": "=",
+      "x": 88.571,
+      "y": 708.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.255
+    },
+    {
+      "text": "@x%lx\\n\",",
+      "x": 98.571,
+      "y": 705.429,
+      "width": 43.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 56.233
+    },
+    {
+      "text": "(uint64)a);",
+      "x": 149.429,
+      "y": 705.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 85.823
+    },
+    {
+      "text": "a",
+      "x": 332.286,
+      "y": 707.143,
+      "width": 4.0,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.434
+    },
+    {
+      "text": "=",
+      "x": 343.143,
+      "y": 707.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 90.241
+    },
+    {
+      "text": "0x1000",
+      "x": 354.571,
+      "y": 705.429,
+      "width": 31.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.241
+    },
+    {
+      "text": "a",
+      "x": 38.857,
+      "y": 719.429,
+      "width": 3.714,
+      "height": 5.429,
+      "fontSize": 5.429,
+      "confidence": 94.708
+    },
+    {
+      "text": "=",
+      "x": 48.857,
+      "y": 720.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.227
+    },
+    {
+      "text": "malloc(size);",
+      "x": 58.571,
+      "y": 717.143,
+      "width": 62.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.823
+    },
+    {
+      "text": "a",
+      "x": 332.286,
+      "y": 723.143,
+      "width": 4.0,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 94.959
+    },
+    {
+      "text": "=",
+      "x": 343.143,
+      "y": 723.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 92.244
+    },
+    {
+      "text": "0x1000",
+      "x": 354.571,
+      "y": 721.429,
+      "width": 31.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 90.862
+    },
+    {
+      "text": "printf(\"a",
+      "x": 38.857,
+      "y": 729.143,
+      "width": 44.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 89.654
+    },
+    {
+      "text": "=",
+      "x": 88.571,
+      "y": 732.571,
+      "width": 4.286,
+      "height": 2.571,
+      "fontSize": 2.571,
+      "confidence": 93.249
+    },
+    {
+      "text": "O@x%lx\\n\",",
+      "x": 98.571,
+      "y": 729.429,
+      "width": 43.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 37.895
+    },
+    {
+      "text": "(uint64)a);",
+      "x": 149.429,
+      "y": 729.143,
+      "width": 52.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 76.133
+    },
+    {
+      "text": "//",
+      "x": 38.857,
+      "y": 765.429,
+      "width": 8.571,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 92.885
+    },
+    {
+      "text": "free",
+      "x": 54.0,
+      "y": 765.714,
+      "width": 18.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.479
+    },
+    {
+      "text": "and",
+      "x": 78.857,
+      "y": 765.714,
+      "width": 13.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.424
+    },
+    {
+      "text": "malloc",
+      "x": 98.571,
+      "y": 765.714,
+      "width": 29.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 96.57
+    },
+    {
+      "text": "again",
+      "x": 133.714,
+      "y": 765.143,
+      "width": 24.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.32
+    },
+    {
+      "text": "exit(Q);",
+      "x": 38.571,
+      "y": 789.143,
+      "width": 38.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 88.371
+    }
+  ],
+  "ocrEngine": "tesseract",
+  "ocrLanguage": "kor+eng",
+  "displayRenderScale": 2.2,
+  "ocrRenderScale": 3.5
+}

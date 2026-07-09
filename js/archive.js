@@ -1,6 +1,6 @@
 const DATA_URL = new URL("../data/courses.json", import.meta.url);
 const APP_NAME = "Soli's Archive";
-const ASSET_VERSION = "20260523-ai-order";
+const ASSET_VERSION = "20260710-final-pdfs";
 const SIDEBAR_WIDTH_KEY = "solisArchiveSidebarWidth";
 const TREE_STATE_KEY = "solisArchiveCollapsedTreeNodes.v2";
 const SIDEBAR_VISIBILITY_KEY = "solisArchiveSidebarVisible";

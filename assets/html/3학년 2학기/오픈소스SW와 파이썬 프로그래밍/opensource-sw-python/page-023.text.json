@@ -1,0 +1,3839 @@
+{
+  "pageNumber": 23,
+  "sourcePdf": "assets/pdfs/3학년 2학기/오픈소스 파이썬 기말고사 총정리.pdf",
+  "sourcePageNumber": 6,
+  "width": 595.0,
+  "height": 842.0,
+  "text": "Account 클래스의속성은외부에완전히노출되어있다. 누구나마음대로접근해서값을 Boj 고칠수있는상태. 74S} (Encapsulation) : 데이터 ( 상태 ) 와메서드 ( 행동 ) 를하나로묶고내부를감추는것정보은닉 (information Hiding): 내부 PAS 외부로부터철저히차단하는것. 내부구현이바뀌어도외부에서는영향을받지않음해결책 : _ private 변수활용, 네임맹글링 (Name Mangling), getter / setter 인터페이스 Private Variable 프라이빗변수이름앞에 _ 언더바두개붙이기 class Account: # 1. 직접접근시도 def _init_(self, owner, balance): print(acc.__balance) selfiowner = owner # 발생! self__balance = balance # Private 변수 # 2. 값수정시도 acc = Account(\"Alice\", 1000) acc.__balance = -999999 print(acc._balance) # -999999 # 수정된것처럼보인다? 그런데원래잔액은어떻게됐을까? 외부접근차단: 클래스내부에서관리하는속성을외부에서마음대로조작하면프로그램에문제가생길수있습니다안전장치마련: 이를막기위해변수이름앞에 _ 를 ZO Private 변수로선언함으로써이건5 1 9 1 3 23 1708 1424 131 33 93.302849 건드리지5 1 9 1 3 24 1872 1424 26 33 93.295479 마5 1 9 1 3 25 1902 1424 80 33 96.910408 라고바깥에신호를주는것 balance 변수는클래스외부에서보이지않는상태가됨 . 코드에직접접근을 AttributeError 발생 64Ｌ 수정을시도하면값이수정된것처럼보이지만, 실제로는새로운변수가생성되어버린것임. -> _ 는강력한보안장치가아니다. _ -> 데이터접근에필요항 Getter/Setter7} 필요하다. Name Mangling 네임맹글링 acc = Account(\"Alice”, 1000) # 출력결과: { # 엉뚱한이름으로수정을시도하면 ? ‘owner’: ‘Alice’, acc._balance = -999999 ‘ Account_balance’: 1000, # 원본보존 '_balance’: -999999 # 별개로 478 # 객체의실제속성지도를출력 } print(acc._Account_balance) # 1000 파이썬은변수명앞에더블붙으면내부적으로변수의이름을자동변환원래이름앞에 _ 클래스이름이추가되어 _ClassName_variableO| 된다. He 이름으로는접근가능. 따라서은실수방지 (이름충돌 ) 를위한기능이다. - 6 -",
+  "spans": [
+    {
+      "text": "Account",
+      "x": 43.429,
+      "y": 30.0,
+      "width": 36.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.453
+    },
+    {
+      "text": "클",
+      "x": 87.429,
+      "y": 28.571,
+      "width": 7.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.227
+    },
+    {
+      "text": "래",
+      "x": 98.857,
+      "y": 28.286,
+      "width": 5.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.949
+    },
+    {
+      "text": "스",
+      "x": 110.286,
+      "y": 29.143,
+      "width": 11.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 87.565
+    },
+    {
+      "text": "의",
+      "x": 123.714,
+      "y": 28.286,
+      "width": 0.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.899
+    },
+    {
+      "text": "속",
+      "x": 190.0,
+      "y": 28.571,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.532
+    },
+    {
+      "text": "성",
+      "x": 200.571,
+      "y": 28.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.845
+    },
+    {
+      "text": "은",
+      "x": 212.286,
+      "y": 28.571,
+      "width": 6.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.302
+    },
+    {
+      "text": "외",
+      "x": 226.286,
+      "y": 28.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.413
+    },
+    {
+      "text": "부",
+      "x": 236.857,
+      "y": 28.571,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.276
+    },
+    {
+      "text": "에",
+      "x": 248.286,
+      "y": 28.286,
+      "width": 5.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 79.392
+    },
+    {
+      "text": "완전히",
+      "x": 261.143,
+      "y": 28.286,
+      "width": 27.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.295
+    },
+    {
+      "text": "노",
+      "x": 297.714,
+      "y": 29.143,
+      "width": 7.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.174
+    },
+    {
+      "text": "출",
+      "x": 308.286,
+      "y": 28.286,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 87.167
+    },
+    {
+      "text": "되어",
+      "x": 318.857,
+      "y": 28.286,
+      "width": 15.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.746
+    },
+    {
+      "text": "있다.",
+      "x": 342.857,
+      "y": 28.286,
+      "width": 20.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.149
+    },
+    {
+      "text": "누구나",
+      "x": 371.143,
+      "y": 28.286,
+      "width": 27.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.101
+    },
+    {
+      "text": "마음대로",
+      "x": 405.714,
+      "y": 28.286,
+      "width": 38.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.987
+    },
+    {
+      "text": "접",
+      "x": 452.0,
+      "y": 28.286,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.987
+    },
+    {
+      "text": "근",
+      "x": 462.857,
+      "y": 28.571,
+      "width": 10.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.079
+    },
+    {
+      "text": "해",
+      "x": 476.286,
+      "y": 28.286,
+      "width": 8.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.693
+    },
+    {
+      "text": "서",
+      "x": 485.714,
+      "y": 28.286,
+      "width": 3.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.864
+    },
+    {
+      "text": "값",
+      "x": 496.571,
+      "y": 28.286,
+      "width": 17.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.157
+    },
+    {
+      "text": "을",
+      "x": 508.857,
+      "y": 27.143,
+      "width": 7.429,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 59.418
+    },
+    {
+      "text": "Boj",
+      "x": 522.857,
+      "y": 28.571,
+      "width": 6.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 48.942
+    },
+    {
+      "text": "고칠",
+      "x": 547.429,
+      "y": 28.286,
+      "width": 18.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 94.026
+    },
+    {
+      "text": "수",
+      "x": 44.0,
+      "y": 44.571,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 97.001
+    },
+    {
+      "text": "있는",
+      "x": 59.714,
+      "y": 44.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.892
+    },
+    {
+      "text": "상태.",
+      "x": 84.0,
+      "y": 44.286,
+      "width": 20.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.546
+    },
+    {
+      "text": "74S}",
+      "x": 44.0,
+      "y": 76.286,
+      "width": 29.143,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 40.803
+    },
+    {
+      "text": "(Encapsulation)",
+      "x": 78.857,
+      "y": 77.714,
+      "width": 67.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.504
+    },
+    {
+      "text": ":",
+      "x": 148.857,
+      "y": 74.857,
+      "width": 4.0,
+      "height": 14.286,
+      "fontSize": 14.286,
+      "confidence": 93.176
+    },
+    {
+      "text": "데",
+      "x": 159.714,
+      "y": 76.286,
+      "width": 8.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.195
+    },
+    {
+      "text": "이",
+      "x": 170.286,
+      "y": 76.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.216
+    },
+    {
+      "text": "터",
+      "x": 181.143,
+      "y": 76.286,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.105
+    },
+    {
+      "text": "(",
+      "x": 189.714,
+      "y": 77.714,
+      "width": 2.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.223
+    },
+    {
+      "text": "상",
+      "x": 194.571,
+      "y": 76.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.272
+    },
+    {
+      "text": "태",
+      "x": 204.286,
+      "y": 76.286,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": ")",
+      "x": 212.286,
+      "y": 77.714,
+      "width": 2.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.241
+    },
+    {
+      "text": "와",
+      "x": 217.714,
+      "y": 76.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.203
+    },
+    {
+      "text": "메",
+      "x": 231.143,
+      "y": 76.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.285
+    },
+    {
+      "text": "서",
+      "x": 241.714,
+      "y": 76.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.275
+    },
+    {
+      "text": "드",
+      "x": 251.714,
+      "y": 77.143,
+      "width": 7.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.302
+    },
+    {
+      "text": "(",
+      "x": 260.571,
+      "y": 77.714,
+      "width": 2.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.408
+    },
+    {
+      "text": "행",
+      "x": 265.143,
+      "y": 76.286,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.175
+    },
+    {
+      "text": "동",
+      "x": 275.714,
+      "y": 76.571,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.622
+    },
+    {
+      "text": ")",
+      "x": 283.429,
+      "y": 77.714,
+      "width": 2.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.238
+    },
+    {
+      "text": "를",
+      "x": 289.143,
+      "y": 76.571,
+      "width": 6.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.276
+    },
+    {
+      "text": "하나로",
+      "x": 301.714,
+      "y": 76.286,
+      "width": 28.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.778
+    },
+    {
+      "text": "묶고",
+      "x": 336.857,
+      "y": 76.571,
+      "width": 18.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.305
+    },
+    {
+      "text": "내",
+      "x": 362.571,
+      "y": 76.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.298
+    },
+    {
+      "text": "부",
+      "x": 373.143,
+      "y": 76.571,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.295
+    },
+    {
+      "text": "를",
+      "x": 383.714,
+      "y": 76.571,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 94.249
+    },
+    {
+      "text": "감추는",
+      "x": 396.857,
+      "y": 76.286,
+      "width": 28.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 94.493
+    },
+    {
+      "text": "것",
+      "x": 432.0,
+      "y": 76.286,
+      "width": 8.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.43
+    },
+    {
+      "text": "정보",
+      "x": 43.714,
+      "y": 92.286,
+      "width": 19.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.403
+    },
+    {
+      "text": "은닉",
+      "x": 68.857,
+      "y": 92.286,
+      "width": 18.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 92.941
+    },
+    {
+      "text": "(information",
+      "x": 93.714,
+      "y": 93.714,
+      "width": 55.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 89.427
+    },
+    {
+      "text": "Hiding):",
+      "x": 155.143,
+      "y": 93.714,
+      "width": 38.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 79.158
+    },
+    {
+      "text": "내부",
+      "x": 200.857,
+      "y": 92.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.221
+    },
+    {
+      "text": "PAS",
+      "x": 235.429,
+      "y": 92.286,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.264
+    },
+    {
+      "text": "외",
+      "x": 260.857,
+      "y": 92.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.285
+    },
+    {
+      "text": "부",
+      "x": 271.714,
+      "y": 92.571,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.228
+    },
+    {
+      "text": "로",
+      "x": 281.429,
+      "y": 93.143,
+      "width": 7.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.303
+    },
+    {
+      "text": "부터",
+      "x": 290.286,
+      "y": 92.286,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.226
+    },
+    {
+      "text": "철저히",
+      "x": 315.429,
+      "y": 92.286,
+      "width": 27.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "차",
+      "x": 351.429,
+      "y": 92.286,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 88.803
+    },
+    {
+      "text": "단",
+      "x": 361.143,
+      "y": 92.286,
+      "width": 7.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.298
+    },
+    {
+      "text": "하",
+      "x": 371.143,
+      "y": 92.286,
+      "width": 8.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.576
+    },
+    {
+      "text": "는",
+      "x": 381.714,
+      "y": 92.571,
+      "width": 6.857,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 97.02
+    },
+    {
+      "text": "것.",
+      "x": 395.429,
+      "y": 92.286,
+      "width": 10.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.383
+    },
+    {
+      "text": "내부",
+      "x": 69.714,
+      "y": 108.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.306
+    },
+    {
+      "text": "구",
+      "x": 95.714,
+      "y": 108.857,
+      "width": 7.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.298
+    },
+    {
+      "text": "현",
+      "x": 105.714,
+      "y": 108.286,
+      "width": 6.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.282
+    },
+    {
+      "text": "이",
+      "x": 116.571,
+      "y": 108.286,
+      "width": 5.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.952
+    },
+    {
+      "text": "바뀌어도",
+      "x": 129.429,
+      "y": 108.286,
+      "width": 38.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.298
+    },
+    {
+      "text": "외",
+      "x": 174.857,
+      "y": 108.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.101
+    },
+    {
+      "text": "부",
+      "x": 185.143,
+      "y": 108.571,
+      "width": 7.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.305
+    },
+    {
+      "text": "에서는",
+      "x": 194.286,
+      "y": 108.286,
+      "width": 28.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.285
+    },
+    {
+      "text": "영",
+      "x": 230.571,
+      "y": 108.286,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.501
+    },
+    {
+      "text": "향",
+      "x": 240.571,
+      "y": 108.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "을",
+      "x": 251.429,
+      "y": 108.286,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.959
+    },
+    {
+      "text": "받지",
+      "x": 264.571,
+      "y": 108.286,
+      "width": 17.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.992
+    },
+    {
+      "text": "않음",
+      "x": 289.429,
+      "y": 108.286,
+      "width": 18.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.907
+    },
+    {
+      "text": "해결책",
+      "x": 44.0,
+      "y": 140.286,
+      "width": 28.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.269
+    },
+    {
+      "text": ":",
+      "x": 80.571,
+      "y": 144.0,
+      "width": 0.286,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 77.799
+    },
+    {
+      "text": "_",
+      "x": 86.286,
+      "y": 149.714,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 47.343
+    },
+    {
+      "text": "private",
+      "x": 94.857,
+      "y": 141.714,
+      "width": 29.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.157
+    },
+    {
+      "text": "변수",
+      "x": 131.429,
+      "y": 140.286,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.634
+    },
+    {
+      "text": "활용,",
+      "x": 155.429,
+      "y": 140.286,
+      "width": 20.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.725
+    },
+    {
+      "text": "네임",
+      "x": 183.429,
+      "y": 140.286,
+      "width": 17.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.288
+    },
+    {
+      "text": "맹",
+      "x": 209.714,
+      "y": 140.286,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.772
+    },
+    {
+      "text": "글",
+      "x": 220.571,
+      "y": 140.571,
+      "width": 6.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.485
+    },
+    {
+      "text": "링",
+      "x": 231.429,
+      "y": 140.286,
+      "width": 4.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.794
+    },
+    {
+      "text": "(Name",
+      "x": 242.571,
+      "y": 141.714,
+      "width": 29.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.585
+    },
+    {
+      "text": "Mangling),",
+      "x": 278.0,
+      "y": 141.714,
+      "width": 46.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 89.471
+    },
+    {
+      "text": "getter",
+      "x": 330.857,
+      "y": 142.857,
+      "width": 26.571,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 93.116
+    },
+    {
+      "text": "/",
+      "x": 362.571,
+      "y": 141.714,
+      "width": 3.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.944
+    },
+    {
+      "text": "setter",
+      "x": 372.0,
+      "y": 142.857,
+      "width": 24.857,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 93.124
+    },
+    {
+      "text": "인터페이스",
+      "x": 403.143,
+      "y": 140.286,
+      "width": 48.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.484
+    },
+    {
+      "text": "Private",
+      "x": 29.143,
+      "y": 173.714,
+      "width": 29.429,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 96.601
+    },
+    {
+      "text": "Variable",
+      "x": 64.0,
+      "y": 173.714,
+      "width": 36.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 93.262
+    },
+    {
+      "text": "프라이빗",
+      "x": 106.0,
+      "y": 172.286,
+      "width": 38.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.494
+    },
+    {
+      "text": "변수",
+      "x": 152.0,
+      "y": 172.286,
+      "width": 18.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 97.008
+    },
+    {
+      "text": "이름",
+      "x": 44.571,
+      "y": 188.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.648
+    },
+    {
+      "text": "앞에",
+      "x": 69.143,
+      "y": 188.286,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.673
+    },
+    {
+      "text": "_",
+      "x": 93.429,
+      "y": 197.714,
+      "width": 8.571,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 86.038
+    },
+    {
+      "text": "언",
+      "x": 108.286,
+      "y": 188.286,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.281
+    },
+    {
+      "text": "더",
+      "x": 118.286,
+      "y": 188.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.269
+    },
+    {
+      "text": "바",
+      "x": 129.143,
+      "y": 188.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.358
+    },
+    {
+      "text": "두",
+      "x": 142.571,
+      "y": 188.571,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.523
+    },
+    {
+      "text": "개",
+      "x": 157.714,
+      "y": 188.286,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.965
+    },
+    {
+      "text": "붙이기",
+      "x": 172.571,
+      "y": 188.286,
+      "width": 27.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.743
+    },
+    {
+      "text": "class",
+      "x": 43.714,
+      "y": 211.143,
+      "width": 20.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 94.56
+    },
+    {
+      "text": "Account:",
+      "x": 69.714,
+      "y": 211.429,
+      "width": 38.286,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.331
+    },
+    {
+      "text": "#",
+      "x": 324.0,
+      "y": 211.429,
+      "width": 5.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.803
+    },
+    {
+      "text": "1.",
+      "x": 336.0,
+      "y": 211.429,
+      "width": 6.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 95.989
+    },
+    {
+      "text": "직접",
+      "x": 348.857,
+      "y": 209.714,
+      "width": 17.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.836
+    },
+    {
+      "text": "접근",
+      "x": 373.429,
+      "y": 209.714,
+      "width": 18.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.372
+    },
+    {
+      "text": "시도",
+      "x": 398.286,
+      "y": 209.714,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.499
+    },
+    {
+      "text": "def",
+      "x": 64.0,
+      "y": 226.857,
+      "width": 14.0,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.049
+    },
+    {
+      "text": "_init_(self,",
+      "x": 82.857,
+      "y": 226.857,
+      "width": 51.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 36.247
+    },
+    {
+      "text": "owner,",
+      "x": 140.0,
+      "y": 228.857,
+      "width": 29.143,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 96.395
+    },
+    {
+      "text": "balance):",
+      "x": 175.714,
+      "y": 226.857,
+      "width": 38.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.395
+    },
+    {
+      "text": "print(acc.__balance)",
+      "x": 324.571,
+      "y": 226.857,
+      "width": 86.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.386
+    },
+    {
+      "text": "selfiowner",
+      "x": 83.714,
+      "y": 243.143,
+      "width": 45.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 37.258
+    },
+    {
+      "text": "=",
+      "x": 134.857,
+      "y": 245.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 96.281
+    },
+    {
+      "text": "owner",
+      "x": 146.286,
+      "y": 245.143,
+      "width": 27.429,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.672
+    },
+    {
+      "text": "#",
+      "x": 324.0,
+      "y": 243.143,
+      "width": 5.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 72.321
+    },
+    {
+      "text": "발생!",
+      "x": 412.857,
+      "y": 241.714,
+      "width": 20.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.885
+    },
+    {
+      "text": "self__balance",
+      "x": 83.429,
+      "y": 259.143,
+      "width": 60.286,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 58.839
+    },
+    {
+      "text": "=",
+      "x": 150.0,
+      "y": 261.429,
+      "width": 5.143,
+      "height": 3.429,
+      "fontSize": 3.429,
+      "confidence": 96.992
+    },
+    {
+      "text": "balance",
+      "x": 161.714,
+      "y": 259.143,
+      "width": 34.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 92.957
+    },
+    {
+      "text": "#",
+      "x": 200.857,
+      "y": 259.143,
+      "width": 5.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 92.957
+    },
+    {
+      "text": "Private",
+      "x": 212.571,
+      "y": 259.143,
+      "width": 29.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 95.546
+    },
+    {
+      "text": "변수",
+      "x": 249.143,
+      "y": 257.714,
+      "width": 18.0,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 95.874
+    },
+    {
+      "text": "#",
+      "x": 324.0,
+      "y": 275.143,
+      "width": 5.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.912
+    },
+    {
+      "text": "2.",
+      "x": 335.429,
+      "y": 275.143,
+      "width": 6.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.284
+    },
+    {
+      "text": "값",
+      "x": 348.571,
+      "y": 273.429,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.178
+    },
+    {
+      "text": "수정",
+      "x": 363.429,
+      "y": 273.429,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.933
+    },
+    {
+      "text": "시도",
+      "x": 388.286,
+      "y": 273.429,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.67
+    },
+    {
+      "text": "acc",
+      "x": 43.714,
+      "y": 293.143,
+      "width": 14.0,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 96.585
+    },
+    {
+      "text": "=",
+      "x": 64.0,
+      "y": 293.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.299
+    },
+    {
+      "text": "Account(\"Alice\",",
+      "x": 75.143,
+      "y": 291.143,
+      "width": 71.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 81.594
+    },
+    {
+      "text": "1000)",
+      "x": 152.857,
+      "y": 291.143,
+      "width": 23.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.915
+    },
+    {
+      "text": "acc.__balance",
+      "x": 324.286,
+      "y": 291.143,
+      "width": 59.429,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 77.871
+    },
+    {
+      "text": "=",
+      "x": 390.0,
+      "y": 293.429,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.06
+    },
+    {
+      "text": "-999999",
+      "x": 401.714,
+      "y": 291.429,
+      "width": 36.0,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.853
+    },
+    {
+      "text": "print(acc._balance)",
+      "x": 324.571,
+      "y": 307.143,
+      "width": 86.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 88.61
+    },
+    {
+      "text": "#",
+      "x": 428.857,
+      "y": 307.143,
+      "width": 5.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 66.231
+    },
+    {
+      "text": "-999999",
+      "x": 440.571,
+      "y": 307.143,
+      "width": 36.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 91.566
+    },
+    {
+      "text": "#",
+      "x": 324.0,
+      "y": 323.143,
+      "width": 5.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 91.468
+    },
+    {
+      "text": "수",
+      "x": 348.857,
+      "y": 321.714,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 88.874
+    },
+    {
+      "text": "정",
+      "x": 360.0,
+      "y": 321.429,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.371
+    },
+    {
+      "text": "된",
+      "x": 370.857,
+      "y": 321.429,
+      "width": 5.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 82.587
+    },
+    {
+      "text": "것처럼",
+      "x": 385.429,
+      "y": 321.429,
+      "width": 27.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 82.205
+    },
+    {
+      "text": "보인다?",
+      "x": 421.714,
+      "y": 321.429,
+      "width": 33.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.65
+    },
+    {
+      "text": "그런데",
+      "x": 474.286,
+      "y": 321.429,
+      "width": 28.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.382
+    },
+    {
+      "text": "원래",
+      "x": 511.429,
+      "y": 321.429,
+      "width": 17.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.294
+    },
+    {
+      "text": "잔",
+      "x": 537.714,
+      "y": 321.429,
+      "width": 8.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.08
+    },
+    {
+      "text": "액",
+      "x": 548.571,
+      "y": 321.429,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.196
+    },
+    {
+      "text": "은",
+      "x": 558.571,
+      "y": 321.714,
+      "width": 7.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.302
+    },
+    {
+      "text": "어떻게",
+      "x": 324.857,
+      "y": 337.714,
+      "width": 27.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.75
+    },
+    {
+      "text": "됐을까?",
+      "x": 359.429,
+      "y": 337.714,
+      "width": 33.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.81
+    },
+    {
+      "text": "외부",
+      "x": 44.0,
+      "y": 374.857,
+      "width": 18.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.876
+    },
+    {
+      "text": "접근",
+      "x": 69.143,
+      "y": 374.857,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.714
+    },
+    {
+      "text": "차단:",
+      "x": 94.0,
+      "y": 374.857,
+      "width": 21.143,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.864
+    },
+    {
+      "text": "클래스",
+      "x": 121.429,
+      "y": 374.857,
+      "width": 28.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.286
+    },
+    {
+      "text": "내",
+      "x": 158.0,
+      "y": 374.857,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.28
+    },
+    {
+      "text": "부",
+      "x": 168.0,
+      "y": 375.143,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.276
+    },
+    {
+      "text": "에서",
+      "x": 178.286,
+      "y": 374.857,
+      "width": 16.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 86.748
+    },
+    {
+      "text": "관",
+      "x": 202.571,
+      "y": 374.857,
+      "width": 8.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.035
+    },
+    {
+      "text": "리",
+      "x": 212.571,
+      "y": 374.857,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "하",
+      "x": 222.857,
+      "y": 374.857,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.292
+    },
+    {
+      "text": "는",
+      "x": 233.143,
+      "y": 375.143,
+      "width": 6.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.306
+    },
+    {
+      "text": "속",
+      "x": 247.429,
+      "y": 375.143,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.289
+    },
+    {
+      "text": "성",
+      "x": 258.286,
+      "y": 374.857,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.297
+    },
+    {
+      "text": "을",
+      "x": 268.286,
+      "y": 374.857,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 83.063
+    },
+    {
+      "text": "외",
+      "x": 282.286,
+      "y": 374.857,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.28
+    },
+    {
+      "text": "부",
+      "x": 293.429,
+      "y": 375.143,
+      "width": 5.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.295
+    },
+    {
+      "text": "에서",
+      "x": 303.714,
+      "y": 374.857,
+      "width": 16.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.189
+    },
+    {
+      "text": "마음대로",
+      "x": 327.429,
+      "y": 374.857,
+      "width": 37.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.287
+    },
+    {
+      "text": "조",
+      "x": 373.429,
+      "y": 375.714,
+      "width": 6.571,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 93.223
+    },
+    {
+      "text": "작",
+      "x": 383.429,
+      "y": 374.857,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.284
+    },
+    {
+      "text": "하",
+      "x": 393.714,
+      "y": 374.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "면",
+      "x": 404.0,
+      "y": 374.857,
+      "width": 6.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.295
+    },
+    {
+      "text": "프",
+      "x": 418.0,
+      "y": 375.714,
+      "width": 6.857,
+      "height": 4.571,
+      "fontSize": 4.571,
+      "confidence": 93.107
+    },
+    {
+      "text": "로",
+      "x": 428.286,
+      "y": 375.714,
+      "width": 6.286,
+      "height": 6.571,
+      "fontSize": 6.571,
+      "confidence": 93.304
+    },
+    {
+      "text": "그",
+      "x": 439.143,
+      "y": 375.714,
+      "width": 5.143,
+      "height": 6.0,
+      "fontSize": 6.0,
+      "confidence": 93.124
+    },
+    {
+      "text": "램",
+      "x": 449.429,
+      "y": 374.857,
+      "width": 5.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.875
+    },
+    {
+      "text": "에",
+      "x": 459.714,
+      "y": 374.857,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 71.784
+    },
+    {
+      "text": "문",
+      "x": 473.714,
+      "y": 375.143,
+      "width": 11.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.785
+    },
+    {
+      "text": "제",
+      "x": 486.0,
+      "y": 374.857,
+      "width": 9.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": "가",
+      "x": 498.857,
+      "y": 374.857,
+      "width": 2.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 94.642
+    },
+    {
+      "text": "생길",
+      "x": 507.429,
+      "y": 374.857,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.997
+    },
+    {
+      "text": "수",
+      "x": 532.286,
+      "y": 375.143,
+      "width": 8.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.974
+    },
+    {
+      "text": "있습",
+      "x": 548.286,
+      "y": 374.857,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.872
+    },
+    {
+      "text": "니다",
+      "x": 44.857,
+      "y": 390.857,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 97.002
+    },
+    {
+      "text": "안",
+      "x": 44.0,
+      "y": 406.857,
+      "width": 8.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.165
+    },
+    {
+      "text": "전",
+      "x": 56.571,
+      "y": 406.857,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.264
+    },
+    {
+      "text": "장치",
+      "x": 66.857,
+      "y": 406.857,
+      "width": 15.143,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.855
+    },
+    {
+      "text": "마련:",
+      "x": 90.0,
+      "y": 406.857,
+      "width": 20.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.825
+    },
+    {
+      "text": "이를",
+      "x": 118.0,
+      "y": 406.857,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.796
+    },
+    {
+      "text": "막기",
+      "x": 143.714,
+      "y": 406.857,
+      "width": 17.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 97.014
+    },
+    {
+      "text": "위해",
+      "x": 168.571,
+      "y": 406.857,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 97.009
+    },
+    {
+      "text": "변수",
+      "x": 195.429,
+      "y": 406.857,
+      "width": 17.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.376
+    },
+    {
+      "text": "이름",
+      "x": 220.571,
+      "y": 406.857,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.991
+    },
+    {
+      "text": "앞에",
+      "x": 245.714,
+      "y": 406.857,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.268
+    },
+    {
+      "text": "_",
+      "x": 272.0,
+      "y": 416.286,
+      "width": 7.143,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 85.06
+    },
+    {
+      "text": "를",
+      "x": 280.571,
+      "y": 407.143,
+      "width": 7.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 85.085
+    },
+    {
+      "text": "ZO",
+      "x": 295.143,
+      "y": 406.857,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 57.593
+    },
+    {
+      "text": "Private",
+      "x": 321.143,
+      "y": 408.286,
+      "width": 29.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.711
+    },
+    {
+      "text": "변",
+      "x": 358.0,
+      "y": 406.857,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.244
+    },
+    {
+      "text": "수",
+      "x": 367.714,
+      "y": 407.143,
+      "width": 8.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.288
+    },
+    {
+      "text": "로",
+      "x": 378.857,
+      "y": 407.714,
+      "width": 6.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.299
+    },
+    {
+      "text": "선",
+      "x": 392.857,
+      "y": 406.857,
+      "width": 7.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.296
+    },
+    {
+      "text": "언",
+      "x": 404.0,
+      "y": 406.857,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.156
+    },
+    {
+      "text": "함",
+      "x": 414.286,
+      "y": 406.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.299
+    },
+    {
+      "text": "으로써",
+      "x": 422.571,
+      "y": 406.857,
+      "width": 28.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.246
+    },
+    {
+      "text": "이건5\t1\t9\t1\t3\t23\t1708\t1424\t131\t33\t93.302849\t건드리지5\t1\t9\t1\t3\t24\t1872\t1424\t26\t33\t93.295479\t마5\t1\t9\t1\t3\t25\t1902\t1424\t80\t33\t96.910408\t라고",
+      "x": 458.286,
+      "y": 406.857,
+      "width": 22.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.246
+    },
+    {
+      "text": "바",
+      "x": 44.571,
+      "y": 422.857,
+      "width": 8.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.285
+    },
+    {
+      "text": "깥",
+      "x": 56.286,
+      "y": 422.857,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.273
+    },
+    {
+      "text": "에",
+      "x": 66.571,
+      "y": 422.857,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.288
+    },
+    {
+      "text": "신",
+      "x": 80.571,
+      "y": 422.857,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.18
+    },
+    {
+      "text": "호",
+      "x": 90.571,
+      "y": 423.143,
+      "width": 7.143,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.228
+    },
+    {
+      "text": "를",
+      "x": 100.857,
+      "y": 423.143,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 91.805
+    },
+    {
+      "text": "주는",
+      "x": 114.0,
+      "y": 423.143,
+      "width": 18.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.974
+    },
+    {
+      "text": "것",
+      "x": 139.429,
+      "y": 422.857,
+      "width": 8.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.967
+    },
+    {
+      "text": "balance",
+      "x": 44.0,
+      "y": 456.286,
+      "width": 33.714,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 95.555
+    },
+    {
+      "text": "변",
+      "x": 84.571,
+      "y": 454.857,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.588
+    },
+    {
+      "text": "수",
+      "x": 93.714,
+      "y": 455.143,
+      "width": 18.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.27
+    },
+    {
+      "text": "는",
+      "x": 104.857,
+      "y": 453.714,
+      "width": 7.714,
+      "height": 14.857,
+      "fontSize": 14.857,
+      "confidence": 93.282
+    },
+    {
+      "text": "클래스",
+      "x": 118.857,
+      "y": 454.857,
+      "width": 28.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.306
+    },
+    {
+      "text": "외",
+      "x": 154.286,
+      "y": 454.857,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.24
+    },
+    {
+      "text": "부",
+      "x": 165.429,
+      "y": 455.143,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.273
+    },
+    {
+      "text": "에서",
+      "x": 175.429,
+      "y": 454.857,
+      "width": 16.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 83.991
+    },
+    {
+      "text": "보이지",
+      "x": 198.857,
+      "y": 454.857,
+      "width": 27.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 97.006
+    },
+    {
+      "text": "않는",
+      "x": 234.0,
+      "y": 454.857,
+      "width": 18.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.304
+    },
+    {
+      "text": "상",
+      "x": 259.143,
+      "y": 454.857,
+      "width": 8.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "태",
+      "x": 270.286,
+      "y": 454.857,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.262
+    },
+    {
+      "text": "가",
+      "x": 280.571,
+      "y": 454.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 79.702
+    },
+    {
+      "text": "됨",
+      "x": 294.0,
+      "y": 454.857,
+      "width": 10.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.208
+    },
+    {
+      "text": ".",
+      "x": 300.857,
+      "y": 453.714,
+      "width": 4.857,
+      "height": 14.857,
+      "fontSize": 14.857,
+      "confidence": 92.81
+    },
+    {
+      "text": "코",
+      "x": 44.0,
+      "y": 471.714,
+      "width": 8.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.877
+    },
+    {
+      "text": "드",
+      "x": 56.571,
+      "y": 471.143,
+      "width": 11.143,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.301
+    },
+    {
+      "text": "에",
+      "x": 71.429,
+      "y": 470.857,
+      "width": 0.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.839
+    },
+    {
+      "text": "직접",
+      "x": 79.429,
+      "y": 470.857,
+      "width": 17.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.299
+    },
+    {
+      "text": "접",
+      "x": 106.0,
+      "y": 470.857,
+      "width": 5.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.381
+    },
+    {
+      "text": "근",
+      "x": 116.571,
+      "y": 471.429,
+      "width": 6.0,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 92.594
+    },
+    {
+      "text": "을",
+      "x": 127.429,
+      "y": 470.857,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.768
+    },
+    {
+      "text": "AttributeError",
+      "x": 183.714,
+      "y": 472.286,
+      "width": 61.429,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 87.975
+    },
+    {
+      "text": "발생",
+      "x": 251.429,
+      "y": 470.857,
+      "width": 17.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.757
+    },
+    {
+      "text": "64Ｌ",
+      "x": 44.0,
+      "y": 504.286,
+      "width": 16.0,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 38.566
+    },
+    {
+      "text": "수",
+      "x": 66.286,
+      "y": 503.143,
+      "width": 8.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 90.281
+    },
+    {
+      "text": "정",
+      "x": 78.0,
+      "y": 502.857,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.486
+    },
+    {
+      "text": "을",
+      "x": 88.0,
+      "y": 502.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 89.181
+    },
+    {
+      "text": "시",
+      "x": 102.286,
+      "y": 502.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.299
+    },
+    {
+      "text": "도",
+      "x": 113.143,
+      "y": 503.714,
+      "width": 6.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.516
+    },
+    {
+      "text": "하",
+      "x": 123.429,
+      "y": 502.857,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": "면",
+      "x": 134.286,
+      "y": 502.857,
+      "width": 5.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.542
+    },
+    {
+      "text": "값",
+      "x": 146.571,
+      "y": 502.857,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.262
+    },
+    {
+      "text": "이",
+      "x": 158.571,
+      "y": 501.714,
+      "width": 6.857,
+      "height": 13.429,
+      "fontSize": 13.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "수",
+      "x": 172.857,
+      "y": 503.143,
+      "width": 7.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.094
+    },
+    {
+      "text": "정",
+      "x": 182.857,
+      "y": 502.857,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 85.65
+    },
+    {
+      "text": "된",
+      "x": 193.714,
+      "y": 502.857,
+      "width": 5.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.686
+    },
+    {
+      "text": "것처럼",
+      "x": 206.857,
+      "y": 502.857,
+      "width": 27.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.579
+    },
+    {
+      "text": "보이지만,",
+      "x": 241.429,
+      "y": 502.857,
+      "width": 40.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 92.877
+    },
+    {
+      "text": "실",
+      "x": 290.286,
+      "y": 502.857,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.877
+    },
+    {
+      "text": "제",
+      "x": 300.286,
+      "y": 502.857,
+      "width": 6.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.303
+    },
+    {
+      "text": "로",
+      "x": 310.571,
+      "y": 503.429,
+      "width": 6.857,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.304
+    },
+    {
+      "text": "는",
+      "x": 321.429,
+      "y": 503.143,
+      "width": 6.0,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 92.737
+    },
+    {
+      "text": "새로운",
+      "x": 333.714,
+      "y": 502.857,
+      "width": 28.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.285
+    },
+    {
+      "text": "변",
+      "x": 370.0,
+      "y": 502.857,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.116
+    },
+    {
+      "text": "수",
+      "x": 380.0,
+      "y": 503.143,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.292
+    },
+    {
+      "text": "가",
+      "x": 390.286,
+      "y": 502.857,
+      "width": 7.429,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 69.001
+    },
+    {
+      "text": "생",
+      "x": 404.571,
+      "y": 502.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.277
+    },
+    {
+      "text": "성",
+      "x": 414.571,
+      "y": 502.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.275
+    },
+    {
+      "text": "되",
+      "x": 425.429,
+      "y": 502.857,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.415
+    },
+    {
+      "text": "어",
+      "x": 435.429,
+      "y": 502.857,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.24
+    },
+    {
+      "text": "버린",
+      "x": 444.0,
+      "y": 502.857,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.616
+    },
+    {
+      "text": "것임.",
+      "x": 468.857,
+      "y": 502.857,
+      "width": 20.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.792
+    },
+    {
+      "text": "->",
+      "x": 44.0,
+      "y": 537.714,
+      "width": 9.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 90.572
+    },
+    {
+      "text": "_",
+      "x": 57.429,
+      "y": 528.857,
+      "width": 4.0,
+      "height": 19.714,
+      "fontSize": 19.714,
+      "confidence": 84.43
+    },
+    {
+      "text": "는",
+      "x": 67.429,
+      "y": 535.143,
+      "width": 7.714,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 89.628
+    },
+    {
+      "text": "강력한",
+      "x": 83.714,
+      "y": 534.857,
+      "width": 28.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.965
+    },
+    {
+      "text": "보안",
+      "x": 118.571,
+      "y": 534.857,
+      "width": 18.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.296
+    },
+    {
+      "text": "장",
+      "x": 143.714,
+      "y": 534.857,
+      "width": 8.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.284
+    },
+    {
+      "text": "치",
+      "x": 153.714,
+      "y": 534.857,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.283
+    },
+    {
+      "text": "가",
+      "x": 164.0,
+      "y": 535.714,
+      "width": 4.571,
+      "height": 6.286,
+      "fontSize": 6.286,
+      "confidence": 97.002
+    },
+    {
+      "text": "아니다.",
+      "x": 179.143,
+      "y": 534.857,
+      "width": 30.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 94.361
+    },
+    {
+      "text": "_",
+      "x": 70.0,
+      "y": 541.143,
+      "width": 6.0,
+      "height": 2.857,
+      "fontSize": 2.857,
+      "confidence": 46.445
+    },
+    {
+      "text": "->",
+      "x": 44.0,
+      "y": 553.714,
+      "width": 9.429,
+      "height": 4.857,
+      "fontSize": 4.857,
+      "confidence": 92.988
+    },
+    {
+      "text": "데이터",
+      "x": 60.857,
+      "y": 550.857,
+      "width": 26.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.298
+    },
+    {
+      "text": "접",
+      "x": 96.0,
+      "y": 550.857,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.266
+    },
+    {
+      "text": "근",
+      "x": 106.571,
+      "y": 551.429,
+      "width": 7.143,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 92.286
+    },
+    {
+      "text": "에",
+      "x": 118.0,
+      "y": 550.857,
+      "width": 5.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.137
+    },
+    {
+      "text": "필",
+      "x": 132.0,
+      "y": 550.857,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.298
+    },
+    {
+      "text": "요",
+      "x": 142.571,
+      "y": 550.857,
+      "width": 11.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.934
+    },
+    {
+      "text": "항",
+      "x": 156.571,
+      "y": 550.857,
+      "width": 2.286,
+      "height": 5.714,
+      "fontSize": 5.714,
+      "confidence": 93.231
+    },
+    {
+      "text": "Getter/Setter7}",
+      "x": 190.0,
+      "y": 550.857,
+      "width": 67.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 61.525
+    },
+    {
+      "text": "필",
+      "x": 264.0,
+      "y": 550.857,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.619
+    },
+    {
+      "text": "요",
+      "x": 273.714,
+      "y": 551.714,
+      "width": 8.857,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.034
+    },
+    {
+      "text": "하",
+      "x": 284.286,
+      "y": 550.857,
+      "width": 8.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "다.",
+      "x": 294.857,
+      "y": 550.857,
+      "width": 9.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.533
+    },
+    {
+      "text": "Name",
+      "x": 29.143,
+      "y": 584.286,
+      "width": 26.0,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 91.222
+    },
+    {
+      "text": "Mangling",
+      "x": 61.143,
+      "y": 584.286,
+      "width": 41.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.974
+    },
+    {
+      "text": "네임",
+      "x": 109.429,
+      "y": 582.857,
+      "width": 17.429,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.284
+    },
+    {
+      "text": "맹",
+      "x": 134.286,
+      "y": 582.857,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.001
+    },
+    {
+      "text": "글",
+      "x": 144.571,
+      "y": 583.143,
+      "width": 8.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.248
+    },
+    {
+      "text": "링",
+      "x": 154.857,
+      "y": 582.857,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.535
+    },
+    {
+      "text": "acc",
+      "x": 43.714,
+      "y": 607.714,
+      "width": 14.0,
+      "height": 5.143,
+      "fontSize": 5.143,
+      "confidence": 95.711
+    },
+    {
+      "text": "=",
+      "x": 64.0,
+      "y": 608.0,
+      "width": 4.857,
+      "height": 3.143,
+      "fontSize": 3.143,
+      "confidence": 93.014
+    },
+    {
+      "text": "Account(\"Alice”,",
+      "x": 75.143,
+      "y": 605.714,
+      "width": 71.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 42.024
+    },
+    {
+      "text": "1000)",
+      "x": 152.857,
+      "y": 605.714,
+      "width": 23.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.865
+    },
+    {
+      "text": "#",
+      "x": 324.0,
+      "y": 606.0,
+      "width": 5.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 92.955
+    },
+    {
+      "text": "출력",
+      "x": 335.714,
+      "y": 604.286,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 95.259
+    },
+    {
+      "text": "결과:",
+      "x": 361.143,
+      "y": 604.286,
+      "width": 20.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.71
+    },
+    {
+      "text": "{",
+      "x": 324.0,
+      "y": 621.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.027
+    },
+    {
+      "text": "#",
+      "x": 43.429,
+      "y": 637.714,
+      "width": 5.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 93.08
+    },
+    {
+      "text": "엉뚱한",
+      "x": 55.714,
+      "y": 636.286,
+      "width": 28.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.286
+    },
+    {
+      "text": "이",
+      "x": 91.143,
+      "y": 636.286,
+      "width": 6.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.284
+    },
+    {
+      "text": "름",
+      "x": 101.714,
+      "y": 636.286,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.203
+    },
+    {
+      "text": "으로",
+      "x": 112.286,
+      "y": 636.857,
+      "width": 16.571,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 93.304
+    },
+    {
+      "text": "수",
+      "x": 136.571,
+      "y": 636.571,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.293
+    },
+    {
+      "text": "정",
+      "x": 147.143,
+      "y": 636.286,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.291
+    },
+    {
+      "text": "을",
+      "x": 157.714,
+      "y": 636.286,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.483
+    },
+    {
+      "text": "시",
+      "x": 171.714,
+      "y": 636.286,
+      "width": 6.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.291
+    },
+    {
+      "text": "도",
+      "x": 182.286,
+      "y": 637.143,
+      "width": 6.571,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 93.304
+    },
+    {
+      "text": "하",
+      "x": 192.571,
+      "y": 636.286,
+      "width": 6.571,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.303
+    },
+    {
+      "text": "면",
+      "x": 203.143,
+      "y": 636.286,
+      "width": 5.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.913
+    },
+    {
+      "text": "?",
+      "x": 210.286,
+      "y": 637.714,
+      "width": 3.429,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 93.022
+    },
+    {
+      "text": "‘owner’:",
+      "x": 344.571,
+      "y": 638.0,
+      "width": 33.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 73.842
+    },
+    {
+      "text": "‘Alice’,",
+      "x": 384.571,
+      "y": 637.714,
+      "width": 26.857,
+      "height": 8.286,
+      "fontSize": 8.286,
+      "confidence": 94.65
+    },
+    {
+      "text": "acc._balance",
+      "x": 43.714,
+      "y": 653.714,
+      "width": 59.429,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 86.072
+    },
+    {
+      "text": "=",
+      "x": 109.429,
+      "y": 656.0,
+      "width": 5.143,
+      "height": 3.429,
+      "fontSize": 3.429,
+      "confidence": 93.274
+    },
+    {
+      "text": "-999999",
+      "x": 120.857,
+      "y": 653.714,
+      "width": 36.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 92.12
+    },
+    {
+      "text": "‘",
+      "x": 344.571,
+      "y": 654.0,
+      "width": 0.857,
+      "height": 2.0,
+      "fontSize": 2.0,
+      "confidence": 26.788
+    },
+    {
+      "text": "Account_balance’:",
+      "x": 346.0,
+      "y": 653.714,
+      "width": 88.571,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 77.141
+    },
+    {
+      "text": "1000,",
+      "x": 441.143,
+      "y": 654.0,
+      "width": 22.857,
+      "height": 8.0,
+      "fontSize": 8.0,
+      "confidence": 88.286
+    },
+    {
+      "text": "#",
+      "x": 472.571,
+      "y": 654.0,
+      "width": 2.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 88.286
+    },
+    {
+      "text": "원본",
+      "x": 481.714,
+      "y": 652.286,
+      "width": 18.286,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 95.464
+    },
+    {
+      "text": "보존",
+      "x": 506.286,
+      "y": 652.857,
+      "width": 18.571,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 96.557
+    },
+    {
+      "text": "'_balance’:",
+      "x": 344.571,
+      "y": 669.714,
+      "width": 48.857,
+      "height": 8.571,
+      "fontSize": 8.571,
+      "confidence": 35.008
+    },
+    {
+      "text": "-999999",
+      "x": 399.429,
+      "y": 669.714,
+      "width": 36.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 92.768
+    },
+    {
+      "text": "#",
+      "x": 471.429,
+      "y": 669.714,
+      "width": 5.714,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 92.63
+    },
+    {
+      "text": "별",
+      "x": 483.714,
+      "y": 668.286,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.63
+    },
+    {
+      "text": "개",
+      "x": 493.429,
+      "y": 668.286,
+      "width": 7.714,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.28
+    },
+    {
+      "text": "로",
+      "x": 504.571,
+      "y": 668.857,
+      "width": 6.571,
+      "height": 7.714,
+      "fontSize": 7.714,
+      "confidence": 96.909
+    },
+    {
+      "text": "478",
+      "x": 517.714,
+      "y": 668.0,
+      "width": 28.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 33.577
+    },
+    {
+      "text": "#",
+      "x": 43.429,
+      "y": 686.0,
+      "width": 5.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.123
+    },
+    {
+      "text": "객",
+      "x": 55.429,
+      "y": 684.286,
+      "width": 7.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.037
+    },
+    {
+      "text": "체",
+      "x": 66.571,
+      "y": 684.286,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.815
+    },
+    {
+      "text": "의",
+      "x": 77.143,
+      "y": 684.286,
+      "width": 5.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 90.02
+    },
+    {
+      "text": "실제",
+      "x": 90.0,
+      "y": 684.286,
+      "width": 18.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 97.013
+    },
+    {
+      "text": "속성",
+      "x": 114.857,
+      "y": 684.286,
+      "width": 18.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.274
+    },
+    {
+      "text": "지",
+      "x": 141.143,
+      "y": 684.286,
+      "width": 6.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.212
+    },
+    {
+      "text": "도",
+      "x": 151.429,
+      "y": 685.143,
+      "width": 7.429,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 91.823
+    },
+    {
+      "text": "를",
+      "x": 162.0,
+      "y": 684.286,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.738
+    },
+    {
+      "text": "출력",
+      "x": 174.857,
+      "y": 684.0,
+      "width": 18.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 97.015
+    },
+    {
+      "text": "}",
+      "x": 324.0,
+      "y": 685.714,
+      "width": 2.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.953
+    },
+    {
+      "text": "print(acc._Account_balance)",
+      "x": 324.571,
+      "y": 717.714,
+      "width": 127.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 86.742
+    },
+    {
+      "text": "#",
+      "x": 458.0,
+      "y": 718.0,
+      "width": 5.429,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 93.199
+    },
+    {
+      "text": "1000",
+      "x": 469.714,
+      "y": 718.0,
+      "width": 20.571,
+      "height": 6.857,
+      "fontSize": 6.857,
+      "confidence": 96.529
+    },
+    {
+      "text": "파",
+      "x": 43.714,
+      "y": 753.714,
+      "width": 9.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.238
+    },
+    {
+      "text": "이",
+      "x": 56.286,
+      "y": 753.714,
+      "width": 5.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "썬",
+      "x": 66.571,
+      "y": 753.714,
+      "width": 5.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.036
+    },
+    {
+      "text": "은",
+      "x": 76.857,
+      "y": 754.0,
+      "width": 5.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.302
+    },
+    {
+      "text": "변",
+      "x": 90.571,
+      "y": 753.714,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.296
+    },
+    {
+      "text": "수",
+      "x": 100.857,
+      "y": 754.0,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.295
+    },
+    {
+      "text": "명",
+      "x": 112.0,
+      "y": 753.714,
+      "width": 5.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.641
+    },
+    {
+      "text": "앞에",
+      "x": 124.286,
+      "y": 753.714,
+      "width": 17.714,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.566
+    },
+    {
+      "text": "더블",
+      "x": 149.429,
+      "y": 753.714,
+      "width": 18.286,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 93.298
+    },
+    {
+      "text": "붙으면",
+      "x": 288.571,
+      "y": 753.714,
+      "width": 28.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.301
+    },
+    {
+      "text": "내",
+      "x": 324.571,
+      "y": 753.714,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.3
+    },
+    {
+      "text": "부",
+      "x": 334.857,
+      "y": 754.0,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.305
+    },
+    {
+      "text": "적",
+      "x": 345.143,
+      "y": 753.714,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.296
+    },
+    {
+      "text": "으로",
+      "x": 353.714,
+      "y": 754.571,
+      "width": 18.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 78.795
+    },
+    {
+      "text": "변",
+      "x": 380.286,
+      "y": 753.714,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.26
+    },
+    {
+      "text": "수",
+      "x": 390.571,
+      "y": 754.0,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.302
+    },
+    {
+      "text": "의",
+      "x": 400.857,
+      "y": 753.714,
+      "width": 5.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 67.66
+    },
+    {
+      "text": "이",
+      "x": 415.429,
+      "y": 753.714,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.876
+    },
+    {
+      "text": "름",
+      "x": 425.714,
+      "y": 754.0,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.274
+    },
+    {
+      "text": "을",
+      "x": 436.0,
+      "y": 753.714,
+      "width": 6.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 87.983
+    },
+    {
+      "text": "자동",
+      "x": 448.571,
+      "y": 753.714,
+      "width": 18.857,
+      "height": 9.714,
+      "fontSize": 9.714,
+      "confidence": 96.699
+    },
+    {
+      "text": "변환",
+      "x": 474.571,
+      "y": 753.714,
+      "width": 18.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.766
+    },
+    {
+      "text": "원래",
+      "x": 44.286,
+      "y": 769.714,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.747
+    },
+    {
+      "text": "이름",
+      "x": 69.429,
+      "y": 769.714,
+      "width": 18.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.818
+    },
+    {
+      "text": "앞에",
+      "x": 94.286,
+      "y": 769.714,
+      "width": 17.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 89.966
+    },
+    {
+      "text": "_",
+      "x": 118.571,
+      "y": 779.143,
+      "width": 4.0,
+      "height": 0.286,
+      "fontSize": 1,
+      "confidence": 89.966
+    },
+    {
+      "text": "클",
+      "x": 124.286,
+      "y": 770.0,
+      "width": 7.714,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 93.064
+    },
+    {
+      "text": "래",
+      "x": 135.143,
+      "y": 769.714,
+      "width": 6.0,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.346
+    },
+    {
+      "text": "스",
+      "x": 144.857,
+      "y": 770.571,
+      "width": 7.143,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.302
+    },
+    {
+      "text": "이",
+      "x": 155.429,
+      "y": 769.714,
+      "width": 5.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.772
+    },
+    {
+      "text": "름",
+      "x": 166.286,
+      "y": 770.0,
+      "width": 10.0,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 92.364
+    },
+    {
+      "text": "이",
+      "x": 180.286,
+      "y": 769.714,
+      "width": 0.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "추",
+      "x": 190.0,
+      "y": 769.714,
+      "width": 6.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 82.11
+    },
+    {
+      "text": "가",
+      "x": 200.857,
+      "y": 769.714,
+      "width": 11.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.294
+    },
+    {
+      "text": "되어",
+      "x": 215.429,
+      "y": 768.571,
+      "width": 15.143,
+      "height": 13.143,
+      "fontSize": 13.143,
+      "confidence": 81.745
+    },
+    {
+      "text": "_ClassName_variableO|",
+      "x": 232.286,
+      "y": 769.714,
+      "width": 106.286,
+      "height": 10.0,
+      "fontSize": 10.0,
+      "confidence": 31.045
+    },
+    {
+      "text": "된다.",
+      "x": 346.0,
+      "y": 769.714,
+      "width": 20.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.549
+    },
+    {
+      "text": "He",
+      "x": 44.571,
+      "y": 785.714,
+      "width": 17.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 58.18
+    },
+    {
+      "text": "이",
+      "x": 70.286,
+      "y": 785.714,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.287
+    },
+    {
+      "text": "름",
+      "x": 80.857,
+      "y": 786.0,
+      "width": 5.714,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.205
+    },
+    {
+      "text": "으",
+      "x": 91.429,
+      "y": 786.571,
+      "width": 6.286,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 92.484
+    },
+    {
+      "text": "로",
+      "x": 101.143,
+      "y": 786.571,
+      "width": 6.571,
+      "height": 7.143,
+      "fontSize": 7.143,
+      "confidence": 93.261
+    },
+    {
+      "text": "는",
+      "x": 112.286,
+      "y": 786.0,
+      "width": 4.286,
+      "height": 8.857,
+      "fontSize": 8.857,
+      "confidence": 96.946
+    },
+    {
+      "text": "접근",
+      "x": 124.286,
+      "y": 785.714,
+      "width": 17.143,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 96.427
+    },
+    {
+      "text": "가능.",
+      "x": 149.143,
+      "y": 785.714,
+      "width": 20.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.715
+    },
+    {
+      "text": "따라서",
+      "x": 181.429,
+      "y": 785.714,
+      "width": 27.714,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.302
+    },
+    {
+      "text": "은",
+      "x": 259.429,
+      "y": 783.714,
+      "width": 7.143,
+      "height": 14.0,
+      "fontSize": 14.0,
+      "confidence": 91.039
+    },
+    {
+      "text": "실수",
+      "x": 274.286,
+      "y": 785.714,
+      "width": 18.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.299
+    },
+    {
+      "text": "방",
+      "x": 299.714,
+      "y": 785.714,
+      "width": 8.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.288
+    },
+    {
+      "text": "지",
+      "x": 310.286,
+      "y": 785.714,
+      "width": 6.571,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 92.449
+    },
+    {
+      "text": "(이름",
+      "x": 319.143,
+      "y": 785.714,
+      "width": 21.714,
+      "height": 10.857,
+      "fontSize": 10.857,
+      "confidence": 93.296
+    },
+    {
+      "text": "충",
+      "x": 348.571,
+      "y": 785.714,
+      "width": 7.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 81.35
+    },
+    {
+      "text": "돌",
+      "x": 359.143,
+      "y": 786.0,
+      "width": 6.857,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.227
+    },
+    {
+      "text": ")",
+      "x": 366.857,
+      "y": 787.143,
+      "width": 2.286,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 91.628
+    },
+    {
+      "text": "를",
+      "x": 372.286,
+      "y": 786.0,
+      "width": 6.571,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.304
+    },
+    {
+      "text": "위한",
+      "x": 385.143,
+      "y": 785.714,
+      "width": 18.857,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.303
+    },
+    {
+      "text": "기",
+      "x": 410.857,
+      "y": 785.714,
+      "width": 7.143,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 93.298
+    },
+    {
+      "text": "능",
+      "x": 421.429,
+      "y": 786.0,
+      "width": 7.429,
+      "height": 9.143,
+      "fontSize": 9.143,
+      "confidence": 93.288
+    },
+    {
+      "text": "이다.",
+      "x": 431.714,
+      "y": 785.714,
+      "width": 19.429,
+      "height": 9.429,
+      "fontSize": 9.429,
+      "confidence": 96.877
+    },
+    {
+      "text": "-",
+      "x": 285.714,
+      "y": 821.429,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 84.802
+    },
+    {
+      "text": "6",
+      "x": 295.429,
+      "y": 818.286,
+      "width": 4.286,
+      "height": 7.429,
+      "fontSize": 7.429,
+      "confidence": 85.246
+    },
+    {
+      "text": "-",
+      "x": 306.0,
+      "y": 821.429,
+      "width": 3.714,
+      "height": 0.571,
+      "fontSize": 1,
+      "confidence": 85.246
+    }
+  ],
+  "ocrEngine": "tesseract",
+  "ocrLanguage": "kor+eng",
+  "displayRenderScale": 2.2,
+  "ocrRenderScale": 3.5
+}
